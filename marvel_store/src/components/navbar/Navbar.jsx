@@ -1,19 +1,20 @@
-import './navbar.css';
-import CartWidget from '../cartWidget/CartWidget';
+import React from 'react';
 import logo from '../../images/logo.png';
+import CartWidget from '../cartWidget/CartWidget';
+import 'bootstrap/dist/css/bootstrap.min.css'; // Importa Bootstrap CSS
 
 const Navbar = () => {
     return (
-        <nav className='navbar navbar-expand-lg navbar-dark'>
+        <nav className='navbar navbar-expand-lg navbar-light bg-light'>
             <a className='navbar-brand' href="/">
-                <img alt='logo' src={logo} className='logo' />
+                <img alt='logo' src={logo} className='logo' style={{ maxWidth: '150px', height: 'auto' }} />
             </a>
 
             <button
                 className='navbar-toggler'
                 type='button'
-                data-toggle='collapse'
-                data-target='#navbarNav'
+                data-bs-toggle='collapse'
+                data-bs-target='#navbarNav'
                 aria-controls='navbarNav'
                 aria-expanded='false'
                 aria-label='Toggle navigation'
@@ -22,7 +23,7 @@ const Navbar = () => {
             </button>
 
             <div className='collapse navbar-collapse' id='navbarNav'>
-                <ul className='navbar-nav mr-auto'>
+                <ul className='navbar-nav'>
                     <li className='nav-item'>
                         <a className='nav-link' href='/productos'>
                             Productos
@@ -48,7 +49,6 @@ const Navbar = () => {
                             Comunidad
                         </a>
                     </li>
-                    {/* Add more relevant links for your e-commerce site */}
                 </ul>
             </div>
 

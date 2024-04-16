@@ -1,12 +1,6 @@
-/* navbar.css */
 .navbar {
-    background-color: #20232a; /* Color de fondo del navbar */
+    background-color: #343a40; /* Cambia el color de fondo del navbar a un tono más oscuro */
     padding: 15px 0; /* Espaciado interno del navbar */
-}
-
-.navbar-brand img {
-    max-width: 150px;
-    height: auto;
 }
 
 .navbar-nav .nav-item {
