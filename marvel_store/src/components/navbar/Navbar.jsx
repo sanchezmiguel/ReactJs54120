@@ -1,10 +1,12 @@
 import logo from '../../images/logo.png';
+import './navbar.css';
 import CartWidget from '../cartWidget/CartWidget';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 const Navbar = () => {
     return (
-        <nav className='navbar navbar-expand-lg navbar-light bg-light'>
+        <nav className='navbar navbar-expand-lg navbar-light'>
             <a className='navbar-brand' href="/">
                 <img alt='logo' src={logo} className='logo' style={{ maxWidth: '150px', height: 'auto' }} />
             </a>

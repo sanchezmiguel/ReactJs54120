@@ -1,7 +1,7 @@
 /* navbar.css */
 
 .navbar {
-    background-color: #ed1d24; /* Cambia el color de fondo del navbar al rojo característico de Marvel */
+    background-color: #8b0000; /* Cambia el color de fondo del navbar al rojo característico de Marvel */
     padding: 15px 0; /* Espaciado interno del navbar */
 }
 
@@ -13,6 +13,7 @@
     font-size: 18px; /* Tamaño de fuente de los enlaces */
     color: #ffffff; /* Color de texto de los enlaces */
     transition: all 0.3s ease; /* Transición suave */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
 }
 
 .navbar-nav .nav-link:hover {
