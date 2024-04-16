@@ -1,10 +1,10 @@
-import React from 'react';
 import './CartWidget.css';
+import carrito from '../../images/carrito.png';
 
 const CartWidget = () => {
     return (
         <div className='cart-widget-container'>
-            <img className='cart-icon' src='./images/carrito.png' alt='carrito' />
+            <img className='cart-icon' src={carrito} alt='carrito' />
             <span className='badge badge-primary'>99</span>
         </div>
     );

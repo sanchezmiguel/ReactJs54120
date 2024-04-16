@@ -1,18 +1,12 @@
-import React from 'react';
 import './navbar.css';
 import CartWidget from '../cartWidget/CartWidget';
 import logo from '../../images/logo.png';
 
 const Navbar = () => {
-    const logoStyle = {
-        maxWidth: '150px',
-        height: 'auto',
-    };
-
     return (
-        <nav className='navbar navbar-expand-lg navbar-light bg-light'>
+        <nav className='navbar navbar-expand-lg navbar-dark'>
             <a className='navbar-brand' href="/">
-                <img alt='logo' src={logo} className='logo' style={logoStyle} />
+                <img alt='logo' src={logo} className='logo' />
             </a>
 
             <button
@@ -30,28 +24,28 @@ const Navbar = () => {
             <div className='collapse navbar-collapse' id='navbarNav'>
                 <ul className='navbar-nav mr-auto'>
                     <li className='nav-item'>
-                        <a className='nav-link' href='/new-arrivals'>
-                            New Arrivals
+                        <a className='nav-link' href='/productos'>
+                            Productos
                         </a>
                     </li>
                     <li className='nav-item'>
-                        <a className='nav-link' href='/best-sellers'>
-                            Best Sellers
+                        <a className='nav-link' href='/personajes'>
+                            Personajes
                         </a>
                     </li>
                     <li className='nav-item'>
-                        <a className='nav-link' href='/special-offers'>
-                            Special Offers
+                        <a className='nav-link' href='/peliculas-series'>
+                            Películas y Series
                         </a>
                     </li>
                     <li className='nav-item'>
-                        <a className='nav-link' href='/electronics'>
-                            Electronics
+                        <a className='nav-link' href='/noticias'>
+                            Noticias y Eventos
                         </a>
                     </li>
                     <li className='nav-item'>
-                        <a className='nav-link' href='/tech-accessories'>
-                            Tech Accessories
+                        <a className='nav-link' href='/comunidad'>
+                            Comunidad
                         </a>
                     </li>
                     {/* Add more relevant links for your e-commerce site */}
