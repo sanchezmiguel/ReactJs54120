@@ -11,7 +11,7 @@
 
 .navbar-nav .nav-link {
     font-size: 18px; /* Tamaño de fuente de los enlaces */
-    color: #ffffff; /* Color de texto de los enlaces */
+    color: #aaa; /* Color de texto de los enlaces */
     transition: all 0.3s ease; /* Transición suave */
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
 }
