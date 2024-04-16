@@ -1,7 +1,6 @@
-import React from 'react';
 import logo from '../../images/logo.png';
 import CartWidget from '../cartWidget/CartWidget';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Importa Bootstrap CSS
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Navbar = () => {
     return (
