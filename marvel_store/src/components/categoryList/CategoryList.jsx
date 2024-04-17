@@ -1,4 +1,3 @@
-
 function CategoryList() {
     return (
         <div className='collapse navbar-collapse' id='navbarNav'>
