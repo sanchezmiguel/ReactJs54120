@@ -1,15 +1,14 @@
-import logo from '../../images/logo.png';
 import './navbar.css';
 import CartWidget from '../cartWidget/CartWidget';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import BrandLogo from "../brandLogo/BrandLogo.jsx";
+import CategoryList from "../categoryList/CategoryList.jsx";
 
 
 const Navbar = () => {
     return (
         <nav className='navbar navbar-expand-lg navbar-light'>
-            <a className='navbar-brand' href="/">
-                <img alt='logo' src={logo} className='logo' style={{ maxWidth: '150px', height: 'auto' }} />
-            </a>
+            <BrandLogo/>
 
             <button
                 className='navbar-toggler'
@@ -23,37 +22,9 @@ const Navbar = () => {
                 <span className='navbar-toggler-icon'></span>
             </button>
 
-            <div className='collapse navbar-collapse' id='navbarNav'>
-                <ul className='navbar-nav'>
-                    <li className='nav-item'>
-                        <a className='nav-link' href='/productos'>
-                            Productos
-                        </a>
-                    </li>
-                    <li className='nav-item'>
-                        <a className='nav-link' href='/personajes'>
-                            Personajes
-                        </a>
-                    </li>
-                    <li className='nav-item'>
-                        <a className='nav-link' href='/peliculas-series'>
-                            Películas y Series
-                        </a>
-                    </li>
-                    <li className='nav-item'>
-                        <a className='nav-link' href='/noticias'>
-                            Noticias y Eventos
-                        </a>
-                    </li>
-                    <li className='nav-item'>
-                        <a className='nav-link' href='/comunidad'>
-                            Comunidad
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            <CategoryList/>
 
-            <CartWidget />
+            <CartWidget/>
         </nav>
     );
 };
