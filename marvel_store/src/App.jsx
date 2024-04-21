@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
     return (
-        <div className="app-container"> {}
+        <div className="app-container">
             <Navbar/>
             <ItemListContainer greeting='Bienvenido/a a nuestra tienda de Marvel'/>
         </div>
