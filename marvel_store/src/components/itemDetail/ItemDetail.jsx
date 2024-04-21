@@ -1,20 +1,18 @@
 // ItemDetail.jsx
+import React from 'react';
 import ItemCount from "../itemCount/ItemCount.jsx";
-
+import './ItemDetail.css';
 
 function ItemDetail({ item, onAdd }) {
-    const handleAddToCart = (quantity) => {
-        console.log(`Adding ${quantity} of ${item.name} to the cart`);
-        // Aquí puedes agregar lógica para añadir realmente al carrito
-    };
-
     return (
-        <div className="item-detail">
-            <h2>{item.name}</h2>
-            <img src={item.imageUrl} alt={item.name} style={{ width: '100%', height: 'auto' }} />
-            <p>{item.description}</p>
-            <p className="price">{item.price}</p>
-            <ItemCount stock={item.stock} initial={item.initial} onAdd={onAdd} />
+        <div className="item-detail card">
+            <img src={item.imageUrl} alt={item.name} className="card-img-top" />
+            <div className="card-body">
+                <h5 className="card-title">{item.name}</h5>
+                <p className="card-text">{item.description}</p>
+                <p className="price text-success">${item.price}</p>
+                <ItemCount stock={item.stock} initial={item.initial} onAdd={onAdd} />
+            </div>
         </div>
     );
 }

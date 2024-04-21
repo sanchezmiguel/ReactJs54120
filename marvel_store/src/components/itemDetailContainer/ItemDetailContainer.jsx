@@ -1,6 +1,7 @@
 // ItemDetailContainer.jsx
 import React, { useEffect, useState } from 'react';
 import ItemDetail from "../itemDetail/ItemDetail.jsx";
+import './ItemDetailContainer.css';
 
 const ItemDetailContainer = ({ item, onAdd }) => {
     const [loading, setLoading] = useState(true);
@@ -17,12 +18,12 @@ const ItemDetailContainer = ({ item, onAdd }) => {
     }, []);
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <div className="text-center p-5"><div className="spinner-border text-primary" role="status"><span className="sr-only">Loading...</span></div></div>;
     }
 
     return (
-        <div>
-            {item ? <ItemDetail item={item} onAdd={onAdd} /> : <p>No item found</p>}
+        <div className="item-detail-container">
+            {item ? <ItemDetail item={item} onAdd={onAdd} /> : <p className="text-center">No item found</p>}
         </div>
     );
 }
