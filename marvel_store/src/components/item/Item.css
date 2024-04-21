@@ -1,0 +1,8 @@
+.card {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra suave */
+    transition: transform 0.3s ease-in-out; /* Efecto suave al pasar el ratón */
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Eleva ligeramente la tarjeta al pasar el ratón */
+}

@@ -1,6 +1,7 @@
 // Item.jsx
 import React from 'react';
 import ItemCount from "../itemCount/ItemCount.jsx";
+import './Item.css';
 
 function Item({ item, onSelectItem, onAdd }) {
     return (
