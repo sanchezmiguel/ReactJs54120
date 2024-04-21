@@ -11,9 +11,8 @@ function ItemDetail({ item, onAdd }) {
                 <h5 className="card-title">{item.name}</h5>
                 <p className="card-text">{item.description}</p>
                 <p className="price text-success">${item.price}</p>
-               
-                <ItemCount stock={item.stock} initial={item.initial} onAdd={(quantity) => onAdd(quantity, item)} />
 
+                <ItemCount stock={item.stock} initial={item.initial} onAdd={(quantity) => onAdd(quantity, item)} />
             </div>
         </div>
     );

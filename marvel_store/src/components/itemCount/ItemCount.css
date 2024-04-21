@@ -26,3 +26,18 @@
     font-size: 1.5rem;
     margin: 0 20px;
 }
+
+.item-count .btn-primary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.item-count .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 10px;
+}
+.item-count .fa-shopping-cart, .item-count .fa-plus, .item-count .fa-minus {
+    margin-right: 5px;
+}
