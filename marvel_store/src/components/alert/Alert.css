@@ -1,0 +1,80 @@
+/* Alert.css */
+
+/* Estilos personalizados para el componente Alert */
+.alert {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+
+/* Estilo para el botón de cierre (si decides agregar uno) */
+.alert button.close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.75rem;
+    border: none;
+    background: none;
+    font-size: 1.5rem;
+}
+
+/* Si necesitas una animación para que la alerta se desvanezca */
+.fadeOut {
+    animation: fadeOut ease 3s;
+    -webkit-animation: fadeOut ease 3s;
+    -moz-animation: fadeOut ease 3s;
+    -o-animation: fadeOut ease 3s;
+    -ms-animation: fadeOut ease 3s;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+@-moz-keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+@-webkit-keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+@-o-keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+@-ms-keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}

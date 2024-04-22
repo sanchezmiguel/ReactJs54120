@@ -2,6 +2,7 @@
 import React, {useState} from 'react';
 import ItemCount from "../itemCount/ItemCount.jsx";
 import './Item.css';
+import Alert from "../alert/Alert.jsx";
 
 function Item({item, onSelectItem, onAdd}) {
     const [itemAdded, setItemAdded] = useState(false);
@@ -21,9 +22,7 @@ function Item({item, onSelectItem, onAdd}) {
                         <ItemCount stock={item.stock} initial={item.initial} onAdd={handleAdd}/>
                     </div>
                 ) : (
-                    <div className="alert alert-success" role="alert">
-                        Producto añadido al carrito
-                    </div>
+                    <Alert message="Producto añadido al carrito" type="alert-success" />
                 )}
             </div>
         </div>
