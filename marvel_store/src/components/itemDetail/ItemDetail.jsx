@@ -1,14 +1,15 @@
-// ItemDetail.jsx
 import {useState} from 'react';
+import PropTypes from 'prop-types';
 import ItemCount from "../itemCount/ItemCount.jsx";
 import './ItemDetail.css';
 import Alert from "../alert/Alert.jsx";
 
 function ItemDetail({item, onAdd, onBack}) {
     const [itemAdded, setItemAdded] = useState(false);
+
     const handleAdd = (quantity) => {
         onAdd(quantity, item);
-        setItemAdded(true); // Indica que el ítem ha sido añadido
+        setItemAdded(true); // Indicates the item has been added
     };
 
     return (
@@ -24,7 +25,6 @@ function ItemDetail({item, onAdd, onBack}) {
                 ) : (
                     <>
                         <Alert message="Producto añadido al carrito" type="alert-success"/>
-
                         <button className="btn btn-success">Terminar mi compra</button>
                         <button className="btn btn-secondary mt-2" onClick={onBack}>Volver a la lista</button>
                     </>
@@ -37,5 +37,17 @@ function ItemDetail({item, onAdd, onBack}) {
     );
 }
 
-export default ItemDetail;
+ItemDetail.propTypes = {
+    item: PropTypes.shape({
+        imageUrl: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+        price: PropTypes.number.isRequired,
+        stock: PropTypes.number.isRequired,
+        initial: PropTypes.number.isRequired
+    }).isRequired,
+    onAdd: PropTypes.func.isRequired,
+    onBack: PropTypes.func.isRequired
+};
 
+export default ItemDetail;

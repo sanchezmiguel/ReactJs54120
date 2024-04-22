@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import Item from "../item/Item.jsx";
 
-function ItemList({ items, onAdd, onSelectItem }) {
+function ItemList({items, onAdd, onSelectItem}) {
     return (
         <div className="row">
             {items.map(item => (
