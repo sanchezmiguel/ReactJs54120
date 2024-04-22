@@ -1,5 +1,4 @@
 // ItemList.jsx
-import React from 'react';
 import Item from "../item/Item.jsx";
 
 function ItemList({items, onAdd, onSelectItem}) {
