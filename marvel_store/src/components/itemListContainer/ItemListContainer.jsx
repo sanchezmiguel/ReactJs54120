@@ -3,6 +3,8 @@ import ItemDetailContainer from "../itemDetailContainer/ItemDetailContainer.jsx"
 import {useEffect, useState} from "react";
 import Loading from "../loading/Loading.jsx";
 import Alert from "../alert/Alert.jsx";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faFrown} from '@fortawesome/free-solid-svg-icons';
 
 export const ItemListContainer = () => {
     const [items, setItems] = useState([]);
@@ -13,9 +15,9 @@ export const ItemListContainer = () => {
     useEffect(() => {
         setLoading(true);
 
-        // Simular carga con tiempo de espera y posibilidad de fallo
+        // Simulate load with delay and possibility of failure
         setTimeout(() => {
-            const shouldFail = Math.random() < 0.1; // 10% de probabilidad de fallar
+            const shouldFail = Math.random() < 0.1; // 10% chance of failure
 
             if (shouldFail) {
                 setError(true);
@@ -46,7 +48,7 @@ export const ItemListContainer = () => {
     }, []);
 
     const handleAdd = (quantity, item) => {
-        console.log(`Añadido ${quantity} de ${item.name} al carrito.`);
+        console.log(`Added ${quantity} of ${item.name} to cart.`);
     };
 
     const handleSelectItem = (item) => {
@@ -57,7 +59,8 @@ export const ItemListContainer = () => {
         return <Loading/>;
     }
     if (error) {
-        return <Alert message="No se pudieron cargar los elementos. :(" type="alert-danger"/>;
+        return <Alert message={<span>No se pudieron cargar los elementos. <FontAwesomeIcon icon={faFrown}/></span>}
+                      type="alert-danger"/>;
     }
     const handleBackToList = () => {
         setSelectedItem(null);
