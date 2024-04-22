@@ -1,6 +1,7 @@
 // ItemList.jsx
 import PropTypes from 'prop-types';
 import Item from "../item/Item.jsx";
+import './ItemList.css'
 
 function ItemList({items, onAdd, onSelectItem}) {
     return (
