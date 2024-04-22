@@ -1,6 +1,8 @@
 import ItemList from "../itemList/ItemList.jsx";
 import ItemDetailContainer from "../itemDetailContainer/ItemDetailContainer.jsx";
 import {useEffect, useState} from "react";
+import Loading from "../loading/Loading.jsx";
+import Alert from "../alert/Alert.jsx";
 
 export const ItemListContainer = () => {
     const [items, setItems] = useState([]);
@@ -54,10 +56,10 @@ export const ItemListContainer = () => {
     };
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <Loading/>;
     }
     if (error) {
-        return <div>No se pudieron cargar los elementos. :(</div>;
+        return <Alert message="No se pudieron cargar los elementos. :(" type="alert-danger" />;
     }
     const handleBackToList = () => {
         setSelectedItem(null);

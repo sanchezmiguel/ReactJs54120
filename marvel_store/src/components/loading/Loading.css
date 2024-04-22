@@ -1,0 +1,23 @@
+/* Loading.css */
+
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+}
+
+.spinner-border {
+    width: 3rem; /* Size of the spinner */
+    height: 3rem;
+    animation: spin 1s linear infinite; /* Animation for the spinner */
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

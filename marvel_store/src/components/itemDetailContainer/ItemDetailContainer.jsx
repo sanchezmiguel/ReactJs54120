@@ -1,14 +1,15 @@
 // ItemDetailContainer.jsx
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import ItemDetail from "../itemDetail/ItemDetail.jsx";
 import './ItemDetailContainer.css';
+import Loading from "../loading/Loading.jsx";
 
 const ItemDetailContainer = ({item, onAdd, onBack}) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchItemDetails = () => {
-            // Simulamos la carga del detalle del ítem
+            // Simulo la carga del detalle del ítem
             setTimeout(() => {
                 setLoading(false);
             }, 2000);
@@ -18,9 +19,7 @@ const ItemDetailContainer = ({item, onAdd, onBack}) => {
     }, []);
 
     if (loading) {
-        return <div className="text-center p-5">
-            <div className="spinner-border text-primary" role="status"><span className="sr-only">Loading...</span></div>
-        </div>;
+        return <Loading/>;
     }
 
     return (
