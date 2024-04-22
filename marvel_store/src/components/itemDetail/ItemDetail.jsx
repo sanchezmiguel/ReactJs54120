@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ItemCount from "../itemCount/ItemCount.jsx";
 import './ItemDetail.css';
 import Alert from "../alert/Alert.jsx";
+import { normalizeText } from '../../utils/utils';
 
 function ItemDetail({ item, onAdd, onBack }) {
     const [itemAdded, setItemAdded] = useState(false);
@@ -12,9 +13,12 @@ function ItemDetail({ item, onAdd, onBack }) {
         setItemAdded(true); // Indicates the item has been added
     };
 
+    const imageName = normalizeText(item.name) + '.jpg';
+    const imageUrl = `/images/${imageName}`;
+
     return (
         <div className="item-detail card">
-            <img src={item.imageUrl} alt={item.name} className="card-img-top"/>
+            <img src={imageUrl} alt={item.name} className="card-img-top"/>
             <div className="card-body">
                 <h5 className="card-title">{item.name}</h5>
                 <p className="card-text">{item.description}</p>
@@ -39,6 +43,7 @@ function ItemDetail({ item, onAdd, onBack }) {
     );
 }
 
+// Ensure propTypes reflect the required props
 ItemDetail.propTypes = {
     item: PropTypes.shape({
         imageUrl: PropTypes.string.isRequired,

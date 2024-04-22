@@ -31,7 +31,11 @@ export const ItemListContainer = () => {
                         return response.json();
                     })
                     .then(data => {
-                        setItems(data);
+                        const updatedItems = data.map(item => ({
+                            ...item,
+                            imageUrl: `/images/${item.name.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '')}.jpg`
+                        }));
+                        setItems(updatedItems);
                         setLoading(false);
                         setError(false);
                     })
