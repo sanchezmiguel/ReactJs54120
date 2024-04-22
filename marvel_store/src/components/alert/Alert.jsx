@@ -9,8 +9,9 @@ const Alert = ({ message, type }) => {
     );
 };
 
+// Update PropTypes to accept a node (which includes strings, elements, etc.)
 Alert.propTypes = {
-    message: PropTypes.string.isRequired,
+    message: PropTypes.node.isRequired, // 'node' covers strings, elements, and more
     type: PropTypes.string.isRequired
 };
 
