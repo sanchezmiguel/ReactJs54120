@@ -17,8 +17,6 @@ function Item({ item, onSelectItem, onAdd }) {
     const imageName = normalizeText(item.name) + '.jpg';
     const imageUrl = `/images/${imageName}`;
 
-    console.log(imageUrl); // Log the generated image URL
-
     return (
         <div className="card" onClick={() => onSelectItem(item)}>
             <img src={imageUrl} alt={item.name} className="card-img-top" />
