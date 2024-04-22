@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import './ItemCount.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart, faPlus, faMinus  } from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faMinus, faPlus, faShoppingCart} from '@fortawesome/free-solid-svg-icons';
 
-function ItemCount({ stock, initial, onAdd }) {
+function ItemCount({stock, initial, onAdd}) {
     const [count, setCount] = useState(initial);
 
     const handleIncrement = () => {
