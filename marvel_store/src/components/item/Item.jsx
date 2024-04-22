@@ -22,7 +22,7 @@ function Item({item, onSelectItem, onAdd}) {
                         <ItemCount stock={item.stock} initial={item.initial} onAdd={handleAdd}/>
                     </div>
                 ) : (
-                    <Alert message="Producto añadido al carrito" type="alert-success" />
+                    <Alert message="Producto añadido al carrito" type="alert-success"/>
                 )}
             </div>
         </div>
