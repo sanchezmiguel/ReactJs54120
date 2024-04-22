@@ -1,14 +1,15 @@
 // ItemDetail.jsx
-import {useState} from 'react';
+import { useState } from 'react';
 import ItemCount from "../itemCount/ItemCount.jsx";
 import './ItemDetail.css';
 
-function ItemDetail({ item, onAdd }) {
+function ItemDetail({ item, onAdd, onBack }) {
     const [itemAdded, setItemAdded] = useState(false);
     const handleAdd = (quantity) => {
         onAdd(quantity, item);
         setItemAdded(true); // Indica que el ítem ha sido añadido
     };
+
     return (
         <div className="item-detail card">
             <img src={item.imageUrl} alt={item.name} className="card-img-top" />
@@ -20,14 +21,21 @@ function ItemDetail({ item, onAdd }) {
                 {!itemAdded ? (
                     <ItemCount stock={item.stock} initial={item.initial} onAdd={handleAdd} />
                 ) : (
-                    <div className="alert alert-success" role="alert">
-                        Producto añadido al carrito
-                    </div>
+                    <>
+                        <div className="alert alert-success" role="alert">
+                            Producto añadido al carrito
+                        </div>
+                        <button className="btn btn-success">Terminar mi compra</button>
+                        <button className="btn btn-secondary mt-2" onClick={onBack}>Volver a la lista</button>
+                    </>
                 )}
-                {itemAdded && <button className="btn btn-success">Terminar mi compra</button>}
+                {!itemAdded && (
+                    <button className="btn btn-secondary mt-2" onClick={onBack}>Volver</button>
+                )}
             </div>
         </div>
     );
 }
 
 export default ItemDetail;
+

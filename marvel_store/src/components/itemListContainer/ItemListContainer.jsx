@@ -59,11 +59,14 @@ export const ItemListContainer = () => {
     if (error) {
         return <div>No se pudieron cargar los elementos. :(</div>;
     }
+    const handleBackToList = () => {
+        setSelectedItem(null);
+    };
 
     return (
         <div className="item-container">
             {selectedItem ? (
-                <ItemDetailContainer item={selectedItem} onAdd={handleAdd} />
+                <ItemDetailContainer item={selectedItem} onAdd={handleAdd} onBack={handleBackToList} />
             ) : (
                 <ItemList items={items} onAdd={handleAdd} onSelectItem={handleSelectItem} />
             )}
