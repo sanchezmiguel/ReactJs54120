@@ -57,7 +57,7 @@ export const ItemListContainer = () => {
         return <div>Loading...</div>;
     }
     if (error) {
-        return <div>No se pudieron cargar los elementos.</div>;
+        return <div>No se pudieron cargar los elementos. :(</div>;
     }
 
     return (
