@@ -1,10 +1,10 @@
-// Item.jsx
-import React, {useState} from 'react';
+import { useState } from 'react';
+import PropTypes from 'prop-types';
 import ItemCount from "../itemCount/ItemCount.jsx";
 import './Item.css';
 import Alert from "../alert/Alert.jsx";
 
-function Item({item, onSelectItem, onAdd}) {
+function Item({ item, onSelectItem, onAdd }) {
     const [itemAdded, setItemAdded] = useState(false);
 
     const handleAdd = (quantity) => {
@@ -14,7 +14,7 @@ function Item({item, onSelectItem, onAdd}) {
 
     return (
         <div className="card" onClick={() => onSelectItem(item)}>
-            <img src={item.imageUrl} alt={item.name} className="card-img-top"/>
+            <img src={item.imageUrl} alt={item.name} className="card-img-top" />
             <div className="card-body">
                 <h5 className="card-title">{item.name}</h5>
                 {!itemAdded ? (
@@ -22,12 +22,22 @@ function Item({item, onSelectItem, onAdd}) {
                         <ItemCount stock={item.stock} initial={item.initial} onAdd={handleAdd}/>
                     </div>
                 ) : (
-                    <Alert message="Producto añadido al carrito" type="alert-success"/>
+                    <Alert message="Producto añadido al carrito" type="alert-success" />
                 )}
             </div>
         </div>
     );
 }
 
-export default Item;
+Item.propTypes = {
+    item: PropTypes.shape({
+        imageUrl: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        stock: PropTypes.number,
+        initial: PropTypes.number
+    }).isRequired,
+    onSelectItem: PropTypes.func.isRequired,
+    onAdd: PropTypes.func.isRequired
+};
 
+export default Item;
