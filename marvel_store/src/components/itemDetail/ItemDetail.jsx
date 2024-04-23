@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import ItemCount from "../itemCount/ItemCount.jsx";
 import './ItemDetail.css';
 import Alert from "../alert/Alert.jsx";
-import {normalizeText} from "../../utils/utils.js";
 
 function ItemDetail({ item, onAdd, onBack }) {
     const [itemAdded, setItemAdded] = useState(false);

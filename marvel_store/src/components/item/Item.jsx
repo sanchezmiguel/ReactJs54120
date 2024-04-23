@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import ItemCount from "../itemCount/ItemCount.jsx";
 import './Item.css';
-import { normalizeText } from '../../utils/utils';
 
 import React from 'react';
 
