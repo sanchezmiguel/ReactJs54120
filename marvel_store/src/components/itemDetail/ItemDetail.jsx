@@ -3,16 +3,27 @@ import PropTypes from 'prop-types';
 import ItemCount from "../itemCount/ItemCount.jsx";
 import './ItemDetail.css';
 import Alert from "../alert/Alert.jsx";
-import { normalizeText } from '../../utils/utils';
+import {normalizeText} from "../../utils/utils.js";
 
 function ItemDetail({ item, onAdd, onBack }) {
     const [itemAdded, setItemAdded] = useState(false);
 
     const handleAdd = (quantity) => {
         onAdd(quantity, item);
-        setItemAdded(true); // Indicates the item has been added
+        setItemAdded(true);
     };
 
+    const renderStockMessage = (stock) => {
+        if (stock > 1) {
+            return `${stock} unidades disponibles`;
+        } else if (stock === 1) {
+            return "Última unidad disponible";
+        } else {
+            return "No hay stock disponible";
+        }
+    };
+
+    // Generate image path dynamically
     const imageName = normalizeText(item.name) + '.jpg';
     const imageUrl = `/images/${imageName}`;
 
@@ -36,14 +47,16 @@ function ItemDetail({ item, onAdd, onBack }) {
                     </>
                 )}
                 {!itemAdded && (
-                    <button className="btn btn-secondary mt-2" onClick={onBack}>Volver</button>
+                    <>
+                        <button className="btn btn-secondary mt-2" onClick={onBack}>Volver</button>
+                        <p className="text-center mt-2">{renderStockMessage(item.stock)}</p>
+                    </>
                 )}
             </div>
         </div>
     );
 }
 
-// Ensure propTypes reflect the required props
 ItemDetail.propTypes = {
     item: PropTypes.shape({
         imageUrl: PropTypes.string.isRequired,
