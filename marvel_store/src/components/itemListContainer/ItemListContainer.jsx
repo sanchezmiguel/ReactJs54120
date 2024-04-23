@@ -5,6 +5,7 @@ import Loading from "../loading/Loading.jsx";
 import Alert from "../alert/Alert.jsx";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faFrown} from '@fortawesome/free-solid-svg-icons';
+import {normalizeText} from "../../utils/utils.js";
 
 export const ItemListContainer = () => {
     const [items, setItems] = useState([]);
@@ -33,7 +34,7 @@ export const ItemListContainer = () => {
                     .then(data => {
                         const updatedItems = data.map(item => ({
                             ...item,
-                            imageUrl: `/images/${item.name.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '')}.jpg`
+                            imageUrl: `/images/${normalizeText(item.name)}.jpg`
                         }));
                         setItems(updatedItems);
                         setLoading(false);

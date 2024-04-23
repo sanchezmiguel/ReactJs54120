@@ -23,13 +23,9 @@ function ItemDetail({ item, onAdd, onBack }) {
         }
     };
 
-    // Generate image path dynamically
-    const imageName = normalizeText(item.name) + '.jpg';
-    const imageUrl = `/images/${imageName}`;
-
     return (
         <div className="item-detail card">
-            <img src={imageUrl} alt={item.name} className="card-img-top"/>
+            <img src={item.imageUrl} alt={item.name} className="card-img-top"/>
             <div className="card-body">
                 <h5 className="card-title">{item.name}</h5>
                 <p className="card-text">{item.description}</p>

@@ -13,13 +13,9 @@ function Item({ item, onSelectItem, onAdd }) {
         setItemAdded(true);
     };
 
-    // Generate image path dynamically
-    const imageName = normalizeText(item.name) + '.jpg';
-    const imageUrl = `/images/${imageName}`;
-
     return (
         <div className="card" onClick={() => onSelectItem(item)}>
-            <img src={imageUrl} alt={item.name} className="card-img-top" />
+            <img src={item.imageUrl} alt={item.name} className="card-img-top" />
             <div className="card-body">
                 <h5 className="card-title">{item.name}</h5>
                 {!itemAdded ? (
