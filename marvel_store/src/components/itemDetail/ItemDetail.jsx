@@ -3,23 +3,17 @@ import PropTypes from 'prop-types';
 import ItemCount from "../itemCount/ItemCount.jsx";
 import './ItemDetail.css';
 import Alert from "../alert/Alert.jsx";
+import PriceDisplay from "../priceDisplay/PriceDisplay.jsx";
+import StockMessage from "../stockMessage/StockMessage.jsx";
+import useCustomNavigate from "../../hooks/useCustomNavigate.js";
 
-function ItemDetail({item, onAdd, onBack}) {
+function ItemDetail({ item, onAdd }) {
     const [itemAdded, setItemAdded] = useState(false);
+    const { goBack } = useCustomNavigate();
 
     const handleAdd = (quantity) => {
         onAdd(quantity, item);
         setItemAdded(true);
-    };
-
-    const renderStockMessage = (stock) => {
-        if (stock > 1) {
-            return `${stock} unidades disponibles`;
-        } else if (stock === 1) {
-            return "Última unidad disponible";
-        } else {
-            return "No hay stock disponible";
-        }
     };
 
     return (
@@ -28,25 +22,14 @@ function ItemDetail({item, onAdd, onBack}) {
             <div className="card-body">
                 <h5 className="card-title">{item.name}</h5>
                 <p className="card-text">{item.description}</p>
-                <p className="price text-success">${item.price}</p>
-
+                <PriceDisplay price={item.price} />
                 {!itemAdded ? (
                     <ItemCount stock={item.stock} initial={item.initial} onAdd={handleAdd}/>
                 ) : (
-                    <>
-                        <Alert message="Producto añadido al carrito" type="alert-success"/>
-                        <div className="button-group">
-                            <button className="btn btn-success">Terminar mi compra</button>
-                            <button className="btn btn-secondary" onClick={onBack}>Volver a la lista</button>
-                        </div>
-                    </>
+                    <Alert message="Producto añadido al carrito" type="alert-success"/>
                 )}
-                {!itemAdded && (
-                    <>
-                        <button className="btn btn-secondary mt-2" onClick={onBack}>Volver</button>
-                        <p className="text-center mt-2">{renderStockMessage(item.stock)}</p>
-                    </>
-                )}
+                <button className="btn btn-secondary mt-2" onClick={goBack}>Volver</button>
+                <StockMessage stock={item.stock} />
             </div>
         </div>
     );
@@ -62,7 +45,6 @@ ItemDetail.propTypes = {
         initial: PropTypes.number.isRequired
     }).isRequired,
     onAdd: PropTypes.func.isRequired,
-    onBack: PropTypes.func.isRequired
 };
 
 export default ItemDetail;
