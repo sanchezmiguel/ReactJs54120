@@ -1,5 +1,5 @@
 // src/hooks/useCustomNavigate.js
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 const useCustomNavigate = () => {
     const navigate = useNavigate();
@@ -16,7 +16,7 @@ const useCustomNavigate = () => {
         navigate('/');
     };
 
-    return { goBack, goToHomePage };
+    return {goBack, goToHomePage};
 };
 
 export default useCustomNavigate;

@@ -2,30 +2,30 @@
 
 /* Agrega el estilo al contenedor principal */
 .app-container {
-  background-color: #ffe6e6; /* Color de fondo rosado claro para toda la página */
+    background-color: #ffe6e6; /* Color de fondo rosado claro para toda la página */
 }
 
 /* Estilos adicionales */
 .navContainer {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-  align-items: center;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    align-items: center;
 }
 
 .linksContainer {
-  display: flex;
-  justify-content: space-between;
-  width: 30%;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+    align-items: center;
 }
 
 .cartWidget {
-  width: 4rem;
+    width: 4rem;
 }
 
 .link {
-  color: black;
-  text-decoration: none;
-  font-weight: bold;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
 }

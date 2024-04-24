@@ -2,10 +2,10 @@ import PropTypes from 'prop-types';
 import './CartWidget.css';
 import CartIcon from "../cartIcon/CartIcon.jsx";
 
-const CartWidget = ({ count, onClick, color = 'primary' }) => {
+const CartWidget = ({count, onClick, color = 'primary'}) => {
     return (
         <div className='cart-widget-container' onClick={onClick}>
-            <CartIcon />
+            <CartIcon/>
             {count > 0 && (
                 <span className={`badge badge-${color}`}>{count}</span>
             )}
