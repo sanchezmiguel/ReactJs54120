@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const StockMessage = ({ stock }) => {
+const StockMessage = ({stock}) => {
     const getMessage = () => {
         if (stock > 1) {
             return `${stock} unidades disponibles`;

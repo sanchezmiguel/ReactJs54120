@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const PriceDisplay = ({ price, currency = '$' }) => {
+const PriceDisplay = ({price, currency = '$'}) => {
     const formatPrice = (amount) => {
         return `${currency}${amount.toFixed(2)}`;  // Formats to two decimal places
     };

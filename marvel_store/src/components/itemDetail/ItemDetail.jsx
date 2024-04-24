@@ -7,9 +7,9 @@ import PriceDisplay from "../priceDisplay/PriceDisplay.jsx";
 import StockMessage from "../stockMessage/StockMessage.jsx";
 import useCustomNavigate from "../../hooks/useCustomNavigate.js";
 
-function ItemDetail({ item, onAdd }) {
+function ItemDetail({item, onAdd}) {
     const [itemAdded, setItemAdded] = useState(false);
-    const { goBack } = useCustomNavigate();
+    const {goBack} = useCustomNavigate();
 
     const handleAdd = (quantity) => {
         onAdd(quantity, item);
@@ -22,14 +22,14 @@ function ItemDetail({ item, onAdd }) {
             <div className="card-body">
                 <h5 className="card-title">{item.name}</h5>
                 <p className="card-text">{item.description}</p>
-                <PriceDisplay price={item.price} />
+                <PriceDisplay price={item.price}/>
                 {!itemAdded ? (
                     <ItemCount stock={item.stock} initial={item.initial} onAdd={handleAdd}/>
                 ) : (
                     <Alert message="Producto añadido al carrito" type="alert-success"/>
                 )}
                 <button className="btn btn-secondary mt-2" onClick={goBack}>Volver</button>
-                <StockMessage stock={item.stock} />
+                <StockMessage stock={item.stock}/>
             </div>
         </div>
     );

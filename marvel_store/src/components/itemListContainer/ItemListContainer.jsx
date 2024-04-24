@@ -31,15 +31,10 @@ export const ItemListContainer = () => {
                         if (!response.ok) {
                             throw new Error('Network response was not ok ' + response.statusText);
                         }
-                        console.log("[Item List Container] ", response);
                         return response.json();
                     })
                     .then(data => {
-                        console.log("[Item List Container] Filtering...");
-                        console.log(categoryId);
-
                         const filteredItems = categoryId ? data.filter(item => item.category === categoryId) : data;
-                        console.log(filteredItems);
                         setItems(filteredItems);
                         setLoading(false);
                         setError(false);

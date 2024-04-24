@@ -6,6 +6,7 @@
     border-radius: 8px;
     text-align: center;
 }
+
 .greeting-text {
     color: #aaa; /* Color gris claro */
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); /* Agrega una sombra al texto */

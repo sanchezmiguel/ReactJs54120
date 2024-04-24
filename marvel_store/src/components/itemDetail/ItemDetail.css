@@ -2,12 +2,13 @@
 .item-detail {
     max-width: 600px;
     margin: auto;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     overflow: hidden;
 }
+
 .item-detail.card {
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15); /* Sombra más pronunciada para detalles */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada para detalles */
 }
 
 .item-detail img {
@@ -19,6 +20,7 @@
     font-size: 1.5rem;
     font-weight: bold;
 }
+
 .item-detail .button-group {
     display: flex;
     justify-content: space-between;
