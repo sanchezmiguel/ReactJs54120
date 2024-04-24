@@ -21,7 +21,7 @@ function Item({item, onSelectItem}) {
                 <div onClick={(e) => e.stopPropagation()}>
                     {itemAdded ? (
                         <>
-                            <p>Producto añadido al carrito. Ajuste la cantidad:</p>
+                            <p>Producto añadido al carrito.</p>
                             <ItemCount stock={item.stock} initial={1} onAdd={handleAdd}/>
                         </>
                     ) : (

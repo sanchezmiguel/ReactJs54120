@@ -45,3 +45,22 @@
     padding-top: 10px;
     border-top: 1px solid #aaa; /* adds a line above the total for clarity */
 }
+.cart-actions {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+}
+
+.clear-cart, .pay-now, .remove-item {
+    padding: 8px 16px;
+    margin: 5px;
+    background-color: #f44336; /* Rojo para el botón de vaciar y eliminar */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.pay-now {
+    background-color: #4CAF50; /* Verde para el botón de pagar */
+}

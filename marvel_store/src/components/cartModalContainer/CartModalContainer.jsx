@@ -5,15 +5,14 @@ import PropTypes from "prop-types";
 import './CartModalContainer.css';
 
 const CartModalContainer = ({ isOpen, onClose }) => {
-    const { cartItems } = useCart();
+    const { cartItems, removeFromCart, clearCart } = useCart();
 
-    // Calculate total price of all items in the cart
     const totalPrice = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
 
     return (
         <CartModal isOpen={isOpen} onClose={onClose}>
             <div className="cart-content">
-                <h2>Contenido de tu Carrito</h2>
+                <h2>Contenido de tu carrito</h2>
                 {cartItems.length > 0 ? (
                     <ul className="cart-items-list">
                         {cartItems.map(item => (
@@ -21,16 +20,21 @@ const CartModalContainer = ({ isOpen, onClose }) => {
                                 <div className="item-details">
                                     <span className="item-name">{item.name}</span>
                                     <span className="item-quantity">{item.quantity} x ${item.price.toFixed(2)}</span>
+                                    <span className="item-total-price">${(item.price * item.quantity).toFixed(2)}</span>
                                 </div>
-                                <span className="item-total-price">${(item.price * item.quantity).toFixed(2)}</span>
+                                <button onClick={() => removeFromCart(item.id)} className="remove-item">Quitar</button>
                             </li>
                         ))}
                     </ul>
                 ) : (
-                    <p>Your cart is empty.</p>
+                    <p>Carrito vacio.</p>
                 )}
                 <div className="cart-total">
                     <strong>Total: ${totalPrice.toFixed(2)}</strong>
+                </div>
+                <div className="cart-actions">
+                    <button onClick={clearCart} className="clear-cart">Vaciar carrito</button>
+                    <button onClick={onClose} className="pay-now">Pagar</button>
                 </div>
             </div>
         </CartModal>
