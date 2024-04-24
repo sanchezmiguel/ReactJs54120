@@ -1,8 +1,9 @@
 import CartIcon from "../cartIcon/CartIcon.jsx";
-import {useCart} from "../../hooks/useCart.js"; // Ensure path correctness
+import {useCart} from "../../hooks/useCart.js";
+import PropTypes from "prop-types";
 
 const CartWidget = ({ onClick }) => {
-    const { cartItems } = useCart(); 
+    const { cartItems } = useCart();
     const itemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
     return (
@@ -11,6 +12,10 @@ const CartWidget = ({ onClick }) => {
             {itemCount > 0 && <span className='badge badge-primary'>{itemCount}</span>}
         </div>
     );
+};
+
+CartWidget.propTypes = {
+    onClick: PropTypes.func.isRequired,
 };
 
 export default CartWidget;

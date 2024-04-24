@@ -1,10 +1,33 @@
-/* CartModalContainer */
-ul {
-    padding: 0;
-    list-style: none;
+.cart-content {
+    padding: 20px;
 }
 
-li {
-    padding: 8px 0;
+.cart-items-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
     border-bottom: 1px solid #ccc;
+}
+
+.item-name {
+    flex: 2;
+}
+
+.item-quantity,
+.item-total-price {
+    flex: 1;
+    text-align: right;
+}
+
+.cart-total {
+    margin-top: 20px;
+    font-size: 1.2em;
+    text-align: right;
 }
