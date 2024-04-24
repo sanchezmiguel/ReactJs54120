@@ -3,6 +3,7 @@ import {useState} from 'react';
 import ItemCount from "../itemCount/ItemCount.jsx";
 import './Item.css';
 import {useCart} from "../../hooks/useCart.js";
+import ItemTitle from "../itemTitle/ItemTitle.jsx";
 
 function Item({item, onSelectItem}) {
     const [itemAdded, setItemAdded] = useState(false);
@@ -16,7 +17,7 @@ function Item({item, onSelectItem}) {
     return (
         <div className="card" onClick={() => onSelectItem(item)}>
             <div className="card-header">
-                <h5 className="card-title">{item.name}</h5>
+                <ItemTitle title={item.name}/>
             </div>
             <img src={item.imageUrl} alt={item.name} className="card-img-top"/>
             <div className="card-body">

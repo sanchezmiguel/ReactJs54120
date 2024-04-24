@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useState} from 'react';
 import PropTypes from 'prop-types';
 import ItemCount from "../itemCount/ItemCount.jsx";
 import './ItemDetail.css';
@@ -7,12 +7,13 @@ import PriceDisplay from "../priceDisplay/PriceDisplay.jsx";
 import StockMessage from "../stockMessage/StockMessage.jsx";
 import useCustomNavigate from "../../hooks/useCustomNavigate.js";
 import {useCart} from "../../hooks/useCart.js";
+import ItemTitle from "../itemTitle/ItemTitle.jsx";
 
 
-function ItemDetail({ item }) {
+function ItemDetail({item}) {
     const [itemAdded, setItemAdded] = useState(false);
-    const { goBack } = useCustomNavigate();
-    const { addToCart } = useCart(); // Use the addToCart function from the cart context
+    const {goBack} = useCustomNavigate();
+    const {addToCart} = useCart(); // Use the addToCart function from the cart context
 
     const handleAdd = (quantity) => {
         addToCart(item, quantity); // Add item to the cart via the cart context
@@ -21,9 +22,11 @@ function ItemDetail({ item }) {
 
     return (
         <div className="item-detail card">
-            <img src={item.imageUrl} alt={item.name} className="card-img-top"/>
             <div className="card-body">
-                <h5 className="card-title">{item.name}</h5>
+                <ItemTitle title={item.name}/>
+                <p>
+                    <img src={item.imageUrl} alt={item.name} className="card-img-top"/>
+                </p>
                 <p className="card-text">{item.description}</p>
                 <PriceDisplay price={item.price}/>
                 {!itemAdded ? (

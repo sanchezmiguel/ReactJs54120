@@ -1,0 +1,5 @@
+.item-title {
+    font-size: 1.2em; /* Tamaño de fuente adecuado para títulos en tarjetas y detalles */
+    margin-bottom: 0.5em; /* Espaciado para separar del contenido adyacente */
+    color: #333; /* Color de texto para mejorar la legibilidad */
+}
