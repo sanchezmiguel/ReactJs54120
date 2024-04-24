@@ -1,22 +1,17 @@
-import PropTypes from 'prop-types';
-import './CartWidget.css';
 import CartIcon from "../cartIcon/CartIcon.jsx";
+import {useCart} from "../../hooks/useCart.js"; // Ensure path correctness
 
-const CartWidget = ({count, onClick, color = 'primary'}) => {
+const CartWidget = ({ onClick }) => {
+    const { cartItems } = useCart(); 
+    const itemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+
     return (
         <div className='cart-widget-container' onClick={onClick}>
-            <CartIcon/>
-            {count > 0 && (
-                <span className={`badge badge-${color}`}>{count}</span>
-            )}
+            <CartIcon />
+            {itemCount > 0 && <span className='badge badge-primary'>{itemCount}</span>}
         </div>
     );
 };
 
-CartWidget.propTypes = {
-    count: PropTypes.number,
-    onClick: PropTypes.func,
-    color: PropTypes.string // Allows customization of the badge color
-};
-
 export default CartWidget;
+

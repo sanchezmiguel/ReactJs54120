@@ -23,7 +23,7 @@ const Navbar = () => {
             <BrandLogo/>
             <NavbarToggler/>
             <CategoryList/>
-            <CartWidget count={5} onClick={handleCartClick} color="info"/>
+            <CartWidget count={0} onClick={handleCartClick} color="info"/>
             <CartModalContainer isOpen={isCartModalOpen} onClose={handleCloseModal}/>
         </nav>
     );

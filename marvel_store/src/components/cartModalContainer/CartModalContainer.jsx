@@ -1,21 +1,33 @@
-import CartModal from "../cartModal/CartModal.jsx";
-import PropTypes from "prop-types";
 
-const CartModalContainer = ({isOpen, onClose}) => {
+import CartModal from "../cartModal/CartModal.jsx";
+import {useCart} from "../../hooks/useCart.js";
+import {useEffect} from "react";  // Ensure correct path
+
+
+const CartModalContainer = ({ isOpen, onClose }) => {
+    const { cartItems } = useCart();  // Retrieve cart items from the context
+    useEffect(() => {
+        console.log('Cart items updated:', cartItems);
+    }, [cartItems]);
     return (
         <CartModal isOpen={isOpen} onClose={onClose}>
             <div>
-                <h2>Tu Carrito de Compras</h2>
-                <p>Aca se mostraran los elementos del carrito.</p>
+                <h2>Your Cart</h2>
+                {cartItems.length > 0 ? (
+                    <ul>
+                        {cartItems.map(item => (
+                            <li key={item.id}>
+                                {item.name} - {item.quantity}
+                            </li>
+                        ))}
+                    </ul>
+                ) : (
+                    <p>Your cart is empty.</p>
+                )}
             </div>
         </CartModal>
     );
 };
 
-// Define PropTypes for CartModalContainer
-CartModalContainer.propTypes = {
-    isOpen: PropTypes.bool.isRequired,  // Specifies that isOpen is a required boolean
-    onClose: PropTypes.func.isRequired  // Specifies that onClose is a required function
-};
-
 export default CartModalContainer;
+

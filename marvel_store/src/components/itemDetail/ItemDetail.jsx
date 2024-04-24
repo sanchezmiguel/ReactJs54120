@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import ItemCount from "../itemCount/ItemCount.jsx";
 import './ItemDetail.css';
@@ -6,14 +6,17 @@ import Alert from "../alert/Alert.jsx";
 import PriceDisplay from "../priceDisplay/PriceDisplay.jsx";
 import StockMessage from "../stockMessage/StockMessage.jsx";
 import useCustomNavigate from "../../hooks/useCustomNavigate.js";
+import {useCart} from "../../hooks/useCart.js";
 
-function ItemDetail({item, onAdd}) {
+
+function ItemDetail({ item }) {
     const [itemAdded, setItemAdded] = useState(false);
-    const {goBack} = useCustomNavigate();
+    const { goBack } = useCustomNavigate();
+    const { addToCart } = useCart(); // Use the addToCart function from the cart context
 
     const handleAdd = (quantity) => {
-        onAdd(quantity, item);
-        setItemAdded(true);
+        addToCart(item, quantity); // Add item to the cart via the cart context
+        setItemAdded(true); // Show confirmation message
     };
 
     return (
@@ -37,6 +40,7 @@ function ItemDetail({item, onAdd}) {
 
 ItemDetail.propTypes = {
     item: PropTypes.shape({
+        id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
         imageUrl: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
         description: PropTypes.string.isRequired,
@@ -44,7 +48,6 @@ ItemDetail.propTypes = {
         stock: PropTypes.number.isRequired,
         initial: PropTypes.number.isRequired
     }).isRequired,
-    onAdd: PropTypes.func.isRequired,
 };
 
 export default ItemDetail;
