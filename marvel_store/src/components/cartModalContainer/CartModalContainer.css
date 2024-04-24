@@ -1,28 +1,40 @@
+/* CartModalContainer.css */
 .cart-content {
     padding: 20px;
+    font-family: Arial, sans-serif; /* Ensures text is readable */
 }
 
 .cart-items-list {
     list-style: none;
     padding: 0;
     margin: 0;
+    max-height: 300px; /* Establece un alto máximo para la lista de elementos */
+    overflow-y: auto; /* Permite desplazamiento vertical si el contenido excede el alto máximo */
 }
 
 .cart-item {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     padding: 10px 0;
     border-bottom: 1px solid #ccc;
+    font-size: 0.9em;
+}
+
+.item-details {
+    flex: 3; /* gives more space to item details */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .item-name {
-    flex: 2;
+    flex: 2; /* allocates twice as much space to the name */
+    margin-right: 10px; /* adds space between the name and the quantity */
 }
 
-.item-quantity,
-.item-total-price {
-    flex: 1;
+.item-quantity, .item-price, .item-total-price {
+    flex: 1; /* equal space for quantity, price, and total price */
     text-align: right;
 }
 
@@ -30,4 +42,6 @@
     margin-top: 20px;
     font-size: 1.2em;
     text-align: right;
+    padding-top: 10px;
+    border-top: 1px solid #aaa; /* adds a line above the total for clarity */
 }
