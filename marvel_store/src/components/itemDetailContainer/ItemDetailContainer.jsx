@@ -1,41 +1,49 @@
-import {useEffect, useState} from 'react';
-import PropTypes from 'prop-types';
+// ItemDetailContainer.jsx
+import { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import ItemDetail from "../itemDetail/ItemDetail.jsx";
-import './ItemDetailContainer.css';
 import Loading from "../loading/Loading.jsx";
+import Alert from "../alert/Alert.jsx";
 
-const ItemDetailContainer = ({item, onAdd, onBack}) => {
+const ItemDetailContainer = () => {
+    const { id } = useParams();
+    const navigate = useNavigate();
+    const [item, setItem] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchItemDetails = () => {
-            // Simulating the loading of item details
-            setTimeout(() => {
-                setLoading(false);
-            }, 2000);
+            fetch(`/products_mock.json`)
+                .then(res => res.json())
+                .then(data => {
+                    const selectedItem = data.find(i => i.id.toString() === id);
+                    setItem(selectedItem);
+                    setLoading(false);
+                })
+                .catch(error => {
+                    console.error('Error fetching item details:', error);
+                });
         };
 
         fetchItemDetails();
-    }, []);
+    }, [id]);
 
     if (loading) {
-        return <Loading/>;
+        return <Loading />;
     }
 
-    return (
-        <div className="item-detail-container">
-            {item ? <ItemDetail item={item} onAdd={onAdd} onBack={onBack}/> :
-                <p className="text-center">No item found</p>}
-        </div>
-    );
-}
+    if (!item) {
+        return <Alert message="Item not found." type="alert-danger" />;
+    }
 
-ItemDetailContainer.propTypes = {
-    item: PropTypes.shape({
-        // Define the expected properties of item here if known
-    }),
-    onAdd: PropTypes.func.isRequired,
-    onBack: PropTypes.func.isRequired
+    // Provide a way to navigate back
+    const handleBack = () => {
+        navigate(-1); // Navigates back to the last page
+    };
+
+    return (
+        <ItemDetail item={item} onAdd={() => {}} onBack={handleBack} />
+    );
 };
 
 export default ItemDetailContainer;
