@@ -34,7 +34,8 @@ const ItemDetailContainer = () => {
     }
 
     if (!item) {
-        return <Alert message="Item not found." type="alert-danger"/>;
+        return <Alert message="Item not found." type="alert-danger"
+                      onClose={() => console.log('Alert closed')}/>;
     }
 
     // Provide a way to navigate back

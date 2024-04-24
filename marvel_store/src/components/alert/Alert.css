@@ -1,80 +1,48 @@
 /* Alert.css */
-
-/* Estilos personalizados para el componente Alert */
 .alert {
-    position: relative;
-    padding: 0.75rem 1.25rem;
-    margin-bottom: 1rem;
+    margin-bottom: 20px;
     border: 1px solid transparent;
-    border-radius: 0.25rem;
+    border-radius: 4px;
+    position: relative;
+    /* space for close button */
+    padding: 15px 35px 15px 15px;
 }
 
-/* Estilo para el botón de cierre (si decides agregar uno) */
-.alert button.close {
+.alert i {
+    margin-right: 5px;
+}
+
+.close {
     position: absolute;
     top: 0;
     right: 0;
-    padding: 0.75rem;
+    padding: 0.75rem 1.25rem;
+    color: inherit;
+    cursor: pointer;
     border: none;
     background: none;
-    font-size: 1.5rem;
 }
 
-/* Si necesitas una animación para que la alerta se desvanezca */
-.fadeOut {
-    animation: fadeOut ease 3s;
-    -webkit-animation: fadeOut ease 3s;
-    -moz-animation: fadeOut ease 3s;
-    -o-animation: fadeOut ease 3s;
-    -ms-animation: fadeOut ease 3s;
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
 }
 
-@keyframes fadeOut {
-    0% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-        display: none;
-    }
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
 }
 
-@-moz-keyframes fadeOut {
-    0% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-        display: none;
-    }
+.alert-warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
 }
 
-@-webkit-keyframes fadeOut {
-    0% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-        display: none;
-    }
-}
-
-@-o-keyframes fadeOut {
-    0% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-        display: none;
-    }
-}
-
-@-ms-keyframes fadeOut {
-    0% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-        display: none;
-    }
+.alert-info {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
 }
