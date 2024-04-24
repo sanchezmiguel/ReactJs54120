@@ -5,11 +5,11 @@ import Loading from "../loading/Loading.jsx";
 import Alert from "../alert/Alert.jsx";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faFrown} from '@fortawesome/free-solid-svg-icons';
-import {normalizeText} from "../../utils/utils.js";
 import {useParams} from "react-router-dom";
+import config from "../../config.js";
 
 export const ItemListContainer = () => {
-    const { categoryId } = useParams();
+    const {categoryId} = useParams();
     const [items, setItems] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
@@ -26,12 +26,12 @@ export const ItemListContainer = () => {
                 setError(true);
                 setLoading(false);
             } else {
-                fetch('/products_mock.json')
+                fetch(config.API_URL)
                     .then(response => {
                         if (!response.ok) {
                             throw new Error('Network response was not ok ' + response.statusText);
                         }
-                        console.log("[Item List Container] ",response);
+                        console.log("[Item List Container] ", response);
                         return response.json();
                     })
                     .then(data => {

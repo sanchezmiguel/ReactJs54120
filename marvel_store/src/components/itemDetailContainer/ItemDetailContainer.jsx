@@ -1,19 +1,20 @@
 // ItemDetailContainer.jsx
-import { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import {useEffect, useState} from 'react';
+import {useNavigate, useParams} from 'react-router-dom';
 import ItemDetail from "../itemDetail/ItemDetail.jsx";
 import Loading from "../loading/Loading.jsx";
 import Alert from "../alert/Alert.jsx";
+import config from "../../config.js";
 
 const ItemDetailContainer = () => {
-    const { id } = useParams();
+    const {id} = useParams();
     const navigate = useNavigate();
     const [item, setItem] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchItemDetails = () => {
-            fetch(`/products_mock.json`)
+            fetch(config.API_URL)
                 .then(res => res.json())
                 .then(data => {
                     const selectedItem = data.find(i => i.id.toString() === id);
@@ -29,11 +30,11 @@ const ItemDetailContainer = () => {
     }, [id]);
 
     if (loading) {
-        return <Loading />;
+        return <Loading/>;
     }
 
     if (!item) {
-        return <Alert message="Item not found." type="alert-danger" />;
+        return <Alert message="Item not found." type="alert-danger"/>;
     }
 
     // Provide a way to navigate back
@@ -42,7 +43,8 @@ const ItemDetailContainer = () => {
     };
 
     return (
-        <ItemDetail item={item} onAdd={() => {}} onBack={handleBack} />
+        <ItemDetail item={item} onAdd={() => {
+        }} onBack={handleBack}/>
     );
 };
 
