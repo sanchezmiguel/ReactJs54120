@@ -1,16 +1,17 @@
 .cart-icon {
     width: 2.5rem;
 }
+.cart-widget-container {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-right: 20px; /* Adjusted margin for spacing between the cart widget and other elements */
+}
 
 .badge {
     background-color: red;
     padding: 0.5em;
     color: white;
-    border-radius: 5px; /* Adjusted border-radius for a smoother appearance */
+    border-radius: 10px; /* Adjusted border-radius for a smoother appearance */
 }
 
-.cart-widget-container {
-    display: flex;
-    align-items: center;
-    margin-right: 20px; /* Adjusted margin for spacing between the cart widget and other elements */
-}
