@@ -1,6 +1,5 @@
 import CategoryLink from "../categoryLink/CategoryLink.jsx";
 
-
 function CategoryList() {
     return (
         <div className='collapse navbar-collapse' id='navbarNav'>

@@ -1,10 +1,10 @@
 // ItemList.jsx
 import PropTypes from 'prop-types';
 import Item from "../item/Item.jsx";
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import './ItemList.css'
 
-function ItemList({ items, onAdd }) {
+function ItemList({items, onAdd}) {
     const navigate = useNavigate();
 
     const handleSelectItem = (id) => {
@@ -15,7 +15,7 @@ function ItemList({ items, onAdd }) {
         <div className="row">
             {items.map(item => (
                 <div key={item.id} className="col-sm-6 col-md-4 col-lg-3 mb-4">
-                    <Item item={item} onAdd={onAdd} onSelectItem={() => handleSelectItem(item.id)} />
+                    <Item item={item} onAdd={onAdd} onSelectItem={() => handleSelectItem(item.id)}/>
                 </div>
             ))}
         </div>

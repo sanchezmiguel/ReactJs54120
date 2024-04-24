@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import {useState} from 'react';
 import PropTypes from 'prop-types';
 import ItemCount from "../itemCount/ItemCount.jsx";
 import './ItemDetail.css';
 import Alert from "../alert/Alert.jsx";
 
-function ItemDetail({ item, onAdd, onBack }) {
+function ItemDetail({item, onAdd, onBack}) {
     const [itemAdded, setItemAdded] = useState(false);
 
     const handleAdd = (quantity) => {

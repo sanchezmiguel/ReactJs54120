@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import PropTypes from 'prop-types';
 
-function CategoryLink({ to, children }) {
+function CategoryLink({to, children}) {
     return (
         <li className='nav-item'>
             <Link className='nav-link' to={to}>
