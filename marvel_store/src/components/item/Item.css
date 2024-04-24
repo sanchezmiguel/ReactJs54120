@@ -1,8 +1,20 @@
 .card {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    transition: transform 0.3s ease-in-out; /* Efecto suave al pasar el ratón */
+    transition: transform 0.4s ease, box-shadow 0.9s ease; /* Suaviza las transiciones de transformación y sombra */
+    cursor: pointer; /* Cambia el cursor a un puntero para indicar que es interactivo */
 }
 
 .card:hover {
-    transform: translateY(-5px); /* Eleva ligeramente la tarjeta al pasar el ratón */
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño para dar un efecto de zoom */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7); /* Añade una sombra ligera para destacar el elemento */
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+    transition: filter 0.3s ease; /* Suaviza la transición del filtro aplicado */
+}
+
+.card:hover .card-img-top {
+    filter: brightness(1.2); /* Aumenta el brillo de la imagen al hacer hover */
 }

@@ -15,9 +15,11 @@ function Item({item, onSelectItem}) {
 
     return (
         <div className="card" onClick={() => onSelectItem(item)}>
+            <div className="card-header">
+                <h5 className="card-title">{item.name}</h5>
+            </div>
             <img src={item.imageUrl} alt={item.name} className="card-img-top"/>
             <div className="card-body">
-                <h5 className="card-title">{item.name}</h5>
                 <div onClick={(e) => e.stopPropagation()}>
                     {itemAdded ? (
                         <>
