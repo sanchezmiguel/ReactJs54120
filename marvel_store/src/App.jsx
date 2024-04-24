@@ -11,7 +11,7 @@ function App() {
                 <Navbar/>
                 <Routes>
                     <Route path="/" element={<ItemListContainer greeting='Bienvenido/a a nuestra tienda de Marvel'/>} />
-                    <Route path="/category/:categoryId" element={<ItemListContainer />} />
+                    <Route path="/category/:categoryId" element={<ItemListContainer greeting='Bienvenido/a a nuestra tienda de Marvel'/>} />
                 </Routes>
             </BrowserRouter>
         </div>

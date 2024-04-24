@@ -26,24 +26,26 @@ export const ItemListContainer = () => {
                 setError(true);
                 setLoading(false);
             } else {
-                fetch('products_mock.json')
+                fetch('/products_mock.json')
                     .then(response => {
                         if (!response.ok) {
                             throw new Error('Network response was not ok ' + response.statusText);
                         }
+                        console.log("[Item List Container] ",response);
                         return response.json();
                     })
                     .then(data => {
-                        let filteredItems = data;
-                        if (categoryId) {
-                            filteredItems = data.filter(item => normalizeText(item.category).includes(categoryId));
-                        }
+                        console.log("[Item List Container] Filtering...");
+                        console.log(categoryId);
+
+                        const filteredItems = categoryId ? data.filter(item => item.category === categoryId) : data;
+                        console.log(filteredItems);
                         setItems(filteredItems);
                         setLoading(false);
                         setError(false);
                     })
                     .catch(error => {
-                        console.error('Error fetching items:', error);
+                        console.error('[Item List Container] Error fetching items:', error);
                         setLoading(false);
                         setError(true);
                     })
@@ -51,7 +53,7 @@ export const ItemListContainer = () => {
                         setLoading(false);
                     });
             }
-        }, 2000);
+        }, 1000);
     }, [categoryId]);
 
     const handleAdd = (quantity, item) => {
