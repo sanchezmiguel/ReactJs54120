@@ -1,21 +1,30 @@
-import  { createContext, useState } from 'react';
+import { createContext, useState, useEffect } from 'react';
 
+// Creación del contexto del carrito
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-    const [cartItems, setCartItems] = useState([]);
+    const [cartItems, setCartItems] = useState(() => {
+        // Intenta recuperar los artículos del carrito desde localStorage
+        const localData = localStorage.getItem('cartItems');
+        return localData ? JSON.parse(localData) : [];
+    });
 
+    useEffect(() => {
+        // Guarda el carrito en localStorage cada vez que cambia
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    }, [cartItems]);
     const addToCart = (item, quantity) => {
         setCartItems(prevItems => {
             const index = prevItems.findIndex(i => i.id === item.id);
             if (index !== -1) {
-                // Create a new array with updated item
-                return prevItems.map((cartItem, idx) =>
-                    idx === index ? { ...cartItem, quantity: cartItem.quantity + quantity } : cartItem
-                );
+                // Actualiza la cantidad si el artículo ya existe
+                const updatedItems = [...prevItems];
+                updatedItems[index].quantity += quantity;
+                return updatedItems;
             } else {
-                // Add new item to the cart
-                return [...prevItems, { ...item, quantity }];
+                // Agrega el artículo nuevo al carrito
+                return [...prevItems, {...item, quantity}];
             }
         });
     };
@@ -26,13 +35,12 @@ export const CartProvider = ({ children }) => {
 
     const clearCart = () => {
         setCartItems([]);
+        localStorage.removeItem('cartItems'); // Limpia el local storage cuando el carrito se vacía
     };
 
-
     return (
-        <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, clearCart }}>
+        <CartContext.Provider value={{cartItems, addToCart, removeFromCart, clearCart}}>
             {children}
         </CartContext.Provider>
     );
-};
-
+}
