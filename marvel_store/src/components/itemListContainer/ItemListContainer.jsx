@@ -6,8 +6,10 @@ import Alert from "../alert/Alert.jsx";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faFrown} from '@fortawesome/free-solid-svg-icons';
 import {normalizeText} from "../../utils/utils.js";
+import {useParams} from "react-router-dom";
 
 export const ItemListContainer = () => {
+    const { categoryId } = useParams();
     const [items, setItems] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
@@ -32,11 +34,11 @@ export const ItemListContainer = () => {
                         return response.json();
                     })
                     .then(data => {
-                        const updatedItems = data.map(item => ({
-                            ...item,
-                            imageUrl: `/images/${normalizeText(item.name)}.jpg`
-                        }));
-                        setItems(updatedItems);
+                        let filteredItems = data;
+                        if (categoryId) {
+                            filteredItems = data.filter(item => normalizeText(item.category).includes(categoryId));
+                        }
+                        setItems(filteredItems);
                         setLoading(false);
                         setError(false);
                     })
@@ -50,7 +52,7 @@ export const ItemListContainer = () => {
                     });
             }
         }, 2000);
-    }, []);
+    }, [categoryId]);
 
     const handleAdd = (quantity, item) => {
         console.log(`Added ${quantity} of ${item.name} to cart.`);
