@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from 'react';
+import PropTypes from "prop-types";
 
 // Creación del contexto del carrito
 export const CartContext = createContext();
@@ -36,6 +37,10 @@ export const CartProvider = ({ children }) => {
     const clearCart = () => {
         setCartItems([]);
         localStorage.removeItem('cartItems'); // Limpia el local storage cuando el carrito se vacía
+    };
+
+    CartProvider.propTypes = {
+        children: PropTypes.node.isRequired
     };
 
     return (
