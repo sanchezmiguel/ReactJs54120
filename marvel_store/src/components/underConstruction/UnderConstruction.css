@@ -1,0 +1,54 @@
+/* UnderConstruction.css */
+.construction-page {
+    background-color: #f2f2f2;
+    text-align: center;
+    padding: 30px;
+}
+
+.construction-page h1 {
+    font-size: 2em;
+    color: #ff8800;
+}
+
+.construction-page p {
+    font-size: 1.2em;
+    color: #777;
+}
+
+.construction-animation {
+    display: inline-block;
+    position: relative;
+    margin-top: 20px;
+}
+
+.crane {
+    width: 100px;
+    height: 50px;
+    background: url('https://via.placeholder.com/100x50') no-repeat center center;
+    background-size: cover;
+    animation: crane-move 5s linear infinite; /* Crane moves back and forth */
+}
+
+.block {
+    width: 50px;
+    height: 50px;
+    background-color: #ff8800;
+    position: absolute;
+    bottom: 0;
+    left: 25px;
+    animation: block-lift 5s linear infinite; /* Block lifts up and down */
+}
+
+/* Animation for crane movement */
+@keyframes crane-move {
+    0% { left: 0; }
+    50% { left: 100px; }
+    100% { left: 0; }
+}
+
+/* Animation for block lifting */
+@keyframes block-lift {
+    0% { bottom: 0; }
+    50% { bottom: 50px; }
+    100% { bottom: 0; }
+}

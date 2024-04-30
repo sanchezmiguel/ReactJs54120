@@ -6,6 +6,8 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import ItemDetailContainer from "./components/itemDetailContainer/ItemDetailContainer.jsx";
 import ErrorBoundary from "./components/errorBoundary/ErrorBoundary.jsx";
 import {CartProvider} from "./contexts/CartContext.jsx";
+import Footer from "./components/footer/Footer.jsx";
+import UnderConstruction from "./components/underConstruction/UnderConstruction.jsx";
 
 function App() {
     return (
@@ -20,9 +22,13 @@ function App() {
                             <Route path="/category/:categoryId"
                                    element={<ItemListContainer greeting='Bienvenido/a a nuestra tienda de Marvel'/>}/>
                             <Route path="/item/:id" element={<ItemDetailContainer/>}/>
+                            <Route path="/about" element={<UnderConstruction />} />
+                            <Route path="/contact" element={<UnderConstruction />} />
+                            <Route path="/privacy-policy" element={<UnderConstruction />} />
+                            <Route path="/terms" element={<UnderConstruction />} />
                         </Routes>
                     </ErrorBoundary>
-
+                    <Footer/>
                 </BrowserRouter>
             </CartProvider>
         </div>

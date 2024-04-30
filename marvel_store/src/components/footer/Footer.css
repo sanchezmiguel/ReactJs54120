@@ -1,0 +1,41 @@
+/* Footer.css */
+.footer-container {
+    background-color: #f8f8f8;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer-links a, .footer-social a {
+    display: inline-block;
+    margin: 0 10px;
+    color: #333;
+    text-decoration: none;
+}
+
+.footer-contact, .footer-newsletter {
+    margin: 10px 0;
+}
+
+.footer-newsletter form {
+    display: inline-block;
+}
+
+.footer-newsletter input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.footer-newsletter button {
+    padding: 5px 10px;
+    border: none;
+    background-color: #007BFF;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.footer-copyright {
+    font-size: 12px;
+    color: #777;
+}
