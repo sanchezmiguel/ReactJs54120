@@ -1,14 +1,14 @@
 // FooterLinks.js
-import { Link } from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import './FooterLinks.css';
 
 const FooterLinks = () => {
     return (
         <div className="footer-links">
-            <Link to="/about">About Us</Link>
-            <Link to="/contact">Contact</Link>
-            <Link to="/privacy-policy">Privacy Policy</Link>
-            <Link to="/terms">Terms of Service</Link>
+            <NavLink to="/about">About Us</NavLink>
+            <NavLink to="/contact">Contact</NavLink>
+            <NavLink to="/privacy-policy">Privacy Policy</NavLink>
+            <NavLink to="/terms">Terms of Service</NavLink>
         </div>
     );
 };
