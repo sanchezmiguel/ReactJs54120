@@ -41,14 +41,26 @@
 
 /* Animation for crane movement */
 @keyframes crane-move {
-    0% { left: 0; }
-    50% { left: 100px; }
-    100% { left: 0; }
+    0% {
+        left: 0;
+    }
+    50% {
+        left: 100px;
+    }
+    100% {
+        left: 0;
+    }
 }
 
 /* Animation for block lifting */
 @keyframes block-lift {
-    0% { bottom: 0; }
-    50% { bottom: 50px; }
-    100% { bottom: 0; }
+    0% {
+        bottom: 0;
+    }
+    50% {
+        bottom: 50px;
+    }
+    100% {
+        bottom: 0;
+    }
 }

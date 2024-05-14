@@ -45,6 +45,7 @@
     padding-top: 10px;
     border-top: 1px solid #aaa; /* adds a line above the total for clarity */
 }
+
 .cart-actions {
     display: flex;
     justify-content: space-between;

@@ -1,10 +1,10 @@
-import { createContext, useState, useEffect } from 'react';
+import {createContext, useEffect, useState} from 'react';
 import PropTypes from "prop-types";
 
 // Creación del contexto del carrito
 export const CartContext = createContext();
 
-export const CartProvider = ({ children }) => {
+export const CartProvider = ({children}) => {
     const [cartItems, setCartItems] = useState(() => {
         // Intenta recuperar los artículos del carrito desde localStorage
         const localData = localStorage.getItem('cartItems');

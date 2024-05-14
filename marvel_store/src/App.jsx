@@ -22,10 +22,10 @@ function App() {
                             <Route path="/category/:categoryId"
                                    element={<ItemListContainer greeting='Bienvenido/a a nuestra tienda de Marvel'/>}/>
                             <Route path="/item/:id" element={<ItemDetailContainer/>}/>
-                            <Route path="/about" element={<UnderConstruction />} />
-                            <Route path="/contact" element={<UnderConstruction />} />
-                            <Route path="/privacy-policy" element={<UnderConstruction />} />
-                            <Route path="/terms" element={<UnderConstruction />} />
+                            <Route path="/about" element={<UnderConstruction/>}/>
+                            <Route path="/contact" element={<UnderConstruction/>}/>
+                            <Route path="/privacy-policy" element={<UnderConstruction/>}/>
+                            <Route path="/terms" element={<UnderConstruction/>}/>
                         </Routes>
                     </ErrorBoundary>
                     <Footer/>
