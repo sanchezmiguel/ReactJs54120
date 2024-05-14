@@ -1,41 +1,47 @@
-// ItemDetailContainer.jsx
-import {useEffect, useState} from 'react';
-import {useNavigate, useParams} from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import ItemDetail from "../itemDetail/ItemDetail.jsx";
 import Loading from "../loading/Loading.jsx";
 import Alert from "../alert/Alert.jsx";
-import config from "../../config.js";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../firebase-config.js";
 
 const ItemDetailContainer = () => {
-    const {id} = useParams();
+    const { id } = useParams();
     const navigate = useNavigate();
     const [item, setItem] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchItemDetails = () => {
-            fetch(config.API_URL)
-                .then(res => res.json())
-                .then(data => {
-                    const selectedItem = data.find(i => i.id.toString() === id);
-                    setItem(selectedItem);
-                    setLoading(false);
-                })
-                .catch(error => {
-                    console.error('Error fetching item details:', error);
-                });
+        const fetchItemDetails = async () => {
+            setLoading(true);
+            console.log(`Fetching details for item with ID: ${id}`); // Debug log
+            try {
+                const docRef = doc(db, "items", id); // Use the id parameter to reference the document
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    console.log(`Document found: ${docSnap.id}`); // Debug log
+                    setItem({ id: docSnap.id, ...docSnap.data() });
+                } else {
+                    console.log("No such document!");
+                }
+            } catch (error) {
+                console.error('Error fetching item details:', error);
+            } finally {
+                setLoading(false);
+            }
         };
 
         fetchItemDetails();
     }, [id]);
 
     if (loading) {
-        return <Loading/>;
+        return <Loading />;
     }
 
     if (!item) {
         return <Alert message="Item not found." type="alert-danger"
-                      onClose={() => console.log('Alert closed')}/>;
+                      onClose={() => console.log('Alert closed')} />;
     }
 
     // Provide a way to navigate back
@@ -44,8 +50,7 @@ const ItemDetailContainer = () => {
     };
 
     return (
-        <ItemDetail item={item} onAdd={() => {
-        }} onBack={handleBack}/>
+        <ItemDetail item={item} onAdd={() => {}} onBack={handleBack} />
     );
 };
 
