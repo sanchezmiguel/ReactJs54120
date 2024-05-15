@@ -50,7 +50,7 @@ const ItemDetailContainer = () => {
     };
 
     return (
-        <ItemDetail item={item} onAdd={() => {}} onBack={handleBack} />
+        <ItemDetail item={item} showAddToCart  onAdd={() => {}} onBack={handleBack} />
     );
 };
 

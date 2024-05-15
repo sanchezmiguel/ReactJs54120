@@ -5,7 +5,7 @@ import './Item.css';
 import { useCart } from "../../hooks/useCart.js";
 import ItemTitle from "../itemTitle/ItemTitle.jsx";
 
-function Item({ item }) {
+function Item({ item, showAddToCart }) {
     const [itemAdded, setItemAdded] = useState(false);
     const { addToCart } = useCart();
 
@@ -21,16 +21,19 @@ function Item({ item }) {
             </div>
             <img src={item.imageUrl} alt={item.name} className="card-img-top" />
             <div className="card-body">
-                <div onClick={(e) => e.stopPropagation()}>
-                    {itemAdded ? (
-                        <>
-                            <p>Producto añadido al carrito.</p>
-                            <ItemCount stock={item.stock} initial={1} onAdd={handleAdd} />
-                        </>
-                    ) : (
-                        <ItemCount stock={item.stock} initial={item.initial} onAdd={handleAdd} />
-                    )}
-                </div>
+                <p>{item.description}</p>
+                {showAddToCart && (
+                    <div onClick={(e) => e.stopPropagation()}>
+                        {itemAdded ? (
+                            <>
+                                <p>Producto añadido al carrito.</p>
+                                <ItemCount stock={item.stock} initial={1} onAdd={handleAdd} />
+                            </>
+                        ) : (
+                            <ItemCount stock={item.stock} initial={item.initial} onAdd={handleAdd} />
+                        )}
+                    </div>
+                )}
             </div>
         </div>
     );
@@ -46,7 +49,7 @@ Item.propTypes = {
         stock: PropTypes.number,
         initial: PropTypes.number
     }).isRequired,
-    onAdd: PropTypes.func.isRequired
+    showAddToCart: PropTypes.bool
 };
 
 export default Item;
