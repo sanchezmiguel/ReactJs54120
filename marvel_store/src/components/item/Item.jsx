@@ -21,16 +21,16 @@ function Item({ item, showAddToCart }) {
             </div>
             <img src={item.imageUrl} alt={item.name} className="card-img-top" />
             <div className="card-body">
-                <p>{item.description}</p>
+                <p>{showAddToCart ? item.description : item.title}</p>
                 {showAddToCart && (
                     <div onClick={(e) => e.stopPropagation()}>
                         {itemAdded ? (
                             <>
                                 <p>Producto añadido al carrito.</p>
-                                <ItemCount stock={item.stock} initial={1} onAdd={handleAdd} />
+                                <ItemCount stock={item.stock} initial={1} onAdd={handleAdd}/>
                             </>
                         ) : (
-                            <ItemCount stock={item.stock} initial={item.initial} onAdd={handleAdd} />
+                            <ItemCount stock={item.stock} initial={item.initial} onAdd={handleAdd}/>
                         )}
                     </div>
                 )}
@@ -45,6 +45,7 @@ Item.propTypes = {
         imageUrl: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
         description: PropTypes.string,
+        title: PropTypes.string,
         price: PropTypes.number,
         stock: PropTypes.number,
         initial: PropTypes.number

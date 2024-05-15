@@ -5,7 +5,8 @@
     "stock": 5,
     "initial": 1,
     "price": 50,
-    "description": "Increíble colección de cómics de tu héroe favorito, Spider-Man.",
+    "title": "Increíble colección de cómics de tu héroe favorito, Spider-Man.",
+    "description": "Sumérgete en el increíble mundo del trepamuros con esta colección de cómics de Spider-Man. Desde sus primeras aventuras en la ciudad de Nueva York hasta sus enfrentamientos con villanos icónicos como el Duende Verde y Venom, estos cómics capturan la esencia de uno de los superhéroes más queridos de todos los tiempos. Ideal para coleccionistas y nuevos lectores, esta colección te llevará por un viaje lleno de acción, emoción y momentos inolvidables.",
     "category": "comics-libros",
     "imageUrl": "/images/comics-de-spider-man.jpg"
   },
@@ -15,7 +16,8 @@
     "stock": 3,
     "initial": 1,
     "price": 120,
-    "description": "Una figura de Iron Man para añadir a tu colección de superhéroes.",
+    "title": "Una figura de Iron Man para añadir a tu colección de superhéroes.",
+    "description": "Añade a tu colección esta impresionante figura de Iron Man, el Vengador blindado. Detallada con precisión, esta figura muestra a Tony Stark en su icónica armadura roja y dorada, listo para salvar el mundo. Ya sea que la coloques en tu estante de coleccionables o la utilices para inspirarte en tus propias aventuras, esta figura de Iron Man es un tributo perfecto al genio, millonario, playboy y filántropo del universo Marvel.",
     "category": "figuras-juguetes",
     "imageUrl": "/images/figura-de-iron-man.jpg"
   },
@@ -25,7 +27,8 @@
     "stock": 0,
     "initial": 0,
     "price": 150,
-    "description": "Camiseta con el increíble Hulk estampado. ¡Hazte notar!",
+    "title": "Camiseta con el increíble Hulk estampado. ¡Hazte notar!",
+    "description": "Destaca entre la multitud con esta camiseta de Hulk, el increíble gigante verde. Con un diseño vibrante y llamativo, esta camiseta muestra a Hulk en todo su esplendor, listo para desatar su fuerza descomunal. Hecha de materiales de alta calidad, es perfecta para los fanáticos del superhéroe más fuerte de todos. Ya sea para usarla en el día a día o en eventos especiales, esta camiseta es una adición imprescindible para cualquier seguidor de Marvel.",
     "category": "vestimenta",
     "imageUrl": "/images/camiseta-de-hulk.jpg"
   },
@@ -35,7 +38,8 @@
     "stock": 7,
     "initial": 1,
     "price": 500,
-    "description": "Gorra auténtica del Capitán América para lucir como un verdadero héroe.",
+    "title": "Gorra auténtica del Capitán América para lucir como un verdadero héroe.",
+    "description": "Luce el estilo inconfundible del Capitán América con esta gorra auténtica. Con el icónico escudo de Steve Rogers en el frente, esta gorra es perfecta para los seguidores del primer Vengador. Ya sea para protegerte del sol o simplemente para mostrar tu lealtad a los héroes más poderosos de la Tierra, esta gorra es un accesorio esencial para cualquier fan de Marvel. Hecha con materiales de alta calidad, ofrece confort y durabilidad.",
     "category": "accesorios",
     "imageUrl": "/images/gorra-de-capitan-america.jpg"
   },
@@ -45,7 +49,8 @@
     "stock": 8,
     "initial": 1,
     "price": 80,
-    "description": "Poster de Thor, el poderoso dios del trueno, para decorar tu habitación.",
+    "title": "Poster de Thor, el poderoso dios del trueno, para decorar tu habitación.",
+    "description": "Decora tu habitación con este impresionante póster de Thor, el poderoso dios del trueno. Con una ilustración épica de Thor blandiendo su martillo Mjolnir, este póster es perfecto para cualquier fanático del universo Marvel. Los detalles y colores vibrantes capturan la esencia de uno de los héroes más poderosos, haciendo que este póster sea una adición destacada en cualquier espacio. Ideal para regalar o para añadir a tu propia colección de decoración Marvel.",
     "category": "decoracion",
     "imageUrl": "/images/poster-de-thor.jpg"
   },
@@ -55,7 +60,8 @@
     "stock": 4,
     "initial": 1,
     "price": 560,
-    "description": "Muñeco de Loki, el astuto y carismático villano del universo Marvel.",
+    "title": "Muñeco de Loki, el astuto y carismático villano del universo Marvel.",
+    "description": "Añade a tu colección este muñeco de Loki, el astuto y carismático villano del universo Marvel. Con detalles minuciosos que capturan su traje icónico y su cetro, este muñeco es una representación perfecta del dios de las mentiras. Ideal para los fans de los villanos más complejos y fascinantes de Marvel, este muñeco es perfecto para exhibir en tu estantería de coleccionables. Loki, con su encanto y astucia, traerá un toque de intriga a tu colección.",
     "category": "figuras-juguetes",
     "imageUrl": "/images/muneco-de-loki.jpg"
   },
@@ -65,7 +71,8 @@
     "stock": 6,
     "initial": 1,
     "price": 1500,
-    "description": "Sudadera de Black Widow, perfecta para los fans de la espía más letal de Marvel.",
+    "title": "Sudadera de Black Widow, perfecta para los fans de la espía más letal de Marvel.",
+    "description": "Mantente abrigado y con estilo con esta sudadera de Black Widow. Con un diseño elegante y moderno, esta sudadera es perfecta para los fans de la espía más letal de Marvel. Hecha de materiales de alta calidad, ofrece comodidad y durabilidad, ideal para el uso diario o para ocasiones especiales. Muestra tu admiración por Natasha Romanoff y su valentía con esta sudadera que combina moda y fandom.",
     "category": "vestimenta",
     "imageUrl": "/images/sudadera-de-black-widow.jpg"
   },
@@ -75,7 +82,8 @@
     "stock": 10,
     "initial": 1,
     "price": 550,
-    "description": "Llavero de Thanos, el temible titán obsesionado con el equilibrio del universo.",
+    "title": "Llavero de Thanos, el temible titán obsesionado con el equilibrio del universo.",
+    "description": "Lleva contigo el poder del titán loco con este llavero de Thanos. Perfecto para los fans del villano más temido del universo Marvel, este llavero es una representación detallada del guantelete del infinito. Ya sea que lo uses para tus llaves o como adorno para tu mochila, este llavero es una manera genial de mostrar tu pasión por Marvel y por uno de sus personajes más icónicos.",
     "category": "accesorios",
     "imageUrl": "/images/llavero-de-thanos.jpg"
   },
@@ -85,7 +93,8 @@
     "stock": 2,
     "initial": 1,
     "price": 40,
-    "description": "Figura coleccionable de Groot, el adorable y misterioso árbol viviente.",
+    "title": "Figura coleccionable de Groot, el adorable y misterioso árbol viviente.",
+    "description": "Añade a tu colección esta adorable figura coleccionable de Groot, el encantador y misterioso árbol viviente de los Guardianes de la Galaxia. Con su característico 'I am Groot', esta figura captura la esencia del personaje en un diseño compacto y detallado. Ideal para coleccionistas y fans de todas las edades, esta figura de Groot es perfecta para exhibir en cualquier lugar de tu hogar o espacio de trabajo.",
     "category": "figuras-juguetes",
     "imageUrl": "/images/figura-coleccionable-de-groot.jpg"
   },
@@ -95,109 +104,119 @@
     "stock": 12,
     "initial": 1,
     "price": 5000,
-    "description": "Libreta de Doctor Strange para apuntar tus hechizos y conjuros más poderosos.",
+    "title": "Libreta de Doctor Strange para apuntar tus hechizos y conjuros más poderosos.",
+    "description": "Apunta tus hechizos y conjuros más poderosos en esta libreta de Doctor Strange. Con un diseño místico inspirado en el Hechicero Supremo, esta libreta es perfecta para los fans de Marvel que buscan un accesorio único y funcional. Ideal para tomar notas, hacer bocetos o planificar tus aventuras mágicas, esta libreta combina estilo y practicidad, haciendo que cualquier tarea sea un poco más mágica.",
     "category": "comics-libros",
     "imageUrl": "/images/libreta-de-doctor-strange.jpg"
   },
-
-    {
-      "id": 11,
-      "name": "Taza de Deadpool",
-      "stock": 15,
-      "initial": 1,
-      "price": 200,
-      "description": "Taza con diseño de Deadpool, el bromista mercenario de Marvel.",
-      "category": "accesorios",
-      "imageUrl": "/images/taza-de-deadpool.jpg"
-    },
-    {
-      "id": 12,
-      "name": "Peluche de Rocket Raccoon",
-      "stock": 9,
-      "initial": 1,
-      "price": 350,
-      "description": "Peluche de Rocket Raccoon, el astuto mapache de los Guardianes de la Galaxia.",
-      "category": "figuras-juguetes",
-      "imageUrl": "/images/peluche-de-rocket-raccoon.jpg"
-    },
-    {
-      "id": 13,
-      "name": "Póster de Black Panther",
-      "stock": 20,
-      "initial": 1,
-      "price": 100,
-      "description": "Póster de Black Panther, el rey de Wakanda y protector de su gente.",
-      "category": "decoracion",
-      "imageUrl": "/images/poster-de-black-panther.jpg"
-    },
-    {
-      "id": 14,
-      "name": "Lámpara de Spider-Gwen",
-      "stock": 6,
-      "initial": 1,
-      "price": 700,
-      "description": "Lámpara con diseño de Spider-Gwen, la versión femenina de Spider-Man de otra dimensión.",
-      "category": "decoracion",
-      "imageUrl": "/images/lampara-de-spider-gwen.jpg"
-    },
-    {
-      "id": 15,
-      "name": "Cartera de Iron Fist",
-      "stock": 3,
-      "initial": 1,
-      "price": 300,
-      "description": "Cartera con el símbolo de Iron Fist, el maestro del kung-fu y poseedor del puño de hierro.",
-      "category": "accesorios",
-      "imageUrl": "/images/cartera-de-iron-fist.jpg"
-    },
-    {
-      "id": 16,
-      "name": "Camiseta de Daredevil",
-      "stock": 10,
-      "initial": 1,
-      "price": 250,
-      "description": "Camiseta con el logo de Daredevil, el héroe ciego de Hell's Kitchen.",
-      "category": "vestimenta",
-      "imageUrl": "/images/camiseta-de-daredevil.jpg"
-    },
-    {
-      "id": 17,
-      "name": "Funko Pop de Venom",
-      "stock": 18,
-      "initial": 1,
-      "price": 400,
-      "description": "Funko Pop de Venom, el simbionte alienígena enemigo de Spider-Man.",
-      "category": "figuras-juguetes",
-      "imageUrl": "/images/funko-pop-de-venom.jpg"
-    },
-    {
-      "id": 18,
-      "name": "Estuche de Thor",
-      "stock": 7,
-      "initial": 1,
-      "price": 600,
-      "description": "Estuche con diseño del martillo de Thor, el arma mística del dios del trueno.",
-      "category": "accesorios",
-      "imageUrl": "/images/estuche-de-thor.jpg"
-    },
-    {
-      "id": 19,
-      "name": "Poster de Scarlet Witch",
-      "stock": 14,
-      "initial": 1,
-      "price": 150,
-      "description": "Póster de Scarlet Witch, la poderosa hechicera y miembro de los Vengadores.",
-      "category": "decoracion",
-      "imageUrl": "/images/poster-de-scarlet-witch.jpg"
-    },
-    {
-      "id": 20,
-      "name": "Llavero de Deadpool",
-      "stock": 11,
-      "initial": 1,
-      "price": 150,
-      "description": "Llavero con la forma de Deadpool, el irreverente antihéroe de Marvel.",
-      "category": "accesorios",
-      "imageUrl": "/images/llavero-de-deadpool.jpg"
-    }
-  ]
+  {
+    "id": 11,
+    "name": "Taza de Deadpool",
+    "stock": 15,
+    "initial": 1,
+    "price": 200,
+    "title": "Taza con diseño de Deadpool, el bromista mercenario de Marvel.",
+    "description": "Comienza tu día con una sonrisa y una dosis de sarcasmo con esta taza de Deadpool. Perfecta para los fans del mercenario bocazas, esta taza presenta un diseño divertido y atrevido que refleja la personalidad única de Deadpool. Ya sea para tu café de la mañana, té o cualquier bebida favorita, esta taza es un complemento perfecto para tu colección de accesorios de Marvel.",
+    "category": "accesorios",
+    "imageUrl": "/images/taza-de-deadpool.jpg"
+  },
+  {
+    "id": 12,
+    "name": "Peluche de Rocket Raccoon",
+    "stock": 9,
+    "initial": 1,
+    "price": 350,
+    "title": "Peluche de Rocket Raccoon, el astuto mapache de los Guardianes de la Galaxia.",
+    "description": "Abraza la astucia y el carisma de Rocket Raccoon con este peluche adorable. Inspirado en el intrépido mapache de los Guardianes de la Galaxia, este peluche es perfecto para fans de todas las edades. Suave y detallado, es ideal para acompañarte en tus aventuras galácticas o para decorar tu habitación. Rocket Raccoon traerá una chispa de diversión y travesura a tu colección de Marvel.",
+    "category": "figuras-juguetes",
+    "imageUrl": "/images/peluche-de-rocket-raccoon.jpg"
+  },
+  {
+    "id": 13,
+    "name": "Póster de Black Panther",
+    "stock": 20,
+    "initial": 1,
+    "price": 100,
+    "title": "Póster de Black Panther, el rey de Wakanda y protector de su gente.",
+    "description": "Honra al rey de Wakanda con este impresionante póster de Black Panther. Con una ilustración poderosa y detallada, este póster captura la majestuosidad y el heroísmo de T'Challa. Perfecto para decorar tu habitación, oficina o cualquier espacio que necesite un toque de realeza Marvel, este póster es una adición esencial para cualquier fan de Black Panther y del universo Marvel.",
+    "category": "decoracion",
+    "imageUrl": "/images/poster-de-black-panther.jpg"
+  },
+  {
+    "id": 14,
+    "name": "Lámpara de Spider-Gwen",
+    "stock": 6,
+    "initial": 1,
+    "price": 700,
+    "title": "Lámpara con diseño de Spider-Gwen, la versión femenina de Spider-Man de otra dimensión.",
+    "description": "Ilumina tu espacio con estilo con esta lámpara de Spider-Gwen. Con un diseño moderno y vibrante, esta lámpara es perfecta para los fans de la versión femenina de Spider-Man de otra dimensión. Ideal para usar en tu escritorio, mesita de noche o cualquier lugar que necesite un toque de luz y estilo Marvel. Esta lámpara no solo es funcional, sino también una pieza decorativa que destaca en cualquier habitación.",
+    "category": "decoracion",
+    "imageUrl": "/images/lampara-de-spider-gwen.jpg"
+  },
+  {
+    "id": 15,
+    "name": "Cartera de Iron Fist",
+    "stock": 3,
+    "initial": 1,
+    "price": 300,
+    "title": "Cartera con el símbolo de Iron Fist, el maestro del kung-fu y poseedor del puño de hierro.",
+    "description": "Lleva contigo el poder del Puño de Hierro con esta cartera de Iron Fist. Con el símbolo icónico del maestro del kung-fu, esta cartera es perfecta para los fans de Danny Rand. Hecha de materiales duraderos y con un diseño elegante, es ideal para guardar tus tarjetas, efectivo y otros elementos esenciales. Muestra tu pasión por Marvel y por uno de sus héroes más únicos con esta cartera distintiva.",
+    "category": "accesorios",
+    "imageUrl": "/images/cartera-de-iron-fist.jpg"
+  },
+  {
+    "id": 16,
+    "name": "Camiseta de Daredevil",
+    "stock": 10,
+    "initial": 1,
+    "price": 250,
+    "title": "Camiseta con el logo de Daredevil, el héroe ciego de Hell's Kitchen.",
+    "description": "Muestra tu apoyo al héroe ciego de Hell's Kitchen con esta camiseta de Daredevil. Con un diseño simple pero impactante, esta camiseta presenta el logo de Daredevil en el pecho, simbolizando la valentía y determinación de Matt Murdock. Hecha de materiales cómodos y duraderos, es perfecta para el uso diario o para eventos especiales. Una prenda imprescindible para cualquier fan de Daredevil y de Marvel.",
+    "category": "vestimenta",
+    "imageUrl": "/images/camiseta-de-daredevil.jpg"
+  },
+  {
+    "id": 17,
+    "name": "Funko Pop de Venom",
+    "stock": 18,
+    "initial": 1,
+    "price": 400,
+    "title": "Funko Pop de Venom, el simbionte alienígena enemigo de Spider-Man.",
+    "description": "Añade a tu colección esta figura Funko Pop de Venom, el temible simbionte alienígena y enemigo acérrimo de Spider-Man. Con su diseño característico y detalles precisos, esta figura es perfecta para los fans de los villanos de Marvel. Ideal para exhibir en tu estantería de coleccionables o para regalar a un fanático de Venom, esta figura Funko Pop es una adición esencial para cualquier colección de Marvel.",
+    "category": "figuras-juguetes",
+    "imageUrl": "/images/funko-pop-de-venom.jpg"
+  },
+  {
+    "id": 18,
+    "name": "Estuche de Thor",
+    "stock": 7,
+    "initial": 1,
+    "price": 600,
+    "title": "Estuche con diseño del martillo de Thor, el arma mística del dios del trueno.",
+    "description": "Guarda tus pertenencias con estilo y seguridad en este estuche de Thor. Decorado con el icónico martillo Mjolnir, este estuche es perfecto para los fans del dios del trueno. Ideal para usar en la escuela, el trabajo o en casa, ofrece suficiente espacio para lápices, bolígrafos y otros artículos esenciales. Este estuche no solo es práctico, sino que también añade un toque de poder asgardiano a tu día a día.",
+    "category": "accesorios",
+    "imageUrl": "/images/estuche-de-thor.jpg"
+  },
+  {
+    "id": 19,
+    "name": "Poster de Scarlet Witch",
+    "stock": 14,
+    "initial": 1,
+    "price": 150,
+    "title": "Póster de Scarlet Witch, la poderosa hechicera y miembro de los Vengadores.",
+    "description": "Embellece tu espacio con este impactante póster de Scarlet Witch. Mostrando a Wanda Maximoff en todo su esplendor, este póster captura la esencia de la poderosa hechicera y miembro de los Vengadores. Perfecto para los fans de Marvel y de los personajes mágicos, este póster es una adición imprescindible para cualquier colección de decoración. Añade un toque de magia y poder a tu hogar con este póster de Scarlet Witch.",
+    "category": "decoracion",
+    "imageUrl": "/images/poster-de-scarlet-witch.jpg"
+  },
+  {
+    "id": 20,
+    "name": "Llavero de Deadpool",
+    "stock": 11,
+    "initial": 1,
+    "price": 150,
+    "title": "Llavero con la forma de Deadpool, el irreverente antihéroe de Marvel.",
+    "description": "Lleva contigo el humor irreverente de Deadpool con este llavero. Perfecto para los fans del antihéroe más divertido de Marvel, este llavero presenta la forma característica de Deadpool. Ya sea para tus llaves, mochila o cualquier otra cosa, este llavero es una manera genial de mostrar tu amor por Deadpool y por su estilo único. Añade un toque de diversión a tu vida diaria con este llavero de Deadpool.",
+    "category": "accesorios",
+    "imageUrl": "/images/llavero-de-deadpool.jpg"
+  }
+]
