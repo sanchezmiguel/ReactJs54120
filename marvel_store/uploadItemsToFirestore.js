@@ -19,9 +19,10 @@ const uploadItems = async () => {
 
     try {
         for (const item of items) {
-            const itemRef = doc(itemsCollection, item.id.toString()); // Use item.id as the document ID
-            await setDoc(itemRef, item);
-            console.log(`Item ${item.name} added successfully with ID: ${item.id}`);
+            const { id, ...itemWithoutId } = item; // Elimina el ID del objeto
+            const itemRef = doc(itemsCollection); // Genera un ID automáticamente
+            await setDoc(itemRef, itemWithoutId); // Sube el objeto sin el ID
+            console.log(`Item ${item.name} added successfully with ID: ${itemRef.id}`);
         }
         console.log("All items processed successfully.");
     } catch (error) {
