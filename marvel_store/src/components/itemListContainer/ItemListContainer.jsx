@@ -1,5 +1,4 @@
 import ItemList from "../itemList/ItemList.jsx";
-import ItemDetailContainer from "../itemDetailContainer/ItemDetailContainer.jsx";
 import { useEffect, useState } from "react";
 import Loading from "../loading/Loading.jsx";
 import Alert from "../alert/Alert.jsx";
@@ -14,25 +13,28 @@ export const ItemListContainer = () => {
     const [items, setItems] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
-    const [selectedItem, setSelectedItem] = useState(null);
 
     useEffect(() => {
-        const fetchItems = async () => {
-            setLoading(true);
-            setError(false);
-            try {
-                const q = categoryId ?
-                    query(collection(db, "items"), where("category", "==", categoryId)) :
-                    collection(db, "items");
-                const querySnapshot = await getDocs(q);
-                const fetchedItems = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-                setItems(fetchedItems);
-            } catch (error) {
-                console.error('[Item List Container] Error fetching items:', error);
-                setError(true);
-            } finally {
-                setLoading(false);
-            }
+        setLoading(true);
+        setError(false);
+
+        const fetchItems = () => {
+            const q = categoryId ?
+                query(collection(db, "items"), where("category", "==", categoryId)) :
+                collection(db, "items");
+
+            getDocs(q)
+                .then((querySnapshot) => {
+                    const fetchedItems = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                    setItems(fetchedItems);
+                })
+                .catch((error) => {
+                    console.error('[Item List Container] Error fetching items:', error);
+                    setError(true);
+                })
+                .finally(() => {
+                    setLoading(false);
+                });
         };
 
         fetchItems();
@@ -42,10 +44,6 @@ export const ItemListContainer = () => {
         console.log(`Added ${quantity} of ${item.name} to cart.`);
     };
 
-    const handleSelectItem = (item) => {
-        setSelectedItem(item);
-    };
-
     if (loading) {
         return <Loading />;
     }
@@ -53,17 +51,10 @@ export const ItemListContainer = () => {
         return <Alert message={<span>No se pudieron cargar los elementos. <FontAwesomeIcon icon={faFrown} /></span>}
                       type="alert-danger" />;
     }
-    const handleBackToList = () => {
-        setSelectedItem(null);
-    };
 
     return (
         <div className="item-container">
-            {selectedItem ? (
-                <ItemDetailContainer item={selectedItem} onAdd={handleAdd} onBack={handleBackToList} />
-            ) : (
-                <ItemList items={items} onAdd={handleAdd} onSelectItem={handleSelectItem} />
-            )}
+            <ItemList items={items} onAdd={handleAdd} />
         </div>
     );
 };
