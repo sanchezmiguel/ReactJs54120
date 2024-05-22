@@ -6,13 +6,12 @@
     cursor: pointer;
     display: flex;
     align-items: center;
-    margin-right: 20px; /* Adjusted margin for spacing between the cart widget and other elements */
+    margin-right: 20px;
 }
 
 .badge {
     background-color: red;
     padding: 0.5em;
     color: white;
-    border-radius: 10px; /* Adjusted border-radius for a smoother appearance */
+    border-radius: 10px;
 }
-

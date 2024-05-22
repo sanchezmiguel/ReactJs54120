@@ -29,19 +29,19 @@
 }
 
 .item-details {
-    flex: 3; /* gives more space to item details */
+    flex: 3;
     display: flex;
     align-items: center;
     justify-content: flex-start;
 }
 
 .item-name {
-    flex: 2; /* allocates twice as much space to the name */
-    margin-right: 10px; /* adds space between the name and the quantity */
+    flex: 2;
+    margin-right: 10px;
 }
 
-.item-quantity, .item-price, .item-total-price {
-    flex: 1; /* equal space for quantity, price, and total price */
+.item-quantity, .item-total-price {
+    flex: 1;
     text-align: right;
 }
 
@@ -50,7 +50,8 @@
     font-size: 1.2em;
     text-align: right;
     padding-top: 10px;
-    border-top: 1px solid #aaa; /* adds a line above the total for clarity */
+    border-top: 1px solid #aaa;
+/
 }
 
 .cart-actions {
@@ -62,7 +63,7 @@
 .clear-cart, .pay-now, .remove-item {
     padding: 8px 16px;
     margin: 5px;
-    background-color: #f44336; /* Rojo para el botón de vaciar y eliminar */
+    background-color: #f44336;
     color: white;
     border: none;
     border-radius: 4px;
@@ -70,5 +71,5 @@
 }
 
 .pay-now {
-    background-color: #4CAF50; /* Verde para el botón de pagar */
+    background-color: #4CAF50;
 }

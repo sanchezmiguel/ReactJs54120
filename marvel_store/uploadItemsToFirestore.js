@@ -1,6 +1,6 @@
-import { initializeApp } from "firebase/app";
-import { getFirestore, collection, setDoc, doc } from "firebase/firestore";
-import items from './public/products_mock.json' assert { type: 'json' };
+import {initializeApp} from "firebase/app";
+import {collection, doc, getFirestore, setDoc} from "firebase/firestore";
+import items from './public/products_mock.json' assert {type: 'json'};
 
 const firebaseConfig = {
     apiKey: "AIzaSyDQMFnjelqNtOSiAMScSzjeL8lXbl-GpJY",
@@ -19,7 +19,7 @@ const uploadItems = async () => {
 
     try {
         for (const item of items) {
-            const { id, ...itemWithoutId } = item; // Elimina el ID del objeto
+            const {id, ...itemWithoutId} = item; // Elimina el ID del objeto
             const itemRef = doc(itemsCollection); // Genera un ID automáticamente
             await setDoc(itemRef, itemWithoutId); // Sube el objeto sin el ID
             console.log(`Item ${item.name} added successfully with ID: ${itemRef.id}`);

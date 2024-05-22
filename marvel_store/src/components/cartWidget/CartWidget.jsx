@@ -1,6 +1,7 @@
 import CartIcon from "../cartIcon/CartIcon.jsx";
 import {useCart} from "../../hooks/useCart.js";
 import PropTypes from "prop-types";
+import './CartWidget.css';
 
 const CartWidget = ({onClick}) => {
     const {cartItems} = useCart();
@@ -8,7 +9,7 @@ const CartWidget = ({onClick}) => {
 
     return (
         <div className='cart-widget-container' onClick={onClick}>
-            <CartIcon/>
+            <CartIcon className='cart-icon'/>
             {itemCount > 0 && <span className='badge badge-primary'>{itemCount}</span>}
         </div>
     );
@@ -19,4 +20,3 @@ CartWidget.propTypes = {
 };
 
 export default CartWidget;
-

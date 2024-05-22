@@ -1,15 +1,15 @@
 import PropTypes from 'prop-types';
 import Item from "../item/Item.jsx";
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import './ItemList.css';
 
-function ItemList({ items }) {
+function ItemList({items}) {
     return (
         <div className="row">
             {items.map(item => (
                 <div key={item.id} className="col-sm-6 col-md-4 col-lg-3 mb-4">
                     <Link to={`/item/${item.id}`}>
-                        <Item item={item}  />
+                        <Item item={item}/>
                     </Link>
                 </div>
             ))}
