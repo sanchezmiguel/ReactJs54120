@@ -45,40 +45,32 @@
     text-align: right;
 }
 
-.cart-total {
-    margin-top: 20px;
-    font-size: 1.2em;
+.cart-total, .final-total, .discount {
+    margin-top: 10px;
+    font-size: 1.1em;
     text-align: right;
-    padding-top: 10px;
+    padding-top: 5px;
     border-top: 1px solid #aaa; /* adds a line above the total for clarity */
 }
 
-.cart-actions {
+.discount-code {
     display: flex;
-    justify-content: space-between;
-    padding-top: 20px;
+    justify-content: flex-end;
+    margin-top: 10px;
 }
 
-.clear-cart, .pay-now, .remove-item {
-    padding: 8px 16px;
-    margin: 5px;
-    background-color: #f44336; /* Rojo para el botón de vaciar y eliminar */
+.discount-code input {
+    padding: 5px;
+    font-size: 1em;
+    margin-right: 10px;
+}
+
+.discount-code button {
+    padding: 5px 10px;
+    font-size: 1em;
+    background-color: #4CAF50;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
-}
-
-.pay-now {
-    background-color: #4CAF50; /* Verde para el botón de pagar */
-}
-
-.purchase-message {
-    margin-top: 20px;
-    padding: 15px;
-    background-color: #dff0d8;
-    color: #3c763d;
-    border: 1px solid #d6e9c6;
-    border-radius: 4px;
-    font-size: 1.1em;
 }
