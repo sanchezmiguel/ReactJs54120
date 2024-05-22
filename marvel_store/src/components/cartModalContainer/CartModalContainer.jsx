@@ -3,9 +3,11 @@ import { useCart } from "../../hooks/useCart.js";
 import PropTypes from "prop-types";
 import './CartModalContainer.css';
 import PriceDisplay from "../priceDisplay/PriceDisplay.jsx";
+import { useState } from "react";
 
 const CartModalContainer = ({ isOpen, onClose }) => {
     const { cartItems, removeFromCart, clearCart } = useCart();
+    const [purchaseMessage, setPurchaseMessage] = useState(null);
 
     const totalPrice = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
 
@@ -14,6 +16,12 @@ const CartModalContainer = ({ isOpen, onClose }) => {
         if (confirmClear) {
             clearCart();
         }
+    };
+
+    const handlePurchase = () => {
+        const purchaseNumber = Math.floor(Math.random() * 1000000);
+        setPurchaseMessage(`¡Gracias por tu compra! Tu número de compra es ${purchaseNumber}.`);
+        clearCart();
     };
 
     return (
@@ -41,9 +49,14 @@ const CartModalContainer = ({ isOpen, onClose }) => {
                     <strong>Total: <PriceDisplay price={totalPrice} /></strong>
                 </div>
                 <div className="cart-actions">
-                    <button onClick={handleClearCart} className="clear-cart">Vaciar carrito</button>
-                    <button onClick={onClose} className="pay-now">Pagar</button>
+                    <button onClick={handleClearCart} className="clear-cart" disabled={cartItems.length === 0}>Vaciar carrito</button>
+                    <button onClick={handlePurchase} className="pay-now" disabled={cartItems.length === 0}>Pagar</button>
                 </div>
+                {purchaseMessage && (
+                    <div className="purchase-message">
+                        {purchaseMessage}
+                    </div>
+                )}
             </div>
         </CartModal>
     );
