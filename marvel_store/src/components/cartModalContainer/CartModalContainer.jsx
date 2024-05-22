@@ -4,6 +4,9 @@ import PropTypes from "prop-types";
 import './CartModalContainer.css';
 import PriceDisplay from "../priceDisplay/PriceDisplay.jsx";
 import { useState } from "react";
+import CartItem from "../cartItem/CartItem";
+import CartActions from "../cartActions/CartActions";
+import PurchaseMessage from "../purchaseMessage/PurchaseMessage";
 
 const CartModalContainer = ({ isOpen, onClose }) => {
     const { cartItems, removeFromCart, clearCart } = useCart();
@@ -31,15 +34,7 @@ const CartModalContainer = ({ isOpen, onClose }) => {
                 {cartItems.length > 0 ? (
                     <ul className="cart-items-list">
                         {cartItems.map(item => (
-                            <li key={item.id} className="cart-item">
-                                <img src={item.imageUrl} alt={item.name} className="cart-item-thumbnail" />
-                                <div className="item-details">
-                                    <span className="item-name">{item.name}</span>
-                                    <span className="item-quantity">{item.quantity} x <PriceDisplay price={item.price} /></span>
-                                    <span className="item-total-price"><PriceDisplay price={(item.price * item.quantity)} /></span>
-                                </div>
-                                <button onClick={() => removeFromCart(item.id)} className="remove-item">Quitar</button>
-                            </li>
+                            <CartItem key={item.id} item={item} removeFromCart={removeFromCart} />
                         ))}
                     </ul>
                 ) : (
@@ -48,15 +43,12 @@ const CartModalContainer = ({ isOpen, onClose }) => {
                 <div className="cart-total">
                     <strong>Total: <PriceDisplay price={totalPrice} /></strong>
                 </div>
-                <div className="cart-actions">
-                    <button onClick={handleClearCart} className="clear-cart" disabled={cartItems.length === 0}>Vaciar carrito</button>
-                    <button onClick={handlePurchase} className="pay-now" disabled={cartItems.length === 0}>Pagar</button>
-                </div>
-                {purchaseMessage && (
-                    <div className="purchase-message">
-                        {purchaseMessage}
-                    </div>
-                )}
+                <CartActions
+                    handleClearCart={handleClearCart}
+                    handlePurchase={handlePurchase}
+                    isCartEmpty={cartItems.length === 0}
+                />
+                {purchaseMessage && <PurchaseMessage message={purchaseMessage} />}
             </div>
         </CartModal>
     );

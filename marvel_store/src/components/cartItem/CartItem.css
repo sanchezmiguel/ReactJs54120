@@ -1,0 +1,32 @@
+.cart-item-thumbnail {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+    font-size: 0.9em;
+}
+
+.item-details {
+    flex: 3; /* gives more space to item details */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.item-name {
+    flex: 2; /* allocates twice as much space to the name */
+    margin-right: 10px; /* adds space between the name and the quantity */
+}
+
+.item-quantity, .item-total-price {
+    flex: 1; /* equal space for quantity and total price */
+    text-align: right;
+}
