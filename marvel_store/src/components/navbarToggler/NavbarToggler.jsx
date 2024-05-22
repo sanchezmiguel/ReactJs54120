@@ -1,3 +1,8 @@
+/**
+ * @file NavbarToggler.jsx
+ * @description Componente para el botón de toggle en la barra de navegación.
+ */
+
 const NavbarToggler = () => {
     return (
         <button

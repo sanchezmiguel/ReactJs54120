@@ -1,3 +1,8 @@
+/**
+ * @file Navbar.jsx
+ * @description Componente de la barra de navegación principal.
+ */
+
 import './navbar.css';
 import CartWidget from '../cartWidget/CartWidget';
 import 'bootstrap/dist/css/bootstrap.min.css';

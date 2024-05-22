@@ -1,3 +1,8 @@
+/**
+ * @file ItemListContainer.jsx
+ * @description Contenedor de la lista de ítems, maneja la lógica para recuperar y mostrar los ítems.
+ */
+
 import ItemList from "../itemList/ItemList.jsx";
 import {useEffect, useState} from "react";
 import Loading from "../loading/Loading.jsx";
