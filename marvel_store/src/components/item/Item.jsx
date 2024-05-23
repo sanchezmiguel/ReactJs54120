@@ -1,17 +1,35 @@
+// Item.jsx
 import PropTypes from 'prop-types';
 import {useState} from 'react';
 import ItemCount from "../itemCount/ItemCount.jsx";
 import './Item.css';
 import {useCart} from "../../hooks/useCart.js";
 import ItemTitle from "../itemTitle/ItemTitle.jsx";
+import Alert from "../alert/Alert.jsx";
 
 function Item({item, showAddToCart}) {
     const [itemAdded, setItemAdded] = useState(false);
-    const {addToCart} = useCart();
+    const [showWarning, setShowWarning] = useState(false);
+    const {addToCart, cartItems} = useCart();
 
     const handleAdd = (quantity) => {
-        addToCart(item, quantity);
+        const existingItem = cartItems.find(cartItem => cartItem.id === item.id);
+        if (existingItem) {
+            setShowWarning(true);
+        } else {
+            addToCart(item, quantity);
+            setItemAdded(true);
+        }
+    };
+
+    const handleConfirmAdd = (quantity) => {
+        addToCart(item, quantity, true);
+        setShowWarning(false);
         setItemAdded(true);
+    };
+
+    const handleCancelAdd = () => {
+        setShowWarning(false);
     };
 
     return (
@@ -25,12 +43,16 @@ function Item({item, showAddToCart}) {
                 {showAddToCart && (
                     <div onClick={(e) => e.stopPropagation()}>
                         {itemAdded ? (
-                            <>
-                                <p>Producto añadido al carrito.</p>
-                                <ItemCount stock={item.stock} initial={1} onAdd={handleAdd}/>
-                            </>
+                            <Alert message="Producto añadido al carrito" type="alert-success"/>
                         ) : (
                             <ItemCount stock={item.stock} initial={item.initial} onAdd={handleAdd}/>
+                        )}
+                        {showWarning && (
+                            <div className="alert alert-warning">
+                                <p>El artículo ya está en el carrito. ¿Deseas agregar más?</p>
+                                <button onClick={() => handleConfirmAdd(1)}>Sí</button>
+                                <button onClick={handleCancelAdd}>No</button>
+                            </div>
                         )}
                     </div>
                 )}
