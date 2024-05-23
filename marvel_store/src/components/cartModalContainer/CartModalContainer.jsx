@@ -53,7 +53,7 @@ const CartModalContainer = ({ isOpen, onClose }) => {
         setPaymentModalOpen(true);
     };
 
-    const handlePaymentComplete = async () => {
+    const handlePaymentComplete = async (paymentMethod) => {
         setIsProcessing(true); // Set processing state to true
         setPaymentModalOpen(false); // Close the payment modal first
         try {
@@ -62,7 +62,8 @@ const CartModalContainer = ({ isOpen, onClose }) => {
                 cartItems,
                 totalPrice: finalPrice,
                 timestamp: new Date().toISOString(),
-                clientIp // Store client IP
+                clientIp, // Store client IP
+                paymentMethod // Store payment method
             });
             setPurchaseMessage(`¡Gracias por tu compra! Tu número de compra es ${docRef.id}.`);
             clearCart();
