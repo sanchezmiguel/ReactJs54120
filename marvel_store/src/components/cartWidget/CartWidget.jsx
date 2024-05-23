@@ -1,22 +1,24 @@
+// CartWidget.jsx
 import CartIcon from "../cartIcon/CartIcon.jsx";
-import {useCart} from "../../hooks/useCart.js";
-import PropTypes from "prop-types";
+import { useCart } from "../../hooks/useCart.js";
 import './CartWidget.css';
+import { useNavigate } from "react-router-dom";
 
-const CartWidget = ({onClick}) => {
-    const {cartItems} = useCart();
+const CartWidget = () => {
+    const { cartItems } = useCart();
     const itemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+    const navigate = useNavigate();
+
+    const handleCartClick = () => {
+        navigate('/cart');
+    };
 
     return (
-        <div className='cart-widget-container' onClick={onClick}>
-            <CartIcon className='cart-icon'/>
+        <div className='cart-widget-container' onClick={handleCartClick}>
+            <CartIcon className='cart-icon' />
             {itemCount > 0 && <span className='badge badge-primary'>{itemCount}</span>}
         </div>
     );
-};
-
-CartWidget.propTypes = {
-    onClick: PropTypes.func.isRequired,
 };
 
 export default CartWidget;
