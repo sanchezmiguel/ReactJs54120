@@ -1,98 +1,101 @@
-# Tienda de Artículos de Marvel
+# Marvel Store
 
-Esta es una aplicación web para una tienda de artículos de Marvel, creada por **Pablo Miguel Sánchez**. La aplicación permite a los usuarios navegar, visualizar y comprar una variedad de productos temáticos de Marvel. A continuación se describen las funcionalidades principales de la aplicación.
+## Descripción
+
+Esta es una aplicación web para una tienda de artículos de Marvel, creada por Pablo Miguel Sánchez. La aplicación permite a los usuarios navegar, visualizar y comprar una variedad de productos temáticos de Marvel. A continuación se describen las funcionalidades principales de la aplicación.
+
+Marvel Store es una aplicación de comercio electrónico construida usando React y Firebase. La aplicación permite a los usuarios navegar, buscar y comprar productos temáticos de Marvel, incluyendo cómics, juguetes y accesorios. La aplicación soporta funcionalidades como autenticación de usuarios, gestión del carrito de compras y actualizaciones de stock en tiempo real.
 
 ## Funcionalidades
 
-### Navegación
-La aplicación cuenta con un sistema de navegación que permite a los usuarios moverse entre diferentes secciones, como la lista de productos, los detalles de cada producto, y otras secciones informativas como 'Acerca de', 'Contacto', 'Política de privacidad' y 'Términos y condiciones' (actualmente en construcción).
+- **Autenticación de Usuarios**: Los usuarios pueden registrarse, iniciar sesión y cerrar sesión.
+- **Navegación de Productos**: Navegar productos por categoría, buscar artículos específicos y ver información detallada de cada producto.
+- **Carrito de Compras**: Agregar productos al carrito, ajustar cantidades y eliminar artículos.
+- **Gestión de Stock en Tiempo Real**: Asegura que el stock se actualice en tiempo real para evitar sobreventas.
+- **Historial de Compras**: Rastrea compras anteriores y gestiona pedidos.
+- **Diseño Responsivo**: La aplicación está optimizada tanto para dispositivos de escritorio como móviles.
 
-**Código relacionado:**
-- `App.jsx`
-- `Navbar.jsx`
-- `NavbarToggler.jsx`
-- `CategoryList.jsx`
-- `CategoryLink.jsx`
-- `BrandLogo.jsx`
-- `useCustomNavigate.js`
+## Componentes
 
-### Lista de Productos
-La página principal muestra una lista de productos disponibles. Cada producto se presenta con su imagen, nombre y una breve descripción. Los usuarios pueden hacer clic en cualquier producto para ver más detalles. La lista de productos se carga dinámicamente desde una base de datos de Firebase.
+### Componentes Principales
 
-**Código relacionado:**
-- `ItemListContainer.jsx`
-- `ItemList.jsx`
-- `Item.jsx`
-- `Loading.jsx`
-- `utils.js`
-- `config.js`
+- **App.jsx**: El componente principal de la aplicación que configura el enrutamiento y los proveedores globales.
+- **Navbar.jsx**: La barra de navegación con enlaces a diferentes páginas y un widget de carrito.
+- **Footer.jsx**: El pie de página con enlaces a varias páginas informativas y redes sociales.
+- **CartModalContainer.jsx**: El contenedor para el modal del carrito de compras, que gestiona los artículos del carrito y el proceso de pago.
 
-### Detalle del Producto
-Al seleccionar un producto, el usuario es redirigido a una página de detalles donde puede ver información más detallada sobre el producto, incluyendo una descripción completa, el precio y el stock disponible. Desde esta página, el usuario puede agregar el producto al carrito de compras.
+### Componentes Funcionales
 
-**Código relacionado:**
-- `ItemDetailContainer.jsx`
-- `ItemDetail.jsx`
-- `StockMessage.jsx`
+- **CategoryList.jsx**: Muestra una lista de categorías de productos.
+- **CategoryLink.jsx**: Componente para enlaces de navegación de categorías.
+- **ItemListContainer.jsx**: Contenedor para mostrar una lista de artículos, obteniendo datos de Firebase.
+- **ItemList.jsx**: Muestra una cuadrícula de artículos, cada uno enlazando a su página de detalles.
+- **ItemDetailContainer.jsx**: Obtiene y muestra detalles de un artículo seleccionado.
+- **ItemDetail.jsx**: Vista detallada de un solo artículo, incluyendo la funcionalidad de agregar al carrito.
+- **CartWidget.jsx**: Muestra el número de artículos en el carrito y navega al modal del carrito.
+- **CartItem.jsx**: Muestra artículos individuales del carrito con opciones para ajustar la cantidad y eliminar.
+- **CartActions.jsx**: Contiene acciones para vaciar el carrito y proceder al pago.
+- **PaymentModal.jsx**: Modal para seleccionar el método de pago y completar la compra.
+- **Loading.jsx**: Muestra un spinner de carga durante las búsquedas de datos.
+- **Alert.jsx**: Muestra mensajes de alerta para varias acciones del usuario.
 
-### Carrito de Compras
-La aplicación incluye un carrito de compras que permite a los usuarios agregar, visualizar y gestionar los productos que desean comprar. El carrito se muestra como un modal y permite a los usuarios ver la cantidad de artículos, el precio total y opciones para eliminar productos o proceder al pago.
+### Componentes de Utilidad
 
-**Código relacionado:**
-- `CartWidget.jsx`
-- `CartModal.jsx`
-- `CartModalContainer.jsx`
-- `CartIcon.jsx`
+- **ErrorBoundary.jsx**: Captura errores de JavaScript en cualquier parte del árbol de componentes hijos.
+- **StockMessage.jsx**: Muestra mensajes de disponibilidad de stock basados en la cantidad de stock.
+- **PriceDisplay.jsx**: Formatea y muestra precios con símbolos de moneda.
+- **PurchaseMessage.jsx**: Muestra mensajes después de completar una compra.
+- **DiscountCodeInput.jsx**: Maneja la entrada y aplicación de códigos de descuento.
+- **CartTotal.jsx**: Muestra el precio total de los artículos en el carrito, incluyendo descuentos.
+- **BrandLogo.jsx**: Muestra el logo de la marca en la barra de navegación.
+- **NavbarToggler.jsx**: Botón de alternancia para colapsar la barra de navegación en dispositivos móviles.
+- **UnderConstruction.jsx**: Componente de marcador de posición para páginas en construcción.
+- **ItemTitle.jsx**: Muestra el título de un artículo.
+- **ItemCount.jsx**: Permite a los usuarios incrementar o decrementar la cantidad de artículos.
+- **FooterLinks.jsx**: Contiene enlaces de navegación usados en el pie de página.
 
-### Manejo del Carrito
-El carrito se gestiona a través de un contexto global que permite agregar productos, eliminar productos y vaciar el carrito. Esto proporciona una experiencia de usuario fluida y coherente.
+### Contexto y Hooks
 
-**Código relacionado:**
-- `CartContext.jsx`
-- `useCart.js`
+- **CartContext.jsx**: Proporciona el estado del carrito y funciones para agregar, eliminar y vaciar artículos.
+- **useCart.js**: Hook personalizado para acceder al contexto del carrito.
+- **useCustomNavigate.js**: Hook personalizado para acciones de navegación con registro opcional.
 
-### Componentes Adicionales
-La aplicación cuenta con componentes adicionales para mejorar la funcionalidad y la experiencia del usuario.
+### Configuración de Firebase
 
-#### ItemCount
-Permite a los usuarios seleccionar la cantidad de productos que desean agregar al carrito.
+- **firebase-config.js**: Inicializa Firebase y exporta la instancia de Firestore.
+- **config.js**: Contiene detalles de configuración como URLs de API.
 
-**Código relacionado:**
-- `ItemCount.jsx`
+### Utilidades
 
-#### Footer
-Incluye enlaces a páginas informativas y enlaces a redes sociales. También tiene un formulario para suscribirse a un boletín informativo.
+- **utils.js**: Contiene funciones de utilidad para tareas como normalización de texto y obtención de la IP del cliente.
 
-**Código relacionado:**
-- `Footer.jsx`
-- `FooterLinks.jsx`
-
-#### Alert
-Muestra mensajes de alerta en la aplicación para diversas situaciones, como errores o confirmaciones.
-
-**Código relacionado:**
-- `Alert.jsx`
-
-#### ErrorBoundary
-Captura errores en los componentes hijos y muestra un mensaje de error amigable.
-
-**Código relacionado:**
-- `ErrorBoundary.jsx`
-
-#### PriceDisplay
-Muestra el precio de los productos en un formato adecuado.
-
-**Código relacionado:**
-- `PriceDisplay.jsx`
-
-#### UnderConstruction
-Muestra un mensaje indicando que la página está en construcción.
-
-**Código relacionado:**
-- `UnderConstruction.jsx`
-
-## Instalación y Uso
+## Configuración e Instalación
 
 1. Clona el repositorio:
-   ```bash
-   git clone https://github.com/sanchezmiguel/ReactJs54120.git
+    ```sh
+    git clone https://github.com/yourusername/marvel-store.git
+    cd marvel-store
+    ```
+
+2. Instala las dependencias:
+    ```sh
+    npm install
+    ```
+
+3. Configura Firebase:
+  - Reemplaza la configuración de Firebase en `firebase-config.js` con los detalles de tu propio proyecto de Firebase.
+
+4. Inicia el servidor de desarrollo:
+    ```sh
+    npm start
+    ```
+
+5. Abre tu navegador y navega a `http://localhost:3000` para ver la aplicación en acción.
+
+## Contribuciones
+
+¡Las contribuciones son bienvenidas! Por favor, abre un issue o envía un pull request si tienes alguna mejora o corrección de errores.
+
+## Licencia
+
+Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.
