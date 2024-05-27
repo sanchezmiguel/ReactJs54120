@@ -2,7 +2,7 @@
 
 ## Descripción
 
-Esta es una aplicación web para una tienda de artículos de Marvel, creada por Pablo Miguel Sánchez. La aplicación permite a los usuarios navegar, visualizar y comprar una variedad de productos temáticos de Marvel. A continuación se describen las funcionalidades principales de la aplicación.
+Esta es una aplicación web para una tienda de artículos de Marvel, creada por **Pablo Miguel Sánchez**. La aplicación permite a los usuarios navegar, visualizar y comprar una variedad de productos temáticos de Marvel. A continuación se describen las funcionalidades principales de la aplicación.
 
 Marvel Store es una aplicación de comercio electrónico construida usando React y Firebase. La aplicación permite a los usuarios navegar, buscar y comprar productos temáticos de Marvel, incluyendo cómics, juguetes y accesorios. La aplicación soporta funcionalidades como autenticación de usuarios, gestión del carrito de compras y actualizaciones de stock en tiempo real.
 

@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import './PurchaseMessage.css';
 
-const PurchaseMessage = ({ message }) => (
+const PurchaseMessage = ({message}) => (
     <div className="purchase-message">
         {message}
     </div>

@@ -6,8 +6,8 @@ import BrandLogo from "../brandLogo/BrandLogo.jsx";
 import CategoryList from "../categoryList/CategoryList.jsx";
 import NavbarToggler from "../navbarToggler/NavbarToggler.jsx";
 import CartModalContainer from "../cartModalContainer/CartModalContainer.jsx";
-import { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import {useEffect, useState} from "react";
+import {useLocation, useNavigate} from "react-router-dom";
 
 const Navbar = () => {
     const [isCartModalOpen, setCartModalOpen] = useState(false);
@@ -27,11 +27,11 @@ const Navbar = () => {
 
     return (
         <nav className='navbar navbar-expand-lg navbar-light'>
-            <BrandLogo />
-            <NavbarToggler />
-            <CategoryList />
-            <CartWidget />
-            <CartModalContainer isOpen={isCartModalOpen} onClose={handleCloseModal} />
+            <BrandLogo/>
+            <NavbarToggler/>
+            <CategoryList/>
+            <CartWidget/>
+            <CartModalContainer isOpen={isCartModalOpen} onClose={handleCloseModal}/>
         </nav>
     );
 };

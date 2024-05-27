@@ -1,12 +1,12 @@
 // PaymentModal.jsx
-import { useState } from 'react';
+import {useState} from 'react';
 import PropTypes from 'prop-types';
 import './PaymentModal.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCreditCard, faUniversity } from '@fortawesome/free-solid-svg-icons';
-import { faPaypal } from '@fortawesome/free-brands-svg-icons'; // Import from the brands library
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faCreditCard, faUniversity} from '@fortawesome/free-solid-svg-icons';
+import {faPaypal} from '@fortawesome/free-brands-svg-icons'; // Import from the brands library
 
-const PaymentModal = ({ isOpen, onClose, onComplete }) => {
+const PaymentModal = ({isOpen, onClose, onComplete}) => {
     const [paymentMethod, setPaymentMethod] = useState('');
 
     const handlePaymentMethodChange = (e) => {
@@ -36,7 +36,7 @@ const PaymentModal = ({ isOpen, onClose, onComplete }) => {
                             checked={paymentMethod === 'Tarjeta de crédito'}
                             onChange={handlePaymentMethodChange}
                         />
-                        <FontAwesomeIcon icon={faCreditCard} /> Tarjeta de crédito
+                        <FontAwesomeIcon icon={faCreditCard}/> Tarjeta de crédito
                     </label>
                     <label className="payment-method">
                         <input
@@ -45,7 +45,7 @@ const PaymentModal = ({ isOpen, onClose, onComplete }) => {
                             checked={paymentMethod === 'PayPal'}
                             onChange={handlePaymentMethodChange}
                         />
-                        <FontAwesomeIcon icon={faPaypal} /> PayPal
+                        <FontAwesomeIcon icon={faPaypal}/> PayPal
                     </label>
                     <label className="payment-method">
                         <input
@@ -54,7 +54,7 @@ const PaymentModal = ({ isOpen, onClose, onComplete }) => {
                             checked={paymentMethod === 'Transferencia bancaria'}
                             onChange={handlePaymentMethodChange}
                         />
-                        <FontAwesomeIcon icon={faUniversity} /> Transferencia bancaria
+                        <FontAwesomeIcon icon={faUniversity}/> Transferencia bancaria
                     </label>
                 </div>
                 <button onClick={handleCompletePayment} className="complete-payment-button">Completar pago</button>
