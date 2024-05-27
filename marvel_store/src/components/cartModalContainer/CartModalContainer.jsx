@@ -1,4 +1,3 @@
-// CartModalContainer.jsx
 import CartModal from "../cartModal/CartModal.jsx";
 import PaymentModal from "../paymentModal/PaymentModal.jsx";
 import { useCart } from "../../hooks/useCart.js";
@@ -9,10 +8,11 @@ import { useState, useEffect } from "react";
 import CartItem from "../cartItem/CartItem.jsx";
 import PurchaseMessage from "../purchaseMessage/PurchaseMessage.jsx";
 import CartActions from "../cartActions/CartActions.jsx";
-import { collection, addDoc } from "firebase/firestore"; // Import Firebase functions
+import { collection, addDoc, doc, runTransaction } from "firebase/firestore"; // Import Firebase functions
 import { db } from "../../firebase-config.js"; // Import Firestore db
 import { getClientIp } from "../../utils/utils.js"; // Import the function to get client IP
 import Loading from "../loading/Loading.jsx"; // Import the Loading component
+import Alert from "../alert/Alert.jsx"; // Import Alert component
 
 const CartModalContainer = ({ isOpen, onClose }) => {
     const { cartItems, removeFromCart, clearCart } = useCart();
@@ -22,6 +22,7 @@ const CartModalContainer = ({ isOpen, onClose }) => {
     const [discountApplied, setDiscountApplied] = useState(false);
     const [discount, setDiscount] = useState(0);
     const [isProcessing, setIsProcessing] = useState(false); // State to handle purchase processing
+    const [errorMessage, setErrorMessage] = useState(null); // State to handle errors
 
     const discountDictionary = {
         'DESCUENTO10': 0.1,
@@ -46,6 +47,7 @@ const CartModalContainer = ({ isOpen, onClose }) => {
             clearCart();
             resetDiscount();
             setPurchaseMessage(null);
+            setErrorMessage(null); // Clear previous error message
         }
     };
 
@@ -56,20 +58,45 @@ const CartModalContainer = ({ isOpen, onClose }) => {
     const handlePaymentComplete = async (paymentMethod) => {
         setIsProcessing(true); // Set processing state to true
         setPaymentModalOpen(false); // Close the payment modal first
+        setPurchaseMessage(null); // Clear previous purchase message
+        setErrorMessage(null); // Clear previous error message
         try {
-            const clientIp = await getClientIp();
-            const docRef = await addDoc(collection(db, "purchaseHistory"), {
-                cartItems,
-                totalPrice: finalPrice,
-                timestamp: new Date().toISOString(),
-                clientIp, // Store client IP
-                paymentMethod // Store payment method
+            await runTransaction(db, async (transaction) => {
+                // Check stock for each item in the cart
+                for (const cartItem of cartItems) {
+                    const itemRef = doc(db, "items", cartItem.id);
+                    const itemDoc = await transaction.get(itemRef);
+
+                    if (!itemDoc.exists) {
+                        throw new Error(`El artículo ${cartItem.name} no existe`);
+                    }
+
+                    const newStock = itemDoc.data().stock - cartItem.quantity;
+                    if (newStock < 0) {
+                        throw new Error(`No hay suficiente stock para ${cartItem.name}`);
+                    }
+
+                    // Update the stock
+                    transaction.update(itemRef, { stock: newStock });
+                }
+
+                // Proceed with the purchase
+                const clientIp = await getClientIp();
+                await addDoc(collection(db, "purchaseHistory"), {
+                    cartItems,
+                    totalPrice: finalPrice,
+                    timestamp: new Date().toISOString(),
+                    clientIp, // Store client IP
+                    paymentMethod // Store payment method
+                });
             });
-            setPurchaseMessage(`¡Gracias por tu compra! Tu número de compra es ${docRef.id}.`);
+
+            setPurchaseMessage("¡Gracias por tu compra! Tu compra se ha completado con éxito.");
             clearCart();
             resetDiscount();
-        } catch (e) {
-            console.error("Error adding document: ", e);
+        } catch (error) {
+            console.error("Error al completar la compra: ", error);
+            setErrorMessage(error.message);
         } finally {
             setIsProcessing(false); // Set processing state to false
         }
@@ -134,6 +161,7 @@ const CartModalContainer = ({ isOpen, onClose }) => {
                                 isCartEmpty={cartItems.length === 0}
                             />
                             {purchaseMessage && <PurchaseMessage message={purchaseMessage} />}
+                            {errorMessage && <Alert message={errorMessage} type="alert-danger" />}
                         </>
                     )}
                 </div>
