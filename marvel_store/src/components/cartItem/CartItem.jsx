@@ -16,7 +16,7 @@ const CartItem = ({item, removeFromCart}) => (
 
 CartItem.propTypes = {
     item: PropTypes.object.isRequired,
-    removeFromCart: PropTypes.func.isRequired,
+    removeFromCart: PropTypes.func.isRequired
 };
 
 export default CartItem;

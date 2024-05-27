@@ -1,28 +1,24 @@
 import CartModal from "../cartModal/CartModal.jsx";
 import PaymentModal from "../paymentModal/PaymentModal.jsx";
-import { useCart } from "../../hooks/useCart.js";
+import {useCart} from "../../hooks/useCart.js";
 import PropTypes from "prop-types";
+import {useEffect, useState} from "react";
 import './CartModalContainer.css';
-import PriceDisplay from "../priceDisplay/PriceDisplay.jsx";
-import { useState, useEffect } from "react";
-import CartItem from "../cartItem/CartItem.jsx";
-import PurchaseMessage from "../purchaseMessage/PurchaseMessage.jsx";
-import CartActions from "../cartActions/CartActions.jsx";
-import { collection, addDoc, doc, runTransaction } from "firebase/firestore"; // Import Firebase functions
-import { db } from "../../firebase-config.js"; // Import Firestore db
-import { getClientIp } from "../../utils/utils.js"; // Import the function to get client IP
-import Loading from "../loading/Loading.jsx"; // Import the Loading component
-import Alert from "../alert/Alert.jsx"; // Import Alert component
+import {addDoc, collection, doc, runTransaction} from "firebase/firestore";
+import {db} from "../../firebase-config.js";
+import {getClientIp} from "../../utils/utils.js";
+import PurchaseProcessing from "../purchaseProcessing/PurchaseProcessing.jsx";
+import CartContent from "../cartContent/CartContent.jsx"; // Import the function to get client IP
 
-const CartModalContainer = ({ isOpen, onClose }) => {
-    const { cartItems, removeFromCart, clearCart } = useCart();
+const CartModalContainer = ({isOpen, onClose}) => {
+    const {cartItems, clearCart, removeFromCart} = useCart(); // Include removeFromCart
     const [purchaseMessage, setPurchaseMessage] = useState(null);
     const [isPaymentModalOpen, setPaymentModalOpen] = useState(false);
+    const [isProcessing, setIsProcessing] = useState(false); // State to handle purchase processing
+    const [errorMessage, setErrorMessage] = useState(null); // State to handle errors
     const [discountCode, setDiscountCode] = useState('');
     const [discountApplied, setDiscountApplied] = useState(false);
     const [discount, setDiscount] = useState(0);
-    const [isProcessing, setIsProcessing] = useState(false); // State to handle purchase processing
-    const [errorMessage, setErrorMessage] = useState(null); // State to handle errors
 
     const discountDictionary = {
         'DESCUENTO10': 0.1,
@@ -45,7 +41,6 @@ const CartModalContainer = ({ isOpen, onClose }) => {
         const confirmClear = window.confirm("¿Estás seguro que quieres vaciar el carrito?");
         if (confirmClear) {
             clearCart();
-            resetDiscount();
             setPurchaseMessage(null);
             setErrorMessage(null); // Clear previous error message
         }
@@ -60,8 +55,12 @@ const CartModalContainer = ({ isOpen, onClose }) => {
         setPaymentModalOpen(false); // Close the payment modal first
         setPurchaseMessage(null); // Clear previous purchase message
         setErrorMessage(null); // Clear previous error message
+
         try {
             await runTransaction(db, async (transaction) => {
+                const itemsToUpdate = [];
+                const stockErrors = [];
+
                 // Check stock for each item in the cart
                 for (const cartItem of cartItems) {
                     const itemRef = doc(db, "items", cartItem.id);
@@ -73,12 +72,21 @@ const CartModalContainer = ({ isOpen, onClose }) => {
 
                     const newStock = itemDoc.data().stock - cartItem.quantity;
                     if (newStock < 0) {
-                        throw new Error(`No hay suficiente stock para ${cartItem.name}`);
+                        stockErrors.push(`No hay suficiente stock para ${cartItem.name}`);
+                    } else {
+                        itemsToUpdate.push({ref: itemRef, newStock});
                     }
-
-                    // Update the stock
-                    transaction.update(itemRef, { stock: newStock });
                 }
+
+                // If there are stock errors, throw an error
+                if (stockErrors.length > 0) {
+                    throw new Error(stockErrors.join("\n"));
+                }
+
+                // Update the stock
+                itemsToUpdate.forEach(({ref, newStock}) => {
+                    transaction.update(ref, {stock: newStock});
+                });
 
                 // Proceed with the purchase
                 const clientIp = await getClientIp();
@@ -93,7 +101,6 @@ const CartModalContainer = ({ isOpen, onClose }) => {
 
             setPurchaseMessage("¡Gracias por tu compra! Tu compra se ha completado con éxito.");
             clearCart();
-            resetDiscount();
         } catch (error) {
             console.error("Error al completar la compra: ", error);
             setErrorMessage(error.message);
@@ -102,71 +109,36 @@ const CartModalContainer = ({ isOpen, onClose }) => {
         }
     };
 
-    const handleApplyDiscount = () => {
-        if (discountDictionary[discountCode]) {
+    const applyDiscount = (code) => {
+        setDiscountCode(code);
+        if (discountDictionary[code]) {
             setDiscountApplied(true);
         } else {
             alert('Código de descuento inválido');
         }
     };
 
-    const resetDiscount = () => {
-        setDiscountCode('');
-        setDiscount(0);
-        setDiscountApplied(false);
-    };
-
     return (
         <>
             <CartModal isOpen={isOpen} onClose={onClose}>
-                <div className="cart-content">
-                    <h2>Contenido de tu carrito</h2>
-                    {isProcessing ? (
-                        <Loading message="Procesando la compra..." />
-                    ) : (
-                        <>
-                            {cartItems.length > 0 ? (
-                                <ul className="cart-items-list">
-                                    {cartItems.map(item => (
-                                        <CartItem key={item.id} item={item} removeFromCart={removeFromCart} />
-                                    ))}
-                                </ul>
-                            ) : (
-                                <p>Carrito vacío.</p>
-                            )}
-                            <div className="cart-total">
-                                <strong>Total: <PriceDisplay price={totalPrice} /></strong>
-                            </div>
-                            {discountApplied && (
-                                <div className="discount">
-                                    <strong>Descuento aplicado: - <PriceDisplay price={discount} /></strong>
-                                </div>
-                            )}
-                            <div className="final-total">
-                                <strong>Total Final: <PriceDisplay price={finalPrice} /></strong>
-                            </div>
-                            <div className="discount-code">
-                                <input
-                                    type="text"
-                                    placeholder="Código de descuento"
-                                    value={discountCode}
-                                    onChange={(e) => setDiscountCode(e.target.value)}
-                                    disabled={discountApplied}
-                                />
-                                <button onClick={handleApplyDiscount} disabled={discountApplied}>Aplicar</button>
-                            </div>
-                            <CartActions
-                                handleClearCart={handleClearCart}
-                                handlePurchase={handlePurchase}
-                                isCartEmpty={cartItems.length === 0}
-                            />
-                            {purchaseMessage && <PurchaseMessage message={purchaseMessage} />}
-                            {errorMessage && <Alert message={errorMessage} type="alert-danger" />}
-                        </>
-                    )}
-                </div>
+                {isProcessing ? (
+                    <PurchaseProcessing/>
+                ) : (
+                    <CartContent
+                        cartItems={cartItems}
+                        handleClearCart={handleClearCart}
+                        handlePurchase={handlePurchase}
+                        purchaseMessage={purchaseMessage}
+                        errorMessage={errorMessage}
+                        discount={discount}
+                        finalPrice={finalPrice}
+                        applyDiscount={applyDiscount}
+                        removeFromCart={removeFromCart}
+                    />
+                )}
             </CartModal>
-            <PaymentModal isOpen={isPaymentModalOpen} onClose={() => setPaymentModalOpen(false)} onComplete={handlePaymentComplete} />
+            <PaymentModal isOpen={isPaymentModalOpen} onClose={() => setPaymentModalOpen(false)}
+                          onComplete={handlePaymentComplete}/>
         </>
     );
 };
