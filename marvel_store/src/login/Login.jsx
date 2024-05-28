@@ -1,6 +1,6 @@
 // src/components/Login.jsx
 import { useState } from 'react';
-import { useAuth } from '../components/authContext/AuthContext';
+import { useAuth } from '../contexts/authContext/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 

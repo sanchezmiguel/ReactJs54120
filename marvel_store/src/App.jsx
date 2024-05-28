@@ -13,7 +13,7 @@ import UnderConstruction from "./components/underConstruction/UnderConstruction.
 import Login from "./login/Login.jsx";
 import ProtectedRoute from "./protectedRoute/ProtectedRoute.jsx";
 import {ThemeProvider, useTheme} from "./contexts/ThemeContext.jsx";
-import {AuthProvider} from "./components/authContext/AuthContext.jsx";
+import {AuthProvider} from "./contexts/authContext/AuthContext.jsx";
 import ThemeToggle from "./components/themeToggle/ThemeToggle.jsx";
 import Signup from "./components/signup/Signup.jsx";
 import './utils/fontAwesome';

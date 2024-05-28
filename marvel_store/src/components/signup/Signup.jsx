@@ -2,7 +2,7 @@
 import { useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
-import {useAuth} from "../authContext/AuthContext.jsx";
+import {useAuth} from "../../contexts/authContext/AuthContext.jsx";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Signup = () => {

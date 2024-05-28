@@ -8,7 +8,8 @@ import {addDoc, collection, doc, runTransaction} from "firebase/firestore";
 import {db} from "../../firebase-config.js";
 import {getClientIp} from "../../utils/utils.js";
 import PurchaseProcessing from "../purchaseProcessing/PurchaseProcessing.jsx";
-import CartContent from "../cartContent/CartContent.jsx"; // Import the function to get client IP
+import CartContent from "../cartContent/CartContent.jsx";
+import {useAuth} from "../../contexts/authContext/AuthContext.jsx"; // Import the function to get client IP
 
 const CartModalContainer = ({isOpen, onClose}) => {
     const {cartItems, clearCart, removeFromCart} = useCart(); // Include removeFromCart
@@ -19,6 +20,7 @@ const CartModalContainer = ({isOpen, onClose}) => {
     const [discountCode, setDiscountCode] = useState('');
     const [discountApplied, setDiscountApplied] = useState(false);
     const [discount, setDiscount] = useState(0);
+    const { currentUser } = useAuth();
 
     const discountDictionary = {
         'DESCUENTO10': 0.1,
@@ -74,7 +76,7 @@ const CartModalContainer = ({isOpen, onClose}) => {
                     if (newStock < 0) {
                         stockErrors.push(`No hay suficiente stock para ${cartItem.name}`);
                     } else {
-                        itemsToUpdate.push({ref: itemRef, newStock});
+                        itemsToUpdate.push({ ref: itemRef, newStock });
                     }
                 }
 
@@ -84,8 +86,8 @@ const CartModalContainer = ({isOpen, onClose}) => {
                 }
 
                 // Update the stock
-                itemsToUpdate.forEach(({ref, newStock}) => {
-                    transaction.update(ref, {stock: newStock});
+                itemsToUpdate.forEach(({ ref, newStock }) => {
+                    transaction.update(ref, { stock: newStock });
                 });
 
                 // Proceed with the purchase
@@ -95,7 +97,8 @@ const CartModalContainer = ({isOpen, onClose}) => {
                     totalPrice: finalPrice,
                     timestamp: new Date().toISOString(),
                     clientIp, // Store client IP
-                    paymentMethod // Store payment method
+                    paymentMethod, // Store payment method
+                    userEmail: currentUser.email // Store the user's email
                 });
             });
 

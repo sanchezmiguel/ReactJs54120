@@ -8,7 +8,7 @@ import NavbarToggler from "../navbarToggler/NavbarToggler.jsx";
 import CartModalContainer from "../cartModalContainer/CartModalContainer.jsx";
 import {useEffect, useState} from "react";
 import {Link, useLocation, useNavigate} from "react-router-dom";
-import {useAuth} from "../authContext/AuthContext.jsx";
+import {useAuth} from "../../contexts/authContext/AuthContext.jsx";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 const Navbar = () => {
