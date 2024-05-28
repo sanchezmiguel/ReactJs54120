@@ -1,8 +1,8 @@
 // src/components/PurchaseHistory.jsx
-import {useEffect, useState} from 'react';
-import {collection, getDocs, query, where} from 'firebase/firestore';
-import {db} from "../../firebase-config.js";
-import {useAuth} from "../../contexts/authContext/AuthContext.jsx";
+import { useEffect, useState } from 'react';
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import { db } from "../../firebase-config.js";
+import { useAuth } from "../../contexts/authContext/AuthContext.jsx";
 import './PurchaseHistory.css';
 
 const PurchaseHistory = () => {
@@ -11,28 +11,26 @@ const PurchaseHistory = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchPurchaseHistory = async () => {
-            if (currentUser) {
-                try {
-                    const q = query(
-                        collection(db, 'purchaseHistory'),
-                        where('userEmail', '==', currentUser.email)
-                    );
-                    const querySnapshot = await getDocs(q);
+        if (currentUser) {
+            const q = query(
+                collection(db, 'purchaseHistory'),
+                where('userEmail', '==', currentUser.email)
+            );
+            getDocs(q)
+                .then((querySnapshot) => {
                     const purchases = querySnapshot.docs.map(doc => ({
                         id: doc.id,
                         ...doc.data()
                     }));
                     setPurchaseHistory(purchases);
-                } catch (error) {
+                })
+                .catch((error) => {
                     console.error('Error al obtener el historial de compras: ', error);
-                } finally {
+                })
+                .finally(() => {
                     setLoading(false);
-                }
-            }
-        };
-
-        fetchPurchaseHistory();
+                });
+        }
     }, [currentUser]);
 
     if (loading) {

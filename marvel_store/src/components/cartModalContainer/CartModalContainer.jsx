@@ -1,22 +1,23 @@
+// src/components/CartModalContainer.jsx
 import CartModal from "../cartModal/CartModal.jsx";
 import PaymentModal from "../paymentModal/PaymentModal.jsx";
-import {useCart} from "../../hooks/useCart.js";
+import { useCart } from "../../hooks/useCart.js";
 import PropTypes from "prop-types";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import './CartModalContainer.css';
-import {addDoc, collection, doc, runTransaction} from "firebase/firestore";
-import {db} from "../../firebase-config.js";
-import {getClientIp} from "../../utils/utils.js";
+import { addDoc, collection, doc, runTransaction } from "firebase/firestore";
+import { db } from "../../firebase-config.js";
+import { getClientIp } from "../../utils/utils.js";
 import PurchaseProcessing from "../purchaseProcessing/PurchaseProcessing.jsx";
 import CartContent from "../cartContent/CartContent.jsx";
-import {useAuth} from "../../contexts/authContext/AuthContext.jsx"; // Import the function to get client IP
+import { useAuth } from "../../contexts/authContext/AuthContext.jsx";
 
-const CartModalContainer = ({isOpen, onClose}) => {
-    const {cartItems, clearCart, removeFromCart} = useCart(); // Include removeFromCart
+const CartModalContainer = ({ isOpen, onClose }) => {
+    const { cartItems, clearCart, removeFromCart } = useCart();
     const [purchaseMessage, setPurchaseMessage] = useState(null);
     const [isPaymentModalOpen, setPaymentModalOpen] = useState(false);
-    const [isProcessing, setIsProcessing] = useState(false); // State to handle purchase processing
-    const [errorMessage, setErrorMessage] = useState(null); // State to handle errors
+    const [isProcessing, setIsProcessing] = useState(false);
+    const [errorMessage, setErrorMessage] = useState(null);
     const [discountCode, setDiscountCode] = useState('');
     const [discountApplied, setDiscountApplied] = useState(false);
     const [discount, setDiscount] = useState(0);
@@ -44,7 +45,7 @@ const CartModalContainer = ({isOpen, onClose}) => {
         if (confirmClear) {
             clearCart();
             setPurchaseMessage(null);
-            setErrorMessage(null); // Clear previous error message
+            setErrorMessage(null);
         }
     };
 
@@ -52,22 +53,19 @@ const CartModalContainer = ({isOpen, onClose}) => {
         setPaymentModalOpen(true);
     };
 
-    const handlePaymentComplete = async (paymentMethod) => {
-        setIsProcessing(true); // Set processing state to true
-        setPaymentModalOpen(false); // Close the payment modal first
-        setPurchaseMessage(null); // Clear previous purchase message
-        setErrorMessage(null); // Clear previous error message
+    const handlePaymentComplete = (paymentMethod) => {
+        setIsProcessing(true);
+        setPaymentModalOpen(false);
+        setPurchaseMessage(null);
+        setErrorMessage(null);
 
-        try {
-            await runTransaction(db, async (transaction) => {
-                const itemsToUpdate = [];
-                const stockErrors = [];
+        runTransaction(db, (transaction) => {
+            const itemsToUpdate = [];
+            const stockErrors = [];
 
-                // Check stock for each item in the cart
-                for (const cartItem of cartItems) {
-                    const itemRef = doc(db, "items", cartItem.id);
-                    const itemDoc = await transaction.get(itemRef);
-
+            const stockCheckPromises = cartItems.map((cartItem) => {
+                const itemRef = doc(db, "items", cartItem.id);
+                return transaction.get(itemRef).then((itemDoc) => {
                     if (!itemDoc.exists) {
                         throw new Error(`El artículo ${cartItem.name} no existe`);
                     }
@@ -78,38 +76,42 @@ const CartModalContainer = ({isOpen, onClose}) => {
                     } else {
                         itemsToUpdate.push({ ref: itemRef, newStock });
                     }
-                }
-
-                // If there are stock errors, throw an error
-                if (stockErrors.length > 0) {
-                    throw new Error(stockErrors.join("\n"));
-                }
-
-                // Update the stock
-                itemsToUpdate.forEach(({ ref, newStock }) => {
-                    transaction.update(ref, { stock: newStock });
-                });
-
-                // Proceed with the purchase
-                const clientIp = await getClientIp();
-                await addDoc(collection(db, "purchaseHistory"), {
-                    cartItems,
-                    totalPrice: finalPrice,
-                    timestamp: new Date().toISOString(),
-                    clientIp, // Store client IP
-                    paymentMethod, // Store payment method
-                    userEmail: currentUser.email // Store the user's email
                 });
             });
 
-            setPurchaseMessage("¡Gracias por tu compra! Tu compra se ha completado con éxito.");
-            clearCart();
-        } catch (error) {
-            console.error("Error al completar la compra: ", error);
-            setErrorMessage(error.message);
-        } finally {
-            setIsProcessing(false); // Set processing state to false
-        }
+            return Promise.all(stockCheckPromises)
+                .then(() => {
+                    if (stockErrors.length > 0) {
+                        throw new Error(stockErrors.join("\n"));
+                    }
+
+                    itemsToUpdate.forEach(({ ref, newStock }) => {
+                        transaction.update(ref, { stock: newStock });
+                    });
+
+                    return getClientIp().then((clientIp) => {
+                        return addDoc(collection(db, "purchaseHistory"), {
+                            cartItems,
+                            totalPrice: finalPrice,
+                            timestamp: new Date().toISOString(),
+                            clientIp,
+                            paymentMethod,
+                            userEmail: currentUser.email
+                        });
+                    });
+                });
+        })
+            .then(() => {
+                setPurchaseMessage("¡Gracias por tu compra! Tu compra se ha completado con éxito.");
+                clearCart();
+            })
+            .catch((error) => {
+                console.error("Error al completar la compra: ", error);
+                setErrorMessage(error.message);
+            })
+            .finally(() => {
+                setIsProcessing(false);
+            });
     };
 
     const applyDiscount = (code) => {
@@ -125,7 +127,7 @@ const CartModalContainer = ({isOpen, onClose}) => {
         <>
             <CartModal isOpen={isOpen} onClose={onClose}>
                 {isProcessing ? (
-                    <PurchaseProcessing/>
+                    <PurchaseProcessing />
                 ) : (
                     <CartContent
                         cartItems={cartItems}
@@ -140,8 +142,7 @@ const CartModalContainer = ({isOpen, onClose}) => {
                     />
                 )}
             </CartModal>
-            <PaymentModal isOpen={isPaymentModalOpen} onClose={() => setPaymentModalOpen(false)}
-                          onComplete={handlePaymentComplete}/>
+            <PaymentModal isOpen={isPaymentModalOpen} onClose={() => setPaymentModalOpen(false)} onComplete={handlePaymentComplete} />
         </>
     );
 };
