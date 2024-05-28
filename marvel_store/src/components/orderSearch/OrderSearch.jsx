@@ -14,9 +14,14 @@ const OrderSearch = () => {
     };
 
     const handleSearch = () => {
+        if (!orderId.trim()) {
+            setError('Por favor, ingrese un ID de orden válido.');
+            return;
+        }
+
         setError('');
         setOrder(null);
-        const orderRef = doc(db, 'purchaseHistory', orderId);
+        const orderRef = doc(db, 'purchaseHistory', orderId); // Asegúrate de que esta referencia es correcta
         getDoc(orderRef)
             .then(orderSnap => {
                 if (orderSnap.exists()) {
@@ -45,8 +50,7 @@ const OrderSearch = () => {
                 <div className="order-details">
                     <h3>Detalles de la Orden</h3>
                     <p><strong>ID de la Orden:</strong> {orderId}</p>
-
-                    <p><strong>Total:</strong> {order.totalPrice}</p>
+                    <p><strong>Total:</strong> {order.total}</p>
                     {order.items && order.items.map(item => (
                         <ItemDetail key={item.id} item={item} />
                     ))}

@@ -1,13 +1,12 @@
-/* src/components/purchaseHistoryWidget/PurchaseHistoryWidget.css */
-.history-icon {
-    width: 2.5rem;
-    height: 1.5rem;
-}
-
 .history-widget-container {
-    cursor: pointer;
+    position: relative;
     display: flex;
     align-items: center;
-    margin-right: 20px;
-    margin-left: 20px;
+}
+
+.nav-link-inner {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
 }

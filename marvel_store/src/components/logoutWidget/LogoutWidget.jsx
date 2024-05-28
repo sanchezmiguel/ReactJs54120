@@ -3,6 +3,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faSignOutAlt} from '@fortawesome/free-solid-svg-icons';
 import './LogoutWidget.css';
 import {useAuth} from '../../contexts/AuthContext.jsx';
+import NavLinkWrapper from "../navLinkWrapper/NavLinkWrapper.jsx";
 
 const LogoutWidget = () => {
     const {logout} = useAuth();
@@ -19,9 +20,10 @@ const LogoutWidget = () => {
     };
 
     return (
-        <div className='logout-widget-container' onClick={handleLogoutClick}>
-            <FontAwesomeIcon icon={faSignOutAlt} className='logout-icon'/>
-        </div>
+        <NavLinkWrapper className="logout-widget-container" onClick={handleLogoutClick}>
+            <FontAwesomeIcon icon={faSignOutAlt} className="nav-link-icon" />
+            <span className="nav-link-text">Cerrar Sesión</span>
+        </NavLinkWrapper>
     );
 };
 

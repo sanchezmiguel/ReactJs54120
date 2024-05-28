@@ -12,6 +12,7 @@ import WishlistWidget from "../wishlistWidget/WishlistWidget.jsx";
 import {useAuth} from "../../contexts/AuthContext.jsx";
 import CategoryDropdown from "../categoryDropdown/CategoryDropdown.jsx";
 import CartModalContainer from "../cartModalContainer/CartModalContainer.jsx";
+import OrderSearchLink from "../orderSearchLink/OrderSearchLink.jsx";
 
 const Navbar = () => {
     const [isCartModalOpen, setCartModalOpen] = useState(false);
@@ -47,9 +48,7 @@ const Navbar = () => {
                         <WishlistWidget/>
                         <PurchaseHistoryWidget/>
                         <CartWidget onClick={handleCartClick}/>
-                        <Link to="/order-search" className="nav-link">
-                            <FontAwesomeIcon icon="search"/> Buscar Orden
-                        </Link>
+                        <OrderSearchLink />
                         <LogoutWidget/>
                         <CartModalContainer isOpen={isCartModalOpen} onClose={handleCloseModal}/>
                     </>

@@ -1,17 +1,16 @@
-// src/components/purchaseHistoryWidget/PurchaseHistoryWidget.jsx
-import React, {useEffect, useState} from 'react';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faHistory} from '@fortawesome/free-solid-svg-icons';
+import { useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHistory } from '@fortawesome/free-solid-svg-icons';
 import './PurchaseHistoryWidget.css';
-import {useNavigate} from 'react-router-dom';
-import {useAuth} from '../../contexts/AuthContext.jsx';
-import {collection, getDocs, query, where} from 'firebase/firestore';
-import {db} from '../../firebase-config';
+import { Link } from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthContext.jsx';
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import { db } from '../../firebase-config';
+import NavLinkWrapper from "../navLinkWrapper/NavLinkWrapper.jsx";
 
 const PurchaseHistoryWidget = () => {
     const [hasPurchaseHistory, setHasPurchaseHistory] = useState(false);
-    const {currentUser} = useAuth();
-    const navigate = useNavigate();
+    const { currentUser } = useAuth();
 
     useEffect(() => {
         if (currentUser) {
@@ -38,14 +37,13 @@ const PurchaseHistoryWidget = () => {
         return null; // Do not render if there is no purchase history or the user is not logged in
     }
 
-    const handleHistoryClick = () => {
-        navigate('/purchase-history');
-    };
-
     return (
-        <div className="history-widget-container" onClick={handleHistoryClick}>
-            <FontAwesomeIcon icon={faHistory} className="history-icon"/>
-        </div>
+        <NavLinkWrapper className="history-widget-container">
+            <Link to="/purchase-history" className="nav-link-inner">
+                <FontAwesomeIcon icon={faHistory} className="nav-link-icon" />
+                <span className="nav-link-text">Historial de Compras</span>
+            </Link>
+        </NavLinkWrapper>
     );
 };
 

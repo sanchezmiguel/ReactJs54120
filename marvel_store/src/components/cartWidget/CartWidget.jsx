@@ -4,6 +4,7 @@ import {faShoppingCart} from '@fortawesome/free-solid-svg-icons';
 import './CartWidget.css';
 import {useCart} from '../../hooks/useCart';
 import {useAuth} from '../../contexts/AuthContext.jsx';
+import NavLinkWrapper from "../navLinkWrapper/NavLinkWrapper.jsx";
 
 const CartWidget = ({onClick}) => {
     const {cartItems} = useCart();
@@ -16,10 +17,13 @@ const CartWidget = ({onClick}) => {
     }
 
     return (
-        <div className="cart-widget-container" onClick={onClick}>
-            <FontAwesomeIcon icon={faShoppingCart} className="cart-icon"/>
-            <span className="cart-item-count">{totalItems}</span>
-        </div>
+        <NavLinkWrapper className="cart-widget-container" onClick={onClick}>
+            <FontAwesomeIcon icon={faShoppingCart} className="nav-link-icon" />
+            <span className="nav-link-text">Carrito</span>
+            {totalItems > 0 && (
+                <span className="nav-link-count">{totalItems}</span>
+            )}
+        </NavLinkWrapper>
     );
 };
 

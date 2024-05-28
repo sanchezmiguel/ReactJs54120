@@ -4,41 +4,9 @@
     align-items: center;
 }
 
-.wishlist-link {
+.nav-link-inner {
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: #333;
-    padding: 10px;
-    margin-left: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.wishlist-link:hover {
-    background-color: #f8f9fa;
-    color: #007bff;
-}
-
-.wishlist-icon {
-    font-size: 1.5rem;
-    margin-right: 5px;
-}
-
-.wishlist-text {
-    font-size: 1rem;
-    margin-right: 5px;
-}
-
-.wishlist-count {
-    background-color: red;
-    color: white;
-    border-radius: 50%;
-    padding: 0.2em 0.5em;
-    font-size: 0.9rem;
-    font-weight: bold;
-    position: absolute;
-    top: -5px;
-    right: -5px;
+    color: inherit;
 }
