@@ -1,14 +1,14 @@
 // src/components/ItemDetailContainer.jsx
-import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import {useEffect, useState} from 'react';
+import {useNavigate, useParams} from 'react-router-dom';
 import ItemDetail from "../itemDetail/ItemDetail.jsx";
 import Loading from "../loading/Loading.jsx";
 import Alert from "../alert/Alert.jsx";
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "../../firebase-config.js";
+import {doc, getDoc} from "firebase/firestore";
+import {db} from "../../firebase-config.js";
 
 const ItemDetailContainer = () => {
-    const { id } = useParams();
+    const {id} = useParams();
     const navigate = useNavigate();
     const [item, setItem] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -21,7 +21,7 @@ const ItemDetailContainer = () => {
             .then((docSnap) => {
                 if (docSnap.exists()) {
                     console.log(`Document found: ${docSnap.id}`); // Debug log
-                    setItem({ id: docSnap.id, ...docSnap.data() });
+                    setItem({id: docSnap.id, ...docSnap.data()});
                 } else {
                     console.log("No such document!");
                 }
@@ -35,11 +35,12 @@ const ItemDetailContainer = () => {
     }, [id]);
 
     if (loading) {
-        return <Loading />;
+        return <Loading/>;
     }
 
     if (!item) {
-        return <Alert message="Artículo no encontrado." type="alert-danger" onClose={() => console.log('Alerta cerrada')} />;
+        return <Alert message="Artículo no encontrado." type="alert-danger"
+                      onClose={() => console.log('Alerta cerrada')}/>;
     }
 
     const handleBack = () => {
@@ -47,7 +48,8 @@ const ItemDetailContainer = () => {
     };
 
     return (
-        <ItemDetail item={item} showAddToCart onAdd={() => { }} onBack={handleBack} />
+        <ItemDetail item={item} showAddToCart onAdd={() => {
+        }} onBack={handleBack}/>
     );
 };
 

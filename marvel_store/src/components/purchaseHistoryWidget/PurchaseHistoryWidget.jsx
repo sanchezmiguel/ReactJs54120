@@ -1,16 +1,16 @@
 // src/components/purchaseHistoryWidget/PurchaseHistoryWidget.jsx
-import React, { useEffect, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHistory } from '@fortawesome/free-solid-svg-icons';
+import React, {useEffect, useState} from 'react';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faHistory} from '@fortawesome/free-solid-svg-icons';
 import './PurchaseHistoryWidget.css';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../contexts/authContext/AuthContext';
-import { collection, getDocs, query, where } from 'firebase/firestore';
-import { db } from '../../firebase-config';
+import {useNavigate} from 'react-router-dom';
+import {useAuth} from '../../contexts/authContext/AuthContext';
+import {collection, getDocs, query, where} from 'firebase/firestore';
+import {db} from '../../firebase-config';
 
 const PurchaseHistoryWidget = () => {
     const [hasPurchaseHistory, setHasPurchaseHistory] = useState(false);
-    const { currentUser } = useAuth();
+    const {currentUser} = useAuth();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -44,7 +44,7 @@ const PurchaseHistoryWidget = () => {
 
     return (
         <div className="history-widget-container" onClick={handleHistoryClick}>
-            <FontAwesomeIcon icon={faHistory} className="history-icon" />
+            <FontAwesomeIcon icon={faHistory} className="history-icon"/>
         </div>
     );
 };

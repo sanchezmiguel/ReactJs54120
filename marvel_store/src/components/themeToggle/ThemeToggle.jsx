@@ -3,7 +3,7 @@ import {useTheme} from "../../contexts/ThemeContext.jsx";
 
 
 const ThemeToggle = () => {
-    const { theme, toggleTheme } = useTheme();
+    const {theme, toggleTheme} = useTheme();
 
     return (
         <button onClick={toggleTheme}>

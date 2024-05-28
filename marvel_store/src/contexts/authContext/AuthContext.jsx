@@ -1,12 +1,12 @@
 // AuthContext.jsx
-import { createContext, useContext, useState, useEffect } from 'react';
-import { onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import {createContext, useContext, useEffect, useState} from 'react';
+import {createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut} from 'firebase/auth';
 import PropTypes from 'prop-types';
-import { auth } from "../../firebase-config.js";
+import {auth} from "../../firebase-config.js";
 
 const AuthContext = createContext();
 
-export const AuthProvider = ({ children }) => {
+export const AuthProvider = ({children}) => {
     const [currentUser, setCurrentUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ currentUser, signup, login, logout }}>
+        <AuthContext.Provider value={{currentUser, signup, login, logout}}>
             {!loading && children}
         </AuthContext.Provider>
     );

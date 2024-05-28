@@ -1,9 +1,9 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import {createContext, useContext, useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 
 const WishlistContext = createContext();
 
-export const WishlistProvider = ({ children }) => {
+export const WishlistProvider = ({children}) => {
     const [wishlistItems, setWishlistItems] = useState(() => {
         const localData = localStorage.getItem('wishlistItems');
         return localData ? JSON.parse(localData) : [];
@@ -32,7 +32,7 @@ export const WishlistProvider = ({ children }) => {
     };
 
     return (
-        <WishlistContext.Provider value={{ wishlistItems, addToWishlist, removeFromWishlist, clearWishlist }}>
+        <WishlistContext.Provider value={{wishlistItems, addToWishlist, removeFromWishlist, clearWishlist}}>
             {children}
         </WishlistContext.Provider>
     );

@@ -1,7 +1,7 @@
 // Login.jsx
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../contexts/authContext/AuthContext.jsx';
+import {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
+import {useAuth} from '../../contexts/authContext/AuthContext.jsx';
 import AuthForm from "../authForm/AuthForm.jsx";
 import './Login.css';
 
@@ -9,7 +9,7 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const { login } = useAuth();
+    const {login} = useAuth();
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {

@@ -1,11 +1,11 @@
 // src/components/logoutWidget/LogoutWidget.jsx
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faSignOutAlt} from '@fortawesome/free-solid-svg-icons';
 import './LogoutWidget.css';
-import { useAuth } from '../../contexts/authContext/AuthContext.jsx';
+import {useAuth} from '../../contexts/authContext/AuthContext.jsx';
 
 const LogoutWidget = () => {
-    const { logout } = useAuth();
+    const {logout} = useAuth();
 
     const handleLogoutClick = () => {
         const confirmLogout = window.confirm('¿Estás seguro de que deseas cerrar sesión?');
@@ -20,7 +20,7 @@ const LogoutWidget = () => {
 
     return (
         <div className='logout-widget-container' onClick={handleLogoutClick}>
-            <FontAwesomeIcon icon={faSignOutAlt} className='logout-icon' />
+            <FontAwesomeIcon icon={faSignOutAlt} className='logout-icon'/>
         </div>
     );
 };

@@ -1,5 +1,5 @@
 // AuthForm.jsx
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import './AuthForm.css';
 
@@ -101,7 +101,7 @@ const AuthForm = ({
                 </div>
             </div>
             <button type="submit">
-                <FontAwesomeIcon icon={buttonIcon} /> {buttonText}
+                <FontAwesomeIcon icon={buttonIcon}/> {buttonText}
             </button>
         </form>
     );
@@ -134,10 +134,14 @@ AuthForm.defaultProps = {
     name: '',
     surname: '',
     phone: '',
-    setConfirmEmail: () => {},
-    setName: () => {},
-    setSurname: () => {},
-    setPhone: () => {},
+    setConfirmEmail: () => {
+    },
+    setName: () => {
+    },
+    setSurname: () => {
+    },
+    setPhone: () => {
+    },
     showName: false,
     showSurname: false,
     showPhone: false,

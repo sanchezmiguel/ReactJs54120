@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useState} from 'react';
 import PropTypes from 'prop-types';
 import ItemCount from "../itemCount/ItemCount.jsx";
 import './ItemDetail.css';
@@ -6,16 +6,16 @@ import Alert from "../alert/Alert.jsx";
 import PriceDisplay from "../priceDisplay/PriceDisplay.jsx";
 import StockMessage from "../stockMessage/StockMessage.jsx";
 import useCustomNavigate from "../../hooks/useCustomNavigate.js";
-import { useCart } from "../../hooks/useCart.js";
+import {useCart} from "../../hooks/useCart.js";
 
 import ItemTitle from "../itemTitle/ItemTitle.jsx";
 import {useWishlist} from "../wishlistContext/WishlistContext.jsx";
 
-function ItemDetail({ item }) {
+function ItemDetail({item}) {
     const [itemAdded, setItemAdded] = useState(false);
-    const { goBack } = useCustomNavigate();
-    const { addToCart } = useCart(); // Usar la función addToCart del contexto de carrito
-    const { addToWishlist } = useWishlist(); // Usar la función addToWishlist del contexto de wishlist
+    const {goBack} = useCustomNavigate();
+    const {addToCart} = useCart(); // Usar la función addToCart del contexto de carrito
+    const {addToWishlist} = useWishlist(); // Usar la función addToWishlist del contexto de wishlist
 
     const handleAdd = (quantity) => {
         addToCart(item, quantity); // Añadir ítem al carrito usando el contexto de carrito

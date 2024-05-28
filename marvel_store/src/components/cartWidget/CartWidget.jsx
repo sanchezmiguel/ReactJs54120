@@ -1,13 +1,13 @@
 // src/components/cartWidget/CartWidget.jsx
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faShoppingCart} from '@fortawesome/free-solid-svg-icons';
 import './CartWidget.css';
-import { useCart } from '../../hooks/useCart';
-import { useAuth } from '../../contexts/authContext/AuthContext';
+import {useCart} from '../../hooks/useCart';
+import {useAuth} from '../../contexts/authContext/AuthContext';
 
-const CartWidget = ({ onClick }) => {
-    const { cartItems } = useCart();
-    const { currentUser } = useAuth();
+const CartWidget = ({onClick}) => {
+    const {cartItems} = useCart();
+    const {currentUser} = useAuth();
     const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
 
 

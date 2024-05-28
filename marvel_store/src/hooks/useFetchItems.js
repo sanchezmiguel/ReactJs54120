@@ -1,5 +1,5 @@
-import { useState, useCallback } from 'react';
-import { collection, getDocs, limit, query, startAfter, where } from "firebase/firestore";
+import {useCallback, useState} from 'react';
+import {collection, getDocs, limit, query, startAfter, where} from "firebase/firestore";
 import {db} from "../firebase-config.js";
 
 
@@ -32,7 +32,7 @@ export const useFetchItems = (categoryId) => {
 
         getDocs(q)
             .then((querySnapshot) => {
-                const fetchedItems = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                const fetchedItems = querySnapshot.docs.map(doc => ({id: doc.id, ...doc.data()}));
                 setItems(prevItems => (clearItems ? fetchedItems : [...prevItems, ...fetchedItems]));
                 const lastVisibleDoc = querySnapshot.docs[querySnapshot.docs.length - 1];
                 setLastVisible(lastVisibleDoc);
@@ -46,5 +46,5 @@ export const useFetchItems = (categoryId) => {
             });
     }, [categoryId]);
 
-    return { items, loading, error, fetchItems, lastVisible };
+    return {items, loading, error, fetchItems, lastVisible};
 };

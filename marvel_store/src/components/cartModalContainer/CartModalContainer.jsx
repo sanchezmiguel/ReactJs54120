@@ -1,19 +1,19 @@
 // CartModalContainer.jsx
 import CartModal from "../cartModal/CartModal.jsx";
 import PaymentModal from "../paymentModal/PaymentModal.jsx";
-import { useCart } from "../../hooks/useCart.js";
+import {useCart} from "../../hooks/useCart.js";
 import PropTypes from "prop-types";
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import './CartModalContainer.css';
-import { addDoc, collection, doc, runTransaction } from "firebase/firestore";
-import { db } from "../../firebase-config.js";
-import { getClientIp } from "../../utils/utils.js";
+import {addDoc, collection, doc, runTransaction} from "firebase/firestore";
+import {db} from "../../firebase-config.js";
+import {getClientIp} from "../../utils/utils.js";
 import PurchaseProcessing from "../purchaseProcessing/PurchaseProcessing.jsx";
 import CartContent from "../cartContent/CartContent.jsx";
-import { useAuth } from "../../contexts/authContext/AuthContext.jsx";
+import {useAuth} from "../../contexts/authContext/AuthContext.jsx";
 
-const CartModalContainer = ({ isOpen, onClose }) => {
-    const { cartItems, clearCart, removeFromCart } = useCart();
+const CartModalContainer = ({isOpen, onClose}) => {
+    const {cartItems, clearCart, removeFromCart} = useCart();
     const [purchaseMessage, setPurchaseMessage] = useState(null);
     const [isPaymentModalOpen, setPaymentModalOpen] = useState(false);
     const [isProcessing, setIsProcessing] = useState(false);
@@ -21,7 +21,7 @@ const CartModalContainer = ({ isOpen, onClose }) => {
     const [discountCode, setDiscountCode] = useState('');
     const [discountApplied, setDiscountApplied] = useState(false);
     const [discount, setDiscount] = useState(0);
-    const { currentUser } = useAuth();
+    const {currentUser} = useAuth();
 
     const discountDictionary = {
         'DESCUENTO10': 0.1,
@@ -74,7 +74,7 @@ const CartModalContainer = ({ isOpen, onClose }) => {
                     if (newStock < 0) {
                         stockErrors.push(`No hay suficiente stock para ${cartItem.name}`);
                     } else {
-                        itemsToUpdate.push({ ref: itemRef, newStock });
+                        itemsToUpdate.push({ref: itemRef, newStock});
                     }
                 });
             });
@@ -85,8 +85,8 @@ const CartModalContainer = ({ isOpen, onClose }) => {
                 throw new Error(stockErrors.join("\n"));
             }
 
-            itemsToUpdate.forEach(({ ref, newStock }) => {
-                transaction.update(ref, { stock: newStock });
+            itemsToUpdate.forEach(({ref, newStock}) => {
+                transaction.update(ref, {stock: newStock});
             });
 
             const clientIp = await getClientIp();
@@ -128,7 +128,7 @@ const CartModalContainer = ({ isOpen, onClose }) => {
         <>
             <CartModal isOpen={isOpen} onClose={onClose}>
                 {isProcessing ? (
-                    <PurchaseProcessing />
+                    <PurchaseProcessing/>
                 ) : (
                     <CartContent
                         cartItems={cartItems}
@@ -143,7 +143,8 @@ const CartModalContainer = ({ isOpen, onClose }) => {
                     />
                 )}
             </CartModal>
-            <PaymentModal isOpen={isPaymentModalOpen} onClose={() => setPaymentModalOpen(false)} onComplete={handlePaymentComplete} />
+            <PaymentModal isOpen={isPaymentModalOpen} onClose={() => setPaymentModalOpen(false)}
+                          onComplete={handlePaymentComplete}/>
         </>
     );
 };

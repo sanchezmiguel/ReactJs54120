@@ -1,12 +1,12 @@
 // src/components/ProtectedRoute.jsx
-import { Navigate } from 'react-router-dom';
+import {Navigate} from 'react-router-dom';
 import {useAuth} from '../contexts/authContext/AuthContext';
 import PropTypes from "prop-types";
 
-const ProtectedRoute = ({ children }) => {
-    const { currentUser } = useAuth();
+const ProtectedRoute = ({children}) => {
+    const {currentUser} = useAuth();
 
-    return currentUser ? children : <Navigate to="/login" />;
+    return currentUser ? children : <Navigate to="/login"/>;
 };
 
 ProtectedRoute.propTypes = {

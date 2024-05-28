@@ -1,12 +1,12 @@
 // src/components/PurchaseHistory.jsx
-import { useEffect, useState } from 'react';
-import { collection, getDocs, query, where } from 'firebase/firestore';
-import { db } from "../../firebase-config.js";
-import { useAuth } from "../../contexts/authContext/AuthContext.jsx";
+import {useEffect, useState} from 'react';
+import {collection, getDocs, query, where} from 'firebase/firestore';
+import {db} from "../../firebase-config.js";
+import {useAuth} from "../../contexts/authContext/AuthContext.jsx";
 import './PurchaseHistory.css';
 
 const PurchaseHistory = () => {
-    const { currentUser } = useAuth();
+    const {currentUser} = useAuth();
     const [purchaseHistory, setPurchaseHistory] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -48,9 +48,11 @@ const PurchaseHistory = () => {
                         <div key={purchase.id} className="card">
                             <div className="card-body">
                                 <h5 className="card-title">Fecha: {new Date(purchase.timestamp).toLocaleString()}</h5>
-                                <h6 className="card-subtitle mb-2 text-muted">Total: ${purchase.totalPrice.toFixed(2)}</h6>
+                                <h6 className="card-subtitle mb-2 text-muted">Total:
+                                    ${purchase.totalPrice.toFixed(2)}</h6>
                                 <p className="card-text">Método de Pago: {purchase.paymentMethod}</p>
-                                <p className="card-text">ID de la Compra: {purchase.id}</p> {/* Mostrar ID de la compra */}
+                                <p className="card-text">ID de la
+                                    Compra: {purchase.id}</p> {/* Mostrar ID de la compra */}
                                 <ul className="list-group list-group-flush">
                                     {purchase.cartItems.map(item => (
                                         <li key={item.id} className="list-group-item">
