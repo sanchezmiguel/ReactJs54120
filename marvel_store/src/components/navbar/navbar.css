@@ -2,28 +2,10 @@
 
 .navbar {
     background-color: #8b0000; /* Cambia el color de fondo del navbar al rojo característico de Marvel */
-    padding: 15px 0; /* Espaciado interno del navbar */
+    border-bottom: 1px solid #ddd;
+    padding: 10px 20px;
 }
 
-.navbar-nav .nav-item {
-    margin-right: 20px; /* Espaciado entre elementos del navbar */
-}
-
-.navbar-nav .nav-link {
-    font-size: 18px; /* Tamaño de fuente de los enlaces */
-    color: #aaa; /* Color de texto de los enlaces */
-    transition: all 0.3s ease; /* Transición suave */
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
-}
-
-.navbar-nav .nav-link:hover {
-    color: #ffffff; /* Color de texto al hacer hover */
-    background-color: rgba(255, 255, 255, 0.2); /* Fondo al hacer hover */
-    border-radius: 5px; /* Bordes redondeados al hacer hover */
-}
-.navbar .ml-auto > * {
-    margin-left: 15px;
-}
 .navbar-left {
     display: flex;
     align-items: center;
@@ -33,4 +15,39 @@
     display: flex;
     align-items: center;
     margin-left: auto;
+}
+
+.navbar-right .nav-link,
+.navbar-right .wishlist-link {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-left: 10px;
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar-right .nav-link:hover,
+.navbar-right .wishlist-link:hover {
+    background-color: #f8f9fa;
+    color: #007bff;
+}
+
+.navbar-left .dropdown-toggle {
+    margin-right: 15px;
+}
+
+.navbar-right .btn {
+    margin-left: 10px;
+}
+
+.brand-logo {
+    margin-right: 20px;
+}
+
+.navbar-toggler {
+    margin-right: 15px;
 }

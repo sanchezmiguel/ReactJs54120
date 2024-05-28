@@ -5,7 +5,7 @@ import './CategoryDropdown.css';
 const CategoryDropdown = () => {
     const { categories } = useCategories();
 
-    console.log('Rendering CategoryDropdown with categories: ', categories);
+    // console.log('Rendering CategoryDropdown with categories: ', categories);
 
     return (
         <div className="dropdown">

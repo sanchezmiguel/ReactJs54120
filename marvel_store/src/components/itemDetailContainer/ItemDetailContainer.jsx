@@ -15,12 +15,12 @@ const ItemDetailContainer = () => {
 
     useEffect(() => {
         setLoading(true);
-        console.log(`Fetching details for item with ID: ${id}`); // Debug log
+        // console.log(`Fetching details for item with ID: ${id}`); // Debug log
         const docRef = doc(db, "items", id);
         getDoc(docRef)
             .then((docSnap) => {
                 if (docSnap.exists()) {
-                    console.log(`Document found: ${docSnap.id}`); // Debug log
+                    // console.log(`Document found: ${docSnap.id}`); // Debug log
                     setItem({id: docSnap.id, ...docSnap.data()});
                 } else {
                     console.log("No such document!");

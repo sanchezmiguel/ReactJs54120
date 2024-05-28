@@ -6,7 +6,7 @@ const useCustomNavigate = () => {
 
     const goBack = () => {
         // Potentially add logging here
-        console.log('Navigating back');
+        // console.log('Navigating back');
         navigate(-1);
     };
 

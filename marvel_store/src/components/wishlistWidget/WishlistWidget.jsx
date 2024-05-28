@@ -1,18 +1,23 @@
-import {Link} from 'react-router-dom';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {useWishlist} from "../../contexts/WishlistContext.jsx";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
+import { useWishlist } from '../../contexts/WishlistContext.jsx';
+import './WishlistWidget.css';
 
 const WishlistWidget = () => {
-    const {wishlistItems} = useWishlist();
-
-    if (wishlistItems.length === 0) {
-        return null;
-    }
+    const { wishlistItems } = useWishlist();
+    const itemCount = wishlistItems.length;
 
     return (
-        <Link to="/wishlist" className="wishlist-widget">
-            <FontAwesomeIcon icon="heart"/> Wishlist ({wishlistItems.length})
-        </Link>
+        <div className="wishlist-widget">
+            <Link to="/wishlist" className="wishlist-link">
+                <FontAwesomeIcon icon={faHeart} className="wishlist-icon" />
+                <span className="wishlist-text">Wishlist</span>
+                {itemCount > 0 && (
+                    <span className="wishlist-count">{itemCount}</span>
+                )}
+            </Link>
+        </div>
     );
 };
 

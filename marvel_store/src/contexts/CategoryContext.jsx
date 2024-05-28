@@ -11,10 +11,10 @@ export const CategoryProvider = ({ children }) => {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                console.log('Fetching categories from Firestore...');
+                // console.log('Fetching categories from Firestore...');
                 const querySnapshot = await getDocs(collection(db, 'categories'));
                 const categoriesList = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-                console.log('Categories fetched: ', categoriesList);
+                // console.log('Categories fetched: ', categoriesList);
                 setCategories(categoriesList);
             } catch (error) {
                 console.error('Error fetching categories: ', error);
