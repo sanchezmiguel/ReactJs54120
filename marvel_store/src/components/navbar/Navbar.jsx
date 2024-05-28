@@ -10,6 +10,8 @@ import {useEffect, useState} from "react";
 import {Link, useLocation, useNavigate} from "react-router-dom";
 import {useAuth} from "../../contexts/authContext/AuthContext.jsx";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import PurchaseHistoryWidget from "../purchaseHistoryWidget/PurchaseHistoryWidget.jsx";
+import LogoutWidget from "../logoutWidget/LogoutWidget.jsx";
 
 const Navbar = () => {
     const [isCartModalOpen, setCartModalOpen] = useState(false);
@@ -44,13 +46,9 @@ const Navbar = () => {
             {currentUser ? (
                 <>
                     <CartWidget/>
+                    <PurchaseHistoryWidget />
+                    <LogoutWidget />
                     <CartModalContainer isOpen={isCartModalOpen} onClose={handleCloseModal}/>
-                    <Link to="/purchase-history">
-                        <FontAwesomeIcon icon="history" /> Historial de Compras
-                    </Link>
-                    <button onClick={handleLogout}>
-                        <FontAwesomeIcon icon="sign-out-alt"/> Cerrar Sesión
-                    </button>
                 </>
             ) : (
                 <>

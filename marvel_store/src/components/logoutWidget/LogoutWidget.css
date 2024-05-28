@@ -1,0 +1,12 @@
+/* src/components/logoutWidget/LogoutWidget.css */
+.logout-icon {
+    width: 2.5rem;
+    height: 1.5rem;
+}
+
+.logout-widget-container {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
