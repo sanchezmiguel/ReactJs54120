@@ -1,20 +1,20 @@
-import {Link} from "react-router-dom";
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import './CategoryLink.css';
 
-function CategoryLink({to, children}) {
+const CategoryLink = ({ category }) => {
     return (
-        <li className='nav-item'>
-            <Link className='nav-link' to={to}>
-                {children}
-            </Link>
-        </li>
+        <Link to={`/categories/${category.key}`} className="category-link">
+            {category.description}
+        </Link>
     );
-}
+};
 
-// Define PropTypes for CategoryLink
 CategoryLink.propTypes = {
-    to: PropTypes.string.isRequired,
-    children: PropTypes.node.isRequired
+    category: PropTypes.shape({
+        key: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired
+    }).isRequired
 };
 
 export default CategoryLink;

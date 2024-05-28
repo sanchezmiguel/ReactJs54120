@@ -14,6 +14,7 @@ Marvel Store es una aplicación de comercio electrónico construida usando React
 - **Gestión de Stock en Tiempo Real**: Asegura que el stock se actualice en tiempo real para evitar sobreventas.
 - **Historial de Compras**: Rastrea compras anteriores y gestiona pedidos.
 - **Wishlist**: Permite a los usuarios guardar productos para comprar en otro momento. Los productos pueden ser añadidos a la wishlist desde el detalle o el listado y pueden ser gestionados desde un widget en el navbar.
+- - **Categorías Dinámicas**: Las categorías de productos se cargan de forma dinámica desde Firebase, permitiendo una fácil actualización y gestión de las mismas.
 - **Diseño Responsivo**: La aplicación está optimizada tanto para dispositivos de escritorio como móviles.
 
 ## Dependencias del Proyecto Marvel Store
@@ -97,7 +98,6 @@ Axios es una biblioteca para realizar solicitudes HTTP desde Node.js o XMLHttpRe
 
 ### Componentes Funcionales
 
-- **CategoryList.jsx**: Muestra una lista de categorías de productos.
 - **CategoryLink.jsx**: Componente para enlaces de navegación de categorías.
 - **ItemListContainer.jsx**: Contenedor para mostrar una lista de artículos, obteniendo datos de Firebase.
 - **ItemList.jsx**: Muestra una cuadrícula de artículos, cada uno enlazando a su página de detalles.

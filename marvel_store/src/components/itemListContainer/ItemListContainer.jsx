@@ -1,43 +1,48 @@
-import {useEffect} from "react";
-import {useParams} from "react-router-dom";
-import ItemList from "../itemList/ItemList.jsx";
-import Loading from "../loading/Loading.jsx";
-import Alert from "../alert/Alert.jsx";
-import {useFetchItems} from '../../hooks/useFetchItems';
-import './itemListContainer.css';
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { db } from '../../firebase-config';
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import ItemList from '../itemList/ItemList.jsx';
+import Loading from '../loading/Loading.jsx';
+import './ItemListContainer.css';
 
-export const ItemListContainer = ({greeting}) => {
-    const {categoryId} = useParams();
-    const {items, loading, error, fetchItems, lastVisible} = useFetchItems(categoryId);
+export const ItemListContainer = ({ greeting }) => {
+    const [items, setItems] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const { categoryKey } = useParams(); // Obtener la categoría seleccionada de los parámetros de la URL
 
     useEffect(() => {
-        fetchItems(null, true);  // Clear items and fetch the first 10 elements
-    }, [categoryId]);
+        const fetchItems = () => {
+            setLoading(true);
+            const itemsCollection = collection(db, 'items');
+            let itemsQuery;
 
-    const handleAdd = (quantity, item) => {
-        console.log(`Añadido ${quantity} de ${item.name} al carrito.`);
-    };
+            if (categoryKey) {
+                itemsQuery = query(itemsCollection, where('category', '==', categoryKey));
+            } else {
+                itemsQuery = itemsCollection;
+            }
 
-    if (loading && items.length === 0) {
-        return <Loading/>;
-    }
-    if (error) {
-        return <Alert message={<span>No se pudieron cargar los elementos. <FontAwesomeIcon icon={faFrown}/></span>}
-                      type="alert-danger"/>;
-    }
+            return getDocs(itemsQuery)
+                .then(snapshot => {
+                    const itemList = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                    setItems(itemList);
+                })
+                .catch(error => {
+                    console.error('Error fetching items: ', error);
+                })
+                .finally(() => {
+                    setLoading(false);
+                });
+        };
+
+        fetchItems();
+    }, [categoryKey]);
 
     return (
-        <div className="item-container">
-            <h2>{greeting}</h2>
-            <ItemList items={items} onAdd={handleAdd}/>
-            {lastVisible && (
-                <button onClick={() => fetchItems(lastVisible)} disabled={loading}>
-                    {loading ? 'Cargando...' : 'Cargar más'}
-                </button>
-            )}
+        <div className="item-list-container">
+            <h1>{greeting}</h1>
+            {loading ? <Loading /> : <ItemList items={items} />}
         </div>
     );
 };
-
-export default ItemListContainer;
