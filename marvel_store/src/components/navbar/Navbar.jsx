@@ -7,12 +7,15 @@ import CategoryList from "../categoryList/CategoryList.jsx";
 import NavbarToggler from "../navbarToggler/NavbarToggler.jsx";
 import CartModalContainer from "../cartModalContainer/CartModalContainer.jsx";
 import {useEffect, useState} from "react";
-import {useLocation, useNavigate} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
+import {useAuth} from "../authContext/AuthContext.jsx";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 const Navbar = () => {
     const [isCartModalOpen, setCartModalOpen] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
+    const {currentUser, logout} = useAuth();
 
     useEffect(() => {
         if (location.pathname === "/cart") {
@@ -32,6 +35,21 @@ const Navbar = () => {
             <CategoryList/>
             <CartWidget/>
             <CartModalContainer isOpen={isCartModalOpen} onClose={handleCloseModal}/>
+
+            {currentUser ? (
+                <button onClick={logout}>
+                    <FontAwesomeIcon icon="sign-out-alt"/> Logout
+                </button>
+            ) : (
+                <>
+                    <Link to="/login">
+                        <FontAwesomeIcon icon="sign-in-alt"/> Login
+                    </Link>
+                    <Link to="/signup">
+                        <FontAwesomeIcon icon="user-plus"/> Sign Up
+                    </Link>
+                </>
+            )}
         </nav>
     );
 };
