@@ -1,57 +1,15 @@
-// src/components/ItemListContainer.jsx
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 import ItemList from "../itemList/ItemList.jsx";
-import { useEffect, useState } from "react";
 import Loading from "../loading/Loading.jsx";
 import Alert from "../alert/Alert.jsx";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFrown } from '@fortawesome/free-solid-svg-icons';
-import { useParams } from "react-router-dom";
-import { collection, getDocs, limit, query, startAfter, where } from "firebase/firestore";
-import { db } from "../../firebase-config.js";
+import { useFetchItems } from '../../hooks/useFetchItems';
+import './itemListContainer.css';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
-export const ItemListContainer = () => {
+export const ItemListContainer = ({ greeting }) => {
     const { categoryId } = useParams();
-    const [items, setItems] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
-    const [lastVisible, setLastVisible] = useState(null);
-
-    const fetchItems = (startAfterDoc = null, clearItems = false) => {
-        setLoading(true);
-        setError(false);
-
-        const q = categoryId
-            ? startAfterDoc
-                ? query(
-                    collection(db, "items"),
-                    where("category", "==", categoryId),
-                    startAfter(startAfterDoc),
-                    limit(10)
-                )
-                : query(
-                    collection(db, "items"),
-                    where("category", "==", categoryId),
-                    limit(10)
-                )
-            : startAfterDoc
-                ? query(collection(db, "items"), startAfter(startAfterDoc), limit(10))
-                : query(collection(db, "items"), limit(10));
-
-        getDocs(q)
-            .then((querySnapshot) => {
-                const fetchedItems = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-                setItems(prevItems => (clearItems ? fetchedItems : [...prevItems, ...fetchedItems]));
-                const lastVisibleDoc = querySnapshot.docs[querySnapshot.docs.length - 1];
-                setLastVisible(lastVisibleDoc);
-            })
-            .catch((error) => {
-                console.error('[Item List Container] Error fetching items:', error);
-                setError(true);
-            })
-            .finally(() => {
-                setLoading(false);
-            });
-    };
+    const { items, loading, error, fetchItems, lastVisible } = useFetchItems(categoryId);
 
     useEffect(() => {
         fetchItems(null, true);  // Clear items and fetch the first 10 elements
@@ -70,6 +28,7 @@ export const ItemListContainer = () => {
 
     return (
         <div className="item-container">
+            <h2>{greeting}</h2>
             <ItemList items={items} onAdd={handleAdd} />
             {lastVisible && (
                 <button onClick={() => fetchItems(lastVisible)} disabled={loading}>

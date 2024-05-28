@@ -1,17 +1,16 @@
-// src/components/navbar/Navbar.jsx
+import {memo, useEffect, useState} from 'react';
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useAuth } from "../../contexts/authContext/AuthContext";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './navbar.css';
 import CartWidget from '../cartWidget/CartWidget';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import BrandLogo from "../brandLogo/BrandLogo";
 import CategoryList from "../categoryList/CategoryList";
 import NavbarToggler from "../navbarToggler/NavbarToggler";
 import CartModalContainer from "../cartModalContainer/CartModalContainer";
 import PurchaseHistoryWidget from '../purchaseHistoryWidget/PurchaseHistoryWidget';
 import LogoutWidget from '../logoutWidget/LogoutWidget';
-import { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useAuth } from "../../contexts/authContext/AuthContext";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Navbar = () => {
     const [isCartModalOpen, setCartModalOpen] = useState(false);
@@ -60,4 +59,4 @@ const Navbar = () => {
     );
 };
 
-export default Navbar;
+export default memo(Navbar);
