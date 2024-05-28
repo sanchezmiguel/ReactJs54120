@@ -6,3 +6,7 @@
 .dropdown-item {
     cursor: pointer;
 }
+
+.btn-dropdown-toggle{
+    color: #f8f9fa;
+}

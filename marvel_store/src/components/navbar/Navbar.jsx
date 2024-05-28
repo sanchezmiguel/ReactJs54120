@@ -13,6 +13,7 @@ import {useAuth} from "../../contexts/AuthContext.jsx";
 import CategoryDropdown from "../categoryDropdown/CategoryDropdown.jsx";
 import CartModalContainer from "../cartModalContainer/CartModalContainer.jsx";
 import OrderSearchLink from "../orderSearchLink/OrderSearchLink.jsx";
+import AuthLink from "../authLink/AuthLink.jsx";
 
 const Navbar = () => {
     const [isCartModalOpen, setCartModalOpen] = useState(false);
@@ -45,21 +46,20 @@ const Navbar = () => {
             <div className="navbar-right ml-auto">
                 {currentUser ? (
                     <>
-                        <WishlistWidget/>
+
                         <PurchaseHistoryWidget/>
-                        <CartWidget onClick={handleCartClick}/>
                         <OrderSearchLink />
+                        <WishlistWidget/>
+                        <CartWidget onClick={handleCartClick}/>
                         <LogoutWidget/>
                         <CartModalContainer isOpen={isCartModalOpen} onClose={handleCloseModal}/>
                     </>
                 ) : (
                     <>
-                        <Link to="/login" className="nav-link">
-                            <FontAwesomeIcon icon="sign-in-alt"/> Iniciar Sesión
-                        </Link>
-                        <Link to="/signup" className="nav-link">
-                            <FontAwesomeIcon icon="user-plus"/> Registrarse
-                        </Link>
+                        <>
+                            <AuthLink to="/login" icon="sign-in-alt" text="Iniciar Sesión" />
+                            <AuthLink to="/signup" icon="user-plus" text="Registrarse" />
+                        </>
                     </>
                 )}
             </div>

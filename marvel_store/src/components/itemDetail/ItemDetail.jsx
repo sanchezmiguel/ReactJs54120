@@ -39,8 +39,11 @@ function ItemDetail({item}) {
 
                 <button className="btn btn-outline-primary mt-2" onClick={() => addToWishlist(item)}>Agregar a Wishlist
                 </button>
-                <button className="btn btn-secondary mt-2" onClick={goBack}>Volver</button>
+
                 <StockMessage stock={item.stock}/>
+
+                <button className="btn btn-secondary mt-2" onClick={goBack}>Volver</button>
+
             </div>
         </div>
     );
