@@ -1,29 +1,28 @@
 import { useState } from 'react';
-
+import { useAuth } from '../../contexts/authContext/AuthContext.jsx';
 import { useNavigate } from 'react-router-dom';
-import {useAuth} from "../../contexts/authContext/AuthContext.jsx";
 import AuthForm from "../authForm/AuthForm.jsx";
-import './Signup.css';
+import './Login.css';
 
-const Signup = () => {
+const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const { signup } = useAuth();
+    const { login } = useAuth();
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
         setError('');
 
-        signup(email, password)
+        login(email, password)
             .then(() => navigate('/'))
-            .catch(() => setError('No se pudo crear la cuenta'));
+            .catch(() => setError('No se pudo iniciar sesión'));
     };
 
     return (
-        <div className="signup-container">
-            <h2>Registrarse</h2>
+        <div className="login-container">
+            <h2>Iniciar Sesión</h2>
             {error && <p className="error">{error}</p>}
             <AuthForm
                 email={email}
@@ -31,10 +30,11 @@ const Signup = () => {
                 setEmail={setEmail}
                 setPassword={setPassword}
                 handleSubmit={handleSubmit}
-                buttonText="Registrarse"
-                buttonIcon="user-plus"
+                buttonText="Iniciar Sesión"
+                buttonIcon="sign-in-alt"
             />
         </div>
     );
 };
-export default Signup;
+
+export default Login;

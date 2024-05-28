@@ -27,22 +27,29 @@ const Navbar = () => {
         setCartModalOpen(false);
         navigate(-1); // navigate back after closing modal
     };
-
+    const handleLogout = () => {
+        const confirmLogout = window.confirm('¿Estás seguro de que deseas cerrar sesión?');
+        if (confirmLogout) {
+            logout();
+        }
+    };
     return (
         <nav className='navbar navbar-expand-lg navbar-light'>
             <BrandLogo/>
             <NavbarToggler/>
             <CategoryList/>
-            <CartWidget/>
-            <CartModalContainer isOpen={isCartModalOpen} onClose={handleCloseModal}/>
+
+
 
             {currentUser ? (
                 <>
+                    <CartWidget/>
+                    <CartModalContainer isOpen={isCartModalOpen} onClose={handleCloseModal}/>
                     <Link to="/purchase-history">
                         <FontAwesomeIcon icon="history" /> Historial de Compras
                     </Link>
-                    <button onClick={logout}>
-                        <FontAwesomeIcon icon="sign-out-alt" /> Cerrar Sesión
+                    <button onClick={handleLogout}>
+                        <FontAwesomeIcon icon="sign-out-alt"/> Cerrar Sesión
                     </button>
                 </>
             ) : (

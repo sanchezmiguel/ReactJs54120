@@ -1,0 +1,68 @@
+/* src/components/AuthForm.css */
+.auth-form-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: #f8f9fa;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.auth-form-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    width: 100%;
+}
+
+.auth-form-container form div {
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.auth-form-container label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #fff;
+    width: 30%; /* Adjust label width */
+    text-align: right; /* Align label text to the right */
+    margin-right: 10px; /* Add margin to separate from input */
+}
+
+.auth-form-container input {
+    width: 70%; /* Adjust input width */
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    color: #333;
+}
+
+.auth-form-container button {
+    width: 100%;
+    padding: 12px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+}
+
+.auth-form-container button:hover {
+    background: #0056b3;
+}
+
+.auth-form-container button svg {
+    margin-right: 8px;
+}

@@ -10,7 +10,7 @@ import ErrorBoundary from "./components/errorBoundary/ErrorBoundary.jsx";
 import {CartProvider} from "./contexts/CartContext.jsx";
 import Footer from "./components/footer/Footer.jsx";
 import UnderConstruction from "./components/underConstruction/UnderConstruction.jsx";
-import Login from "./login/Login.jsx";
+import Login from "./components/login/Login.jsx";
 import ProtectedRoute from "./protectedRoute/ProtectedRoute.jsx";
 import {ThemeProvider, useTheme} from "./contexts/ThemeContext.jsx";
 import {AuthProvider} from "./contexts/authContext/AuthContext.jsx";
