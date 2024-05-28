@@ -3,21 +3,20 @@
 ## Descripción
 
 Esta es una aplicación web para una tienda de artículos de Marvel, creada por **Pablo Miguel Sánchez**. La aplicación permite a los usuarios navegar, visualizar y comprar una variedad de productos temáticos de Marvel. A continuación se describen las funcionalidades principales de la aplicación.
-
+Se cumple con todos los requerimientos base y con la mayoria de los requerimientos extra.
 Marvel Store es una aplicación de comercio electrónico construida usando React y Firebase. La aplicación permite a los usuarios navegar, buscar y comprar productos temáticos de Marvel, incluyendo cómics, juguetes y accesorios. La aplicación soporta funcionalidades como autenticación de usuarios, gestión del carrito de compras y actualizaciones de stock en tiempo real.
 
 ## Funcionalidades
 
-- **Autenticación de Usuarios**: Los usuarios pueden registrarse, iniciar sesión y cerrar sesión.
+- **Autenticación de Usuarios**: Los usuarios pueden registrarse, iniciar sesión y cerrar sesión. La autenticación de usuarios se implementa utilizando los servicios de autenticación de Firebase, lo que evita el flujo de email tradicional y permite un inicio de sesión más seguro y conveniente.
 - **Navegación de Productos**: Navegar productos por categoría, buscar artículos específicos y ver información detallada de cada producto.
 - **Carrito de Compras**: Agregar productos al carrito, ajustar cantidades y eliminar artículos.
 - **Gestión de Stock en Tiempo Real**: Asegura que el stock se actualice en tiempo real para evitar sobreventas.
-- **Historial de Compras**: Rastrea compras anteriores y gestiona pedidos.
+- **Historial de Compras**: Rastrea compras anteriores y gestiona pedidos. Permite a los usuarios ver un historial de sus compras anteriores.
 - **Wishlist**: Permite a los usuarios guardar productos para comprar en otro momento. Los productos pueden ser añadidos a la wishlist desde el detalle o el listado y pueden ser gestionados desde un widget en el navbar.
 - **Categorías Dinámicas**: Las categorías de productos se cargan de forma dinámica desde Firebase, permitiendo una fácil actualización y gestión de las mismas.
 - **Diseño Responsivo**: La aplicación está optimizada tanto para dispositivos de escritorio como móviles.
 - **Buscar Orden**: Permite a los usuarios buscar detalles de una orden utilizando el ID de la compra.
-- **Listado de Compras**: Permite a los usuarios ver un historial de sus compras anteriores.
 
 
 ## Dependencias del Proyecto Marvel Store
