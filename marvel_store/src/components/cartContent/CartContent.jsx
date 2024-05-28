@@ -5,6 +5,7 @@ import Alert from "../alert/Alert.jsx";
 import CartActions from "../cartActions/CartActions.jsx";
 import CartTotal from "../cartTotal/CartTotal.jsx";
 import DiscountCodeInput from "../discountCodeInput/DiscountCodeInput.jsx";
+import { useAuth } from "../../contexts/authContext/AuthContext.jsx";
 
 const CartContent = ({
                          cartItems,
@@ -17,9 +18,14 @@ const CartContent = ({
                          applyDiscount,
                          removeFromCart
                      }) => {
+    const { currentUser } = useAuth(); // Obtener el usuario logueado
+
     return (
         <div className="cart-content">
             <h2>Contenido de tu carrito</h2>
+            {currentUser && (
+                <p>Comprar como {currentUser.email}</p>
+            )}
             {cartItems.length > 0 ? (
                 <>
                     <ul className="cart-items-list">
