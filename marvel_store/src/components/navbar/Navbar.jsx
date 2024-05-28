@@ -37,9 +37,14 @@ const Navbar = () => {
             <CartModalContainer isOpen={isCartModalOpen} onClose={handleCloseModal}/>
 
             {currentUser ? (
-                <button onClick={logout}>
-                    <FontAwesomeIcon icon="sign-out-alt"/> Logout
-                </button>
+                <>
+                    <Link to="/purchase-history">
+                        <FontAwesomeIcon icon="history"/> Purchase History
+                    </Link>
+                    <button onClick={logout}>
+                        <FontAwesomeIcon icon="sign-out-alt"/> Logout
+                    </button>
+                </>
             ) : (
                 <>
                     <Link to="/login">

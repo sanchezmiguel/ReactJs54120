@@ -1,0 +1,62 @@
+/* src/components/PurchaseHistory.css */
+.purchase-history-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.purchase-history-container .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.purchase-history-container .card {
+    width: 100%;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.purchase-history-container .card:hover {
+    transform: translateY(-5px);
+}
+
+.purchase-history-container .card-body {
+    padding: 20px;
+}
+
+.purchase-history-container .card-title {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}
+
+.purchase-history-container .card-subtitle {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #666;
+}
+
+.purchase-history-container .card-text {
+    margin-bottom: 15px;
+}
+
+.purchase-history-container .list-group-item {
+    border: none;
+    padding: 10px 0;
+    font-size: 0.875rem;
+}
+
+@media (min-width: 576px) {
+    .purchase-history-container .card {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (min-width: 768px) {
+    .purchase-history-container .card {
+        width: calc(33.333% - 20px);
+    }
+}

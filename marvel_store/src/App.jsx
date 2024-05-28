@@ -17,6 +17,7 @@ import {AuthProvider} from "./contexts/authContext/AuthContext.jsx";
 import ThemeToggle from "./components/themeToggle/ThemeToggle.jsx";
 import Signup from "./components/signup/Signup.jsx";
 import './utils/fontAwesome';
+import PurchaseHistory from "./components/purchaseHistory/PurchaseHistory.jsx";
 
 const App = () => {
     return (
@@ -56,6 +57,8 @@ const MainApp = () => {
                             </ProtectedRoute>}/>
                             <Route path="/login" element={<Login/>}/>
                             <Route path="/signup" element={<Signup/>}/>
+                            <Route path="/purchase-history"
+                                   element={<ProtectedRoute><PurchaseHistory/></ProtectedRoute>}/>
                             <Route path="/protected" element={<ProtectedRoute><ProtectedComponent/></ProtectedRoute>}/>
                         </Routes>
                     </ErrorBoundary>
