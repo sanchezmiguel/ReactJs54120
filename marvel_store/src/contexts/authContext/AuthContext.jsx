@@ -1,9 +1,8 @@
-// src/contexts/AuthContext.jsx
+// AuthContext.jsx
 import { createContext, useContext, useState, useEffect } from 'react';
 import { onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import PropTypes from 'prop-types';
-import {auth} from "../../firebase-config.js";
-
+import { auth } from "../../firebase-config.js";
 
 const AuthContext = createContext();
 
@@ -20,8 +19,12 @@ export const AuthProvider = ({ children }) => {
         return unsubscribe;
     }, []);
 
-    const signup = (email, password) => {
-        return createUserWithEmailAndPassword(auth, email, password);
+    const signup = async (email, password) => {
+        try {
+            await createUserWithEmailAndPassword(auth, email, password);
+        } catch (error) {
+            throw error;
+        }
     };
 
     const login = (email, password) => {

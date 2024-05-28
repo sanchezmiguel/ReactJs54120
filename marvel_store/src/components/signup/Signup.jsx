@@ -1,24 +1,45 @@
+// Signup.jsx
 import { useState } from 'react';
-
 import { useNavigate } from 'react-router-dom';
-import {useAuth} from "../../contexts/authContext/AuthContext.jsx";
+import { useAuth } from "../../contexts/authContext/AuthContext.jsx";
 import AuthForm from "../authForm/AuthForm.jsx";
 import './Signup.css';
 
 const Signup = () => {
     const [email, setEmail] = useState('');
+    const [confirmEmail, setConfirmEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [name, setName] = useState('');
+    const [surname, setSurname] = useState('');
+    const [phone, setPhone] = useState('');
     const [error, setError] = useState('');
     const { signup } = useAuth();
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
 
-        signup(email, password)
-            .then(() => navigate('/'))
-            .catch(() => setError('No se pudo crear la cuenta'));
+        if (email !== confirmEmail) {
+            setError('Los correos electrónicos no coinciden');
+            return;
+        }
+
+        try {
+            await signup(email, password);
+            // Aquí puede guardar la información adicional del usuario en la base de datos si es necesario
+            navigate('/');
+        } catch (error) {
+            if (error.code === 'auth/email-already-in-use') {
+                setError('El correo electrónico ya está en uso');
+            } else if (error.code === 'auth/invalid-email') {
+                setError('El correo electrónico no es válido');
+            } else if (error.code === 'auth/weak-password') {
+                setError('La contraseña es demasiado débil');
+            } else {
+                setError('No se pudo crear la cuenta. Inténtalo de nuevo más tarde');
+            }
+        }
     };
 
     return (
@@ -27,9 +48,17 @@ const Signup = () => {
             {error && <p className="error">{error}</p>}
             <AuthForm
                 email={email}
+                confirmEmail={confirmEmail}
                 password={password}
+                name={name}
+                surname={surname}
+                phone={phone}
                 setEmail={setEmail}
+                setConfirmEmail={setConfirmEmail}
                 setPassword={setPassword}
+                setName={setName}
+                setSurname={setSurname}
+                setPhone={setPhone}
                 handleSubmit={handleSubmit}
                 buttonText="Registrarse"
                 buttonIcon="user-plus"
@@ -37,4 +66,5 @@ const Signup = () => {
         </div>
     );
 };
+
 export default Signup;
