@@ -15,6 +15,76 @@ Marvel Store es una aplicación de comercio electrónico construida usando React
 - **Historial de Compras**: Rastrea compras anteriores y gestiona pedidos.
 - **Diseño Responsivo**: La aplicación está optimizada tanto para dispositivos de escritorio como móviles.
 
+## Dependencias del Proyecto Marvel Store
+
+Este archivo documenta las librerías públicas utilizadas en el proyecto Marvel Store, junto con sus enlaces y justificaciones de por qué agregan valor al proyecto.
+
+## react-router-dom
+
+**Enlace:** [react-router-dom](https://reactrouter.com/)
+
+**Justificación:**
+React Router Dom es fundamental para la navegación dentro de una aplicación de React. Proporciona componentes como `BrowserRouter`, `Routes`, `Link` y `useNavigate`, que permiten manejar la navegación entre diferentes vistas de la aplicación sin recargar la página. Esto mejora significativamente la experiencia del usuario al permitir una navegación más rápida y fluida.
+
+## firebase
+
+**Enlace:** [firebase](https://firebase.google.com/)
+
+**Justificación:**
+Firebase es una plataforma completa para el desarrollo de aplicaciones móviles y web. En este proyecto, Firebase se utiliza para la autenticación de usuarios y para la base de datos en tiempo real (Firestore). Firebase Authentication permite gestionar usuarios de manera segura, mientras que Firestore proporciona una base de datos escalable y flexible para almacenar los datos de la aplicación.
+
+## @fortawesome/react-fontawesome
+
+**Enlace:** [@fortawesome/react-fontawesome](https://fontawesome.com/how-to-use/on-the-web/using-with/react)
+
+**Justificación:**
+Font Awesome es una biblioteca de iconos muy popular que se utiliza para mejorar la interfaz de usuario de la aplicación. La integración con React mediante `@fortawesome/react-fontawesome` permite incluir fácilmente iconos vectoriales escalables en los componentes, lo que mejora la estética y la usabilidad de la aplicación.
+
+## prop-types
+
+**Enlace:** [prop-types](https://github.com/facebook/prop-types)
+
+**Justificación:**
+Prop-types es una biblioteca que permite validar las props que se pasan a los componentes de React. Esto es útil para garantizar que los componentes se usen correctamente y para ayudar a prevenir errores durante el desarrollo, mejorando así la calidad del código y facilitando el mantenimiento.
+
+## bootstrap
+
+**Enlace:** [bootstrap](https://getbootstrap.com/)
+
+**Justificación:**
+Bootstrap es una biblioteca de CSS que facilita el diseño responsivo y la creación de interfaces de usuario atractivas y coherentes. Utilizar Bootstrap en este proyecto ayuda a asegurar que la aplicación sea accesible y se vea bien en una amplia gama de dispositivos y tamaños de pantalla.
+
+## react-bootstrap
+
+**Enlace:** [react-bootstrap](https://react-bootstrap.github.io/)
+
+**Justificación:**
+React Bootstrap es la implementación de los componentes de Bootstrap en React. Permite utilizar los componentes de Bootstrap de manera nativa en React, proporcionando una integración más fluida y facilitando el uso de Bootstrap en una aplicación de React.
+
+## react-hook-form
+
+**Enlace:** [react-hook-form](https://react-hook-form.com/)
+
+**Justificación:**
+React Hook Form es una biblioteca para manejar formularios en React de manera eficiente y sencilla. Mejora el rendimiento del formulario al minimizar las renderizaciones innecesarias y facilita la validación y el manejo de formularios complejos.
+
+## yup
+
+**Enlace:** [yup](https://github.com/jquense/yup)
+
+**Justificación:**
+Yup es una biblioteca de validación de esquemas para JavaScript. Se utiliza junto con React Hook Form para validar los datos de los formularios de manera sencilla y robusta. Proporciona una forma declarativa de definir las reglas de validación, lo que mejora la legibilidad y mantenibilidad del código.
+
+## axios
+
+**Enlace:** [axios](https://axios-http.com/)
+
+**Justificación:**
+Axios es una biblioteca para realizar solicitudes HTTP desde Node.js o XMLHttpRequests desde el navegador. Se utiliza para la comunicación con APIs, permitiendo realizar operaciones como obtener datos de un servidor o enviar datos a un servidor. Es fácil de usar y manejar con promesas, lo que mejora la simplicidad y claridad del código de solicitud HTTP.
+
+
+
+
 ## Componentes
 
 ### Componentes Principales
