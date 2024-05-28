@@ -1,24 +1,28 @@
-// CartWidget.jsx
-import CartIcon from "../cartIcon/CartIcon.jsx";
-import {useCart} from "../../hooks/useCart.js";
+// src/components/cartWidget/CartWidget.jsx
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import './CartWidget.css';
-import {useNavigate} from "react-router-dom";
+import { useCart } from '../../hooks/useCart';
+import { useAuth } from '../../contexts/authContext/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
-const CartWidget = () => {
-    const {cartItems} = useCart();
-    const itemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
-    const navigate = useNavigate();
+const CartWidget = ({ onClick }) => {
+    const { cartItems } = useCart();
+    const { currentUser } = useAuth();
+    const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
 
-    const handleCartClick = () => {
-        navigate('/cart');
-    };
+
+    if (!currentUser || cartItems.length === 0) {
+        return null; // Do not render if there are no items or the user is not logged in
+    }
 
     return (
-        <div className='cart-widget-container' onClick={handleCartClick}>
-            <CartIcon className='cart-icon'/>
-            {itemCount > 0 && <span className='badge badge-primary'>{itemCount}</span>}
+        <div className="cart-widget-container" onClick={onClick}>
+            <FontAwesomeIcon icon={faShoppingCart} className="cart-icon"/>
+            <span className="cart-item-count">{totalItems}</span>
         </div>
     );
 };
 
 export default CartWidget;
+

@@ -1,23 +1,23 @@
-// Navbar.jsx
+// src/components/navbar/Navbar.jsx
 import './navbar.css';
 import CartWidget from '../cartWidget/CartWidget';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import BrandLogo from "../brandLogo/BrandLogo.jsx";
-import CategoryList from "../categoryList/CategoryList.jsx";
-import NavbarToggler from "../navbarToggler/NavbarToggler.jsx";
-import CartModalContainer from "../cartModalContainer/CartModalContainer.jsx";
-import {useEffect, useState} from "react";
-import {Link, useLocation, useNavigate} from "react-router-dom";
-import {useAuth} from "../../contexts/authContext/AuthContext.jsx";
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import PurchaseHistoryWidget from "../purchaseHistoryWidget/PurchaseHistoryWidget.jsx";
-import LogoutWidget from "../logoutWidget/LogoutWidget.jsx";
+import BrandLogo from "../brandLogo/BrandLogo";
+import CategoryList from "../categoryList/CategoryList";
+import NavbarToggler from "../navbarToggler/NavbarToggler";
+import CartModalContainer from "../cartModalContainer/CartModalContainer";
+import PurchaseHistoryWidget from '../purchaseHistoryWidget/PurchaseHistoryWidget';
+import LogoutWidget from '../logoutWidget/LogoutWidget';
+import { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/authContext/AuthContext";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Navbar = () => {
     const [isCartModalOpen, setCartModalOpen] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
-    const {currentUser, logout} = useAuth();
+    const { currentUser } = useAuth();
 
     useEffect(() => {
         if (location.pathname === "/cart") {
@@ -29,26 +29,22 @@ const Navbar = () => {
         setCartModalOpen(false);
         navigate(-1); // navigate back after closing modal
     };
-    const handleLogout = () => {
-        const confirmLogout = window.confirm('¿Estás seguro de que deseas cerrar sesión?');
-        if (confirmLogout) {
-            logout();
-        }
+
+    const handleCartClick = () => {
+        setCartModalOpen(true);
     };
+
     return (
         <nav className='navbar navbar-expand-lg navbar-light'>
-            <BrandLogo/>
-            <NavbarToggler/>
-            <CategoryList/>
-
-
-
+            <BrandLogo />
+            <NavbarToggler />
+            <CategoryList />
             {currentUser ? (
                 <>
-                    <CartWidget/>
                     <PurchaseHistoryWidget />
+                    <CartWidget onClick={handleCartClick} />
                     <LogoutWidget />
-                    <CartModalContainer isOpen={isCartModalOpen} onClose={handleCloseModal}/>
+                    <CartModalContainer isOpen={isCartModalOpen} onClose={handleCloseModal} />
                 </>
             ) : (
                 <>
