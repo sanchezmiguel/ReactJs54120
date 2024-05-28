@@ -12,7 +12,7 @@ const StockMessage = ({stock}) => {
     };
 
     return (
-        <p><h6>{getMessage()}</h6></p>
+        <h6>{getMessage()}</h6>
     );
 };
 
