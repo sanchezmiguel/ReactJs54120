@@ -19,14 +19,15 @@ import PurchaseHistory from "./components/purchaseHistory/PurchaseHistory.jsx";
 import Wishlist from "./components/wishlist/Wishlist.jsx";
 import { AuthProvider } from "./contexts/AuthContext.jsx";
 import { WishlistProvider } from "./contexts/WishlistContext.jsx";
-import { CategoryProvider } from "./contexts/CategoryContext.jsx"; // Importar el CategoryProvider
+import { CategoryProvider } from "./contexts/CategoryContext.jsx";
+import OrderSearch from "./components/orderSearch/OrderSearch.jsx";
 
 const App = () => {
     return (
         <ThemeProvider>
             <AuthProvider>
                 <WishlistProvider>
-                    <CategoryProvider> {/* Añadir el CategoryProvider */}
+                    <CategoryProvider>
                         <MainApp />
                     </CategoryProvider>
                 </WishlistProvider>
@@ -62,6 +63,7 @@ const MainApp = () => {
                             <Route path="/purchase-history" element={<ProtectedRoute><PurchaseHistory /></ProtectedRoute>} />
                             <Route path="/protected" element={<ProtectedRoute><ProtectedComponent /></ProtectedRoute>} />
                             <Route path="/wishlist" element={<ProtectedRoute><Wishlist /></ProtectedRoute>} />
+                            <Route path="/order-search" element={<OrderSearch />} />
                         </Routes>
                     </ErrorBoundary>
                     <ThemeToggle />
