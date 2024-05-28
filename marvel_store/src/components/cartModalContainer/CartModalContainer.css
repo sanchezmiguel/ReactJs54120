@@ -1,3 +1,15 @@
+/* src/components/cartModalContainer/CartModalContainer.css */
+.cart-modal {
+    width: 80%; /* Increased width */
+    max-width: 1200px; /* Add a max-width to prevent it from becoming too large on very wide screens */
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow-y: auto; /* Ensure content is scrollable if it exceeds max height */
+}
+
 .cart-content {
     padding: 20px;
     font-family: Arial, sans-serif; /* Ensures text is readable */
@@ -7,8 +19,8 @@
     list-style: none;
     padding: 0;
     margin: 0;
-    max-height: 300px; /* Establece un alto máximo para la lista de elementos */
-    overflow-y: auto; /* Permite desplazamiento vertical si el contenido excede el alto máximo */
+    max-height: 500px; /* Set a maximum height */
+    overflow-y: auto; /* Allow vertical scroll if content exceeds max height */
 }
 
 .cart-total, .final-total, .discount {
@@ -16,7 +28,7 @@
     font-size: 1.1em;
     text-align: right;
     padding-top: 5px;
-    border-top: 1px solid #aaa; /* adds a line above the total for clarity */
+    border-top: 1px solid #aaa; /* Adds a line above the total for clarity */
 }
 
 .discount-code {
