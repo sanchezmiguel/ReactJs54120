@@ -19,7 +19,7 @@ const Login = () => {
             await login(email, password);
             navigate('/');
         } catch (err) {
-            setError('Failed to log in');
+            setError('No se pudo iniciar sesión');
         }
     };
 
@@ -38,7 +38,7 @@ const Login = () => {
                     />
                 </div>
                 <div>
-                    <label>Password</label>
+                    <label>Contraseña</label>
                     <input
                         type="password"
                         value={password}
@@ -47,7 +47,7 @@ const Login = () => {
                     />
                 </div>
                 <button type="submit">
-                    <FontAwesomeIcon icon="sign-in-alt" /> Login
+                    <FontAwesomeIcon icon="sign-in-alt" /> Iniciar Sesión
                 </button>
             </form>
         </div>

@@ -39,19 +39,19 @@ const Navbar = () => {
             {currentUser ? (
                 <>
                     <Link to="/purchase-history">
-                        <FontAwesomeIcon icon="history"/> Purchase History
+                        <FontAwesomeIcon icon="history" /> Historial de Compras
                     </Link>
                     <button onClick={logout}>
-                        <FontAwesomeIcon icon="sign-out-alt"/> Logout
+                        <FontAwesomeIcon icon="sign-out-alt" /> Cerrar Sesión
                     </button>
                 </>
             ) : (
                 <>
                     <Link to="/login">
-                        <FontAwesomeIcon icon="sign-in-alt"/> Login
+                        <FontAwesomeIcon icon="sign-in-alt" /> Iniciar Sesión
                     </Link>
                     <Link to="/signup">
-                        <FontAwesomeIcon icon="user-plus"/> Sign Up
+                        <FontAwesomeIcon icon="user-plus" /> Registrarse
                     </Link>
                 </>
             )}

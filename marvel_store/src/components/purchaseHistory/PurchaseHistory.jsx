@@ -6,7 +6,7 @@ import {useAuth} from "../../contexts/authContext/AuthContext.jsx";
 import './PurchaseHistory.css';
 
 const PurchaseHistory = () => {
-    const {currentUser} = useAuth();
+    const { currentUser } = useAuth();
     const [purchaseHistory, setPurchaseHistory] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -25,7 +25,7 @@ const PurchaseHistory = () => {
                     }));
                     setPurchaseHistory(purchases);
                 } catch (error) {
-                    console.error('Error fetching purchase history: ', error);
+                    console.error('Error al obtener el historial de compras: ', error);
                 } finally {
                     setLoading(false);
                 }
@@ -36,27 +36,26 @@ const PurchaseHistory = () => {
     }, [currentUser]);
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <div>Cargando...</div>;
     }
 
     return (
         <div className="purchase-history-container">
-            <h2>Your Purchase History</h2>
+            <h2>Tu Historial de Compras</h2>
             {purchaseHistory.length === 0 ? (
-                <p>No purchases found.</p>
+                <p>No se encontraron compras.</p>
             ) : (
                 <div className="card-container">
                     {purchaseHistory.map(purchase => (
                         <div key={purchase.id} className="card">
                             <div className="card-body">
-                                <h5 className="card-title">Date: {new Date(purchase.timestamp).toLocaleString()}</h5>
-                                <h6 className="card-subtitle mb-2 text-muted">Total:
-                                    ${purchase.totalPrice.toFixed(2)}</h6>
-                                <p className="card-text">Payment Method: {purchase.paymentMethod}</p>
+                                <h5 className="card-title">Fecha: {new Date(purchase.timestamp).toLocaleString()}</h5>
+                                <h6 className="card-subtitle mb-2 text-muted">Total: ${purchase.totalPrice.toFixed(2)}</h6>
+                                <p className="card-text">Método de Pago: {purchase.paymentMethod}</p>
                                 <ul className="list-group list-group-flush">
                                     {purchase.cartItems.map(item => (
                                         <li key={item.id} className="list-group-item">
-                                            <p>{item.name} - Quantity: {item.quantity}</p>
+                                            <p>{item.name} - Cantidad: {item.quantity}</p>
                                         </li>
                                     ))}
                                 </ul>

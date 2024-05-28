@@ -20,7 +20,7 @@ const Signup = () => {
             await signup(email, password);
             navigate('/');
         } catch (err) {
-            setError('Failed to create an account');
+            setError('No se pudo crear la cuenta');
         }
     };
 
@@ -39,7 +39,7 @@ const Signup = () => {
                     />
                 </div>
                 <div>
-                    <label>Password</label>
+                    <label>Contraseña</label>
                     <input
                         type="password"
                         value={password}
