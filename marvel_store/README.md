@@ -3,7 +3,6 @@
 ## Descripción
 
 Esta es una aplicación web para una tienda de artículos de Marvel, creada por **Pablo Miguel Sánchez**. La aplicación permite a los usuarios navegar, visualizar y comprar una variedad de productos temáticos de Marvel. A continuación se describen las funcionalidades principales de la aplicación.
-Se cumple con todos los requerimientos base y con la mayoria de los requerimientos extra.
 Marvel Store es una aplicación de comercio electrónico construida usando React y Firebase. La aplicación permite a los usuarios navegar, buscar y comprar productos temáticos de Marvel, incluyendo cómics, juguetes y accesorios. La aplicación soporta funcionalidades como autenticación de usuarios, gestión del carrito de compras y actualizaciones de stock en tiempo real.
 
 ## Funcionalidades
@@ -17,6 +16,43 @@ Marvel Store es una aplicación de comercio electrónico construida usando React
 - **Categorías Dinámicas**: Las categorías de productos se cargan de forma dinámica desde Firebase, permitiendo una fácil actualización y gestión de las mismas.
 - **Diseño Responsivo**: La aplicación está optimizada tanto para dispositivos de escritorio como móviles.
 - **Buscar Orden**: Permite a los usuarios buscar detalles de una orden utilizando el ID de la compra.
+
+## Requerimientos Base y Adicionales
+
+Se cumple con todos los requerimientos base y con la mayoría de los requerimientos extra. A continuación, se detallan los requerimientos base cumplidos:
+
+### Requerimientos Base Cumplidos
+
+- **Implementar al menos dos colecciones**:
+   - **items**: Colección que almacena los productos disponibles en la tienda.
+   - **orders**: (Se llama `purchaseHistory`) Colección que almacena las órdenes de compra realizadas por los usuarios.
+   - **categories**: Colección que almacena las categorías de productos disponibles.
+
+- **El carrito debe ser accesible durante toda la experiencia**: El carrito está siempre accesible en la navegación y muestra una indicación de la cantidad de ítems incluidos. Se agrega control para mostrar el carrito solo si el usuario está logueado y si la cantidad de elementos es mayor que cero.
+
+- **Checkout**: Implementación del proceso de checkout para que los usuarios puedan completar sus compras.
+
+- **Finalizada la orden, debo recibir mi order id con el id del objeto de firebase**: Una vez completada la orden, el usuario recibe un ID de la orden correspondiente al objeto de Firebase.
+
+- **La navegabilidad debe ocurrir utilizando el router, y no href’s o location**: Toda la navegación se maneja utilizando `react-router-dom`, asegurando una experiencia fluida y sin recargas de página.
+
+- **Por cada librería pública extra que utilices, deberás incluir en algún archivo el link al proyecto, y una justificación de por qué agrega valor**: Se han incluido enlaces y justificaciones para todas las librerías públicas utilizadas en el proyecto.
+
+### Requerimientos Extra
+
+- **Autenticación/Login**: Implementar alguno de los servicios de autenticación disponibles de Firebase para evitar el flujo de email tradicional.
+
+- **Wishlist**: Implementar una wishlist para guardar productos para comprar en otro momento. Los productos se pueden agregar desde el detalle o desde el listado y se puede acceder a la wishlist desde el navbar o un menú desplegable. La wishlist tiene accesos para agregar esos ítems al carrito.
+
+- **Stock Check**: Validar el stock al momento de intentar generar la orden para asegurar que los productos están disponibles.
+
+- **Categorías Dinámicas**: Crear una colección de Firebase para las categorías y cargar el menú en base a esta colección.
+
+- **Cart Persistente**: Hacer que el carrito sea persistente utilizando algún API de almacenamiento local en el navegador (local/session storage).
+
+- **Mis Órdenes**: Permitir a los usuarios buscar su orden utilizando el orderId recibido al finalizar la compra y mostrar los detalles de la orden, incluyendo cómo quedó conformada y el precio, pero sin mostrar datos personales de la compra.
+
+
 
 
 ## Dependencias del Proyecto Marvel Store
