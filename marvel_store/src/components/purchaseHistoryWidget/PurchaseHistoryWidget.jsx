@@ -4,7 +4,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faHistory} from '@fortawesome/free-solid-svg-icons';
 import './PurchaseHistoryWidget.css';
 import {useNavigate} from 'react-router-dom';
-import {useAuth} from '../../contexts/authContext/AuthContext';
+import {useAuth} from '../../contexts/AuthContext.jsx';
 import {collection, getDocs, query, where} from 'firebase/firestore';
 import {db} from '../../firebase-config';
 

@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {useWishlist} from "../wishlistContext/WishlistContext.jsx";
+import {useWishlist} from "../../contexts/WishlistContext.jsx";
 
 const WishlistWidget = () => {
     const {wishlistItems} = useWishlist();

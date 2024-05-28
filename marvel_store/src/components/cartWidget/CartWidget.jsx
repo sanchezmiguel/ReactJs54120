@@ -3,7 +3,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faShoppingCart} from '@fortawesome/free-solid-svg-icons';
 import './CartWidget.css';
 import {useCart} from '../../hooks/useCart';
-import {useAuth} from '../../contexts/authContext/AuthContext';
+import {useAuth} from '../../contexts/AuthContext.jsx';
 
 const CartWidget = ({onClick}) => {
     const {cartItems} = useCart();

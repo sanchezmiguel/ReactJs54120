@@ -1,7 +1,7 @@
 // Signup.jsx
 import {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
-import {useAuth} from "../../contexts/authContext/AuthContext.jsx";
+import {useAuth} from "../../contexts/AuthContext.jsx";
 import AuthForm from "../authForm/AuthForm.jsx";
 import './Signup.css';
 

@@ -1,6 +1,6 @@
 import {memo, useEffect, useState} from 'react';
 import {Link, useLocation, useNavigate} from "react-router-dom";
-import {useAuth} from "../../contexts/authContext/AuthContext";
+import {useAuth} from "../../contexts/AuthContext.jsx";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './navbar.css';

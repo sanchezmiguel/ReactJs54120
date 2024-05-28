@@ -2,7 +2,7 @@
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faSignOutAlt} from '@fortawesome/free-solid-svg-icons';
 import './LogoutWidget.css';
-import {useAuth} from '../../contexts/authContext/AuthContext.jsx';
+import {useAuth} from '../../contexts/AuthContext.jsx';
 
 const LogoutWidget = () => {
     const {logout} = useAuth();

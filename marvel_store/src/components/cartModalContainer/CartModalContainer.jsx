@@ -9,8 +9,8 @@ import {addDoc, collection, doc, runTransaction} from "firebase/firestore";
 import {db} from "../../firebase-config.js";
 import {getClientIp} from "../../utils/utils.js";
 import PurchaseProcessing from "../purchaseProcessing/PurchaseProcessing.jsx";
-import CartContent from "../cartContent/CartContent.jsx";
-import {useAuth} from "../../contexts/authContext/AuthContext.jsx";
+import CartContent from "../../contexts/CartContent.jsx";
+import {useAuth} from "../../contexts/AuthContext.jsx";
 
 const CartModalContainer = ({isOpen, onClose}) => {
     const {cartItems, clearCart, removeFromCart} = useCart();

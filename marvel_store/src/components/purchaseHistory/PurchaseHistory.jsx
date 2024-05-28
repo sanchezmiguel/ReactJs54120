@@ -2,7 +2,7 @@
 import {useEffect, useState} from 'react';
 import {collection, getDocs, query, where} from 'firebase/firestore';
 import {db} from "../../firebase-config.js";
-import {useAuth} from "../../contexts/authContext/AuthContext.jsx";
+import {useAuth} from "../../contexts/AuthContext.jsx";
 import './PurchaseHistory.css';
 
 const PurchaseHistory = () => {

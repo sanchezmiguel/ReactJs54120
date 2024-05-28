@@ -9,7 +9,7 @@ import useCustomNavigate from "../../hooks/useCustomNavigate.js";
 import {useCart} from "../../hooks/useCart.js";
 
 import ItemTitle from "../itemTitle/ItemTitle.jsx";
-import {useWishlist} from "../wishlistContext/WishlistContext.jsx";
+import {useWishlist} from "../../contexts/WishlistContext.jsx";
 
 function ItemDetail({item}) {
     const [itemAdded, setItemAdded] = useState(false);

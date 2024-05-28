@@ -1,6 +1,6 @@
 import {useCart} from '../../hooks/useCart.js';
 import {Link} from 'react-router-dom';
-import {useWishlist} from "../wishlistContext/WishlistContext.jsx";
+import {useWishlist} from "../../contexts/WishlistContext.jsx";
 
 const Wishlist = () => {
     const {wishlistItems, removeFromWishlist} = useWishlist();

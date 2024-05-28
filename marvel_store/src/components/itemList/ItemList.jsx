@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import Item from "../item/Item.jsx";
 import {Link} from 'react-router-dom';
 import './ItemList.css';
-import {useWishlist} from "../wishlistContext/WishlistContext.jsx";
+import {useWishlist} from "../../contexts/WishlistContext.jsx";
 
 
 function ItemList({items}) {

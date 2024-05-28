@@ -13,13 +13,13 @@ import UnderConstruction from "./components/underConstruction/UnderConstruction.
 import Login from "./components/login/Login.jsx";
 import ProtectedRoute from "./protectedRoute/ProtectedRoute.jsx";
 import {ThemeProvider, useTheme} from "./contexts/ThemeContext.jsx";
-import {AuthProvider} from "./contexts/authContext/AuthContext.jsx";
+import {AuthProvider} from "./contexts/AuthContext.jsx";
 import ThemeToggle from "./components/themeToggle/ThemeToggle.jsx";
 import Signup from "./components/signup/Signup.jsx";
 import './utils/fontAwesome';
 import PurchaseHistory from "./components/purchaseHistory/PurchaseHistory.jsx";
 import Wishlist from "./components/wishlist/Wishlist.jsx";
-import {WishlistProvider} from "./components/wishlistContext/WishlistContext.jsx";
+import {WishlistProvider} from "./contexts/WishlistContext.jsx";
 
 
 const App = () => {

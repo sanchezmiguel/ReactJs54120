@@ -1,11 +1,11 @@
 import PropTypes from "prop-types";
-import CartItem from "../cartItem/CartItem.jsx";
-import PurchaseMessage from "../purchaseMessage/PurchaseMessage.jsx";
-import Alert from "../alert/Alert.jsx";
-import CartActions from "../cartActions/CartActions.jsx";
-import CartTotal from "../cartTotal/CartTotal.jsx";
-import DiscountCodeInput from "../discountCodeInput/DiscountCodeInput.jsx";
-import {useAuth} from "../../contexts/authContext/AuthContext.jsx";
+import CartItem from "../components/cartItem/CartItem.jsx";
+import PurchaseMessage from "../components/purchaseMessage/PurchaseMessage.jsx";
+import Alert from "../components/alert/Alert.jsx";
+import CartActions from "../components/cartActions/CartActions.jsx";
+import CartTotal from "../components/cartTotal/CartTotal.jsx";
+import DiscountCodeInput from "../components/discountCodeInput/DiscountCodeInput.jsx";
+import {useAuth} from "./AuthContext.jsx";
 
 const CartContent = ({
                          cartItems,
