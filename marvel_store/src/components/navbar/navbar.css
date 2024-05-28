@@ -21,3 +21,16 @@
     background-color: rgba(255, 255, 255, 0.2); /* Fondo al hacer hover */
     border-radius: 5px; /* Bordes redondeados al hacer hover */
 }
+.navbar .ml-auto > * {
+    margin-left: 15px;
+}
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
