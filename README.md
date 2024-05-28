@@ -21,63 +21,63 @@ Marvel Store es una aplicación de comercio electrónico construida usando React
 
 Este archivo documenta las librerías públicas utilizadas en el proyecto Marvel Store, junto con sus enlaces y justificaciones de por qué agregan valor al proyecto.
 
-## react-router-dom
+### react-router-dom
 
 **Enlace:** [react-router-dom](https://reactrouter.com/)
 
 **Justificación:**
 React Router Dom es fundamental para la navegación dentro de una aplicación de React. Proporciona componentes como `BrowserRouter`, `Routes`, `Link` y `useNavigate`, que permiten manejar la navegación entre diferentes vistas de la aplicación sin recargar la página. Esto mejora significativamente la experiencia del usuario al permitir una navegación más rápida y fluida.
 
-## firebase
+### firebase
 
 **Enlace:** [firebase](https://firebase.google.com/)
 
 **Justificación:**
 Firebase es una plataforma completa para el desarrollo de aplicaciones móviles y web. En este proyecto, Firebase se utiliza para la autenticación de usuarios y para la base de datos en tiempo real (Firestore). Firebase Authentication permite gestionar usuarios de manera segura, mientras que Firestore proporciona una base de datos escalable y flexible para almacenar los datos de la aplicación.
 
-## @fortawesome/react-fontawesome
+### @fortawesome/react-fontawesome
 
 **Enlace:** [@fortawesome/react-fontawesome](https://fontawesome.com/how-to-use/on-the-web/using-with/react)
 
 **Justificación:**
 Font Awesome es una biblioteca de iconos muy popular que se utiliza para mejorar la interfaz de usuario de la aplicación. La integración con React mediante `@fortawesome/react-fontawesome` permite incluir fácilmente iconos vectoriales escalables en los componentes, lo que mejora la estética y la usabilidad de la aplicación.
 
-## prop-types
+### prop-types
 
 **Enlace:** [prop-types](https://github.com/facebook/prop-types)
 
 **Justificación:**
 Prop-types es una biblioteca que permite validar las props que se pasan a los componentes de React. Esto es útil para garantizar que los componentes se usen correctamente y para ayudar a prevenir errores durante el desarrollo, mejorando así la calidad del código y facilitando el mantenimiento.
 
-## bootstrap
+### bootstrap
 
 **Enlace:** [bootstrap](https://getbootstrap.com/)
 
 **Justificación:**
 Bootstrap es una biblioteca de CSS que facilita el diseño responsivo y la creación de interfaces de usuario atractivas y coherentes. Utilizar Bootstrap en este proyecto ayuda a asegurar que la aplicación sea accesible y se vea bien en una amplia gama de dispositivos y tamaños de pantalla.
 
-## react-bootstrap
+### react-bootstrap
 
 **Enlace:** [react-bootstrap](https://react-bootstrap.github.io/)
 
 **Justificación:**
 React Bootstrap es la implementación de los componentes de Bootstrap en React. Permite utilizar los componentes de Bootstrap de manera nativa en React, proporcionando una integración más fluida y facilitando el uso de Bootstrap en una aplicación de React.
 
-## react-hook-form
+### react-hook-form
 
 **Enlace:** [react-hook-form](https://react-hook-form.com/)
 
 **Justificación:**
 React Hook Form es una biblioteca para manejar formularios en React de manera eficiente y sencilla. Mejora el rendimiento del formulario al minimizar las renderizaciones innecesarias y facilita la validación y el manejo de formularios complejos.
 
-## yup
+### yup
 
 **Enlace:** [yup](https://github.com/jquense/yup)
 
 **Justificación:**
 Yup es una biblioteca de validación de esquemas para JavaScript. Se utiliza junto con React Hook Form para validar los datos de los formularios de manera sencilla y robusta. Proporciona una forma declarativa de definir las reglas de validación, lo que mejora la legibilidad y mantenibilidad del código.
 
-## axios
+### axios
 
 **Enlace:** [axios](https://axios-http.com/)
 
@@ -86,30 +86,32 @@ Axios es una biblioteca para realizar solicitudes HTTP desde Node.js o XMLHttpRe
 
 
 
-
 ## Componentes
 
 ### Componentes Principales
 
 - **App.jsx**: El componente principal de la aplicación que configura el enrutamiento y los proveedores globales.
-- **Navbar.jsx**: La barra de navegación con enlaces a diferentes páginas y un widget de carrito.
+- **Navbar.jsx**: La barra de navegación con enlaces a diferentes páginas y widgets.
 - **Footer.jsx**: El pie de página con enlaces a varias páginas informativas y redes sociales.
 - **CartModalContainer.jsx**: El contenedor para el modal del carrito de compras, que gestiona los artículos del carrito y el proceso de pago.
 
 ### Componentes Funcionales
 
-- **CategoryList.jsx**: Muestra una lista de categorías de productos.
+- **CategoryDropdown.jsx**: Muestra un menú desplegable de categorías de productos.
 - **CategoryLink.jsx**: Componente para enlaces de navegación de categorías.
 - **ItemListContainer.jsx**: Contenedor para mostrar una lista de artículos, obteniendo datos de Firebase.
 - **ItemList.jsx**: Muestra una cuadrícula de artículos, cada uno enlazando a su página de detalles.
 - **ItemDetailContainer.jsx**: Obtiene y muestra detalles de un artículo seleccionado.
 - **ItemDetail.jsx**: Vista detallada de un solo artículo, incluyendo la funcionalidad de agregar al carrito.
 - **CartWidget.jsx**: Muestra el número de artículos en el carrito y navega al modal del carrito.
+- **WishlistWidget.jsx**: Muestra el número de artículos en la lista de deseos y navega a la página de wishlist.
 - **CartItem.jsx**: Muestra artículos individuales del carrito con opciones para ajustar la cantidad y eliminar.
 - **CartActions.jsx**: Contiene acciones para vaciar el carrito y proceder al pago.
 - **PaymentModal.jsx**: Modal para seleccionar el método de pago y completar la compra.
 - **Loading.jsx**: Muestra un spinner de carga durante las búsquedas de datos.
 - **Alert.jsx**: Muestra mensajes de alerta para varias acciones del usuario.
+- **OrderSearchLink.jsx**: Enlace para la búsqueda de órdenes.
+- **PurchaseHistoryWidget.jsx**: Muestra el historial de compras del usuario.
 
 ### Componentes de Utilidad
 
@@ -125,21 +127,24 @@ Axios es una biblioteca para realizar solicitudes HTTP desde Node.js o XMLHttpRe
 - **ItemTitle.jsx**: Muestra el título de un artículo.
 - **ItemCount.jsx**: Permite a los usuarios incrementar o decrementar la cantidad de artículos.
 - **FooterLinks.jsx**: Contiene enlaces de navegación usados en el pie de página.
+- **AuthLink.jsx**: Enlaces personalizados para iniciar sesión y registrarse.
 
 ### Contexto y Hooks
 
+- **AuthContext.jsx**: Proporciona el contexto de autenticación y funciones para manejar el estado del usuario.
 - **CartContext.jsx**: Proporciona el estado del carrito y funciones para agregar, eliminar y vaciar artículos.
+- **CategoryContext.jsx**: Proporciona el estado de las categorías y funciones para gestionarlas.
+- **WishlistContext.jsx**: Proporciona el estado de la lista de deseos y funciones para agregar y eliminar artículos.
 - **useCart.js**: Hook personalizado para acceder al contexto del carrito.
 - **useCustomNavigate.js**: Hook personalizado para acciones de navegación con registro opcional.
+- **useAuth.js**: Hook personalizado para acceder al contexto de autenticación.
+- **useCategories.js**: Hook personalizado para acceder al contexto de categorías.
+- **useWishlist.js**: Hook personalizado para acceder al contexto de la lista de deseos.
 
 ### Configuración de Firebase
 
 - **firebase-config.js**: Inicializa Firebase y exporta la instancia de Firestore.
 - **config.js**: Contiene detalles de configuración como URLs de API.
-
-### Utilidades
-
-- **utils.js**: Contiene funciones de utilidad para tareas como normalización de texto y obtención de la IP del cliente.
 
 ## Configuración e Instalación
 
