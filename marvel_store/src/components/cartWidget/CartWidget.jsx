@@ -4,7 +4,6 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import './CartWidget.css';
 import { useCart } from '../../hooks/useCart';
 import { useAuth } from '../../contexts/authContext/AuthContext';
-import { useNavigate } from 'react-router-dom';
 
 const CartWidget = ({ onClick }) => {
     const { cartItems } = useCart();

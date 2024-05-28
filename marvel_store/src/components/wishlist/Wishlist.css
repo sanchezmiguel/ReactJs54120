@@ -1,0 +1,12 @@
+.wishlist-container {
+    padding: 20px;
+    margin-right: 20px;
+}
+
+.wishlist-container h2 {
+    margin-bottom: 20px;
+}
+
+.wishlist-container .btn {
+    margin-top: 10px;
+}

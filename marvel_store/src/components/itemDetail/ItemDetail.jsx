@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import ItemCount from "../itemCount/ItemCount.jsx";
 import './ItemDetail.css';
@@ -6,18 +6,20 @@ import Alert from "../alert/Alert.jsx";
 import PriceDisplay from "../priceDisplay/PriceDisplay.jsx";
 import StockMessage from "../stockMessage/StockMessage.jsx";
 import useCustomNavigate from "../../hooks/useCustomNavigate.js";
-import {useCart} from "../../hooks/useCart.js";
+import { useCart } from "../../hooks/useCart.js";
+
 import ItemTitle from "../itemTitle/ItemTitle.jsx";
+import {useWishlist} from "../wishlistContext/WishlistContext.jsx";
 
-
-function ItemDetail({item}) {
+function ItemDetail({ item }) {
     const [itemAdded, setItemAdded] = useState(false);
-    const {goBack} = useCustomNavigate();
-    const {addToCart} = useCart(); // Use the addToCart function from the cart context
+    const { goBack } = useCustomNavigate();
+    const { addToCart } = useCart(); // Usar la función addToCart del contexto de carrito
+    const { addToWishlist } = useWishlist(); // Usar la función addToWishlist del contexto de wishlist
 
     const handleAdd = (quantity) => {
-        addToCart(item, quantity); // Add item to the cart via the cart context
-        setItemAdded(true); // Show confirmation message
+        addToCart(item, quantity); // Añadir ítem al carrito usando el contexto de carrito
+        setItemAdded(true); // Mostrar mensaje de confirmación
     };
 
     return (
@@ -34,6 +36,9 @@ function ItemDetail({item}) {
                 ) : (
                     <Alert message="Producto añadido al carrito" type="alert-success"/>
                 )}
+
+                <button className="btn btn-outline-primary mt-2" onClick={() => addToWishlist(item)}>Agregar a Wishlist
+                </button>
                 <button className="btn btn-secondary mt-2" onClick={goBack}>Volver</button>
                 <StockMessage stock={item.stock}/>
             </div>

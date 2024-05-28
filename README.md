@@ -13,6 +13,7 @@ Marvel Store es una aplicación de comercio electrónico construida usando React
 - **Carrito de Compras**: Agregar productos al carrito, ajustar cantidades y eliminar artículos.
 - **Gestión de Stock en Tiempo Real**: Asegura que el stock se actualice en tiempo real para evitar sobreventas.
 - **Historial de Compras**: Rastrea compras anteriores y gestiona pedidos.
+- **Wishlist**: Permite a los usuarios guardar productos para comprar en otro momento. Los productos pueden ser añadidos a la wishlist desde el detalle o el listado y pueden ser gestionados desde un widget en el navbar.
 - **Diseño Responsivo**: La aplicación está optimizada tanto para dispositivos de escritorio como móviles.
 
 ## Dependencias del Proyecto Marvel Store

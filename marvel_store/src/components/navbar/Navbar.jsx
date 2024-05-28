@@ -11,6 +11,7 @@ import NavbarToggler from "../navbarToggler/NavbarToggler";
 import CartModalContainer from "../cartModalContainer/CartModalContainer";
 import PurchaseHistoryWidget from '../purchaseHistoryWidget/PurchaseHistoryWidget';
 import LogoutWidget from '../logoutWidget/LogoutWidget';
+import WishlistWidget from "../wishlistWidget/WishlistWidget.jsx";
 
 const Navbar = () => {
     const [isCartModalOpen, setCartModalOpen] = useState(false);
@@ -40,6 +41,7 @@ const Navbar = () => {
             <CategoryList />
             {currentUser ? (
                 <>
+                    <WishlistWidget />
                     <PurchaseHistoryWidget />
                     <CartWidget onClick={handleCartClick} />
                     <LogoutWidget />
