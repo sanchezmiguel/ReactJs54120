@@ -27,7 +27,6 @@ const Signup = () => {
 
         try {
             await signup(email, password);
-            // Aquí puede guardar la información adicional del usuario en la base de datos si es necesario
             navigate('/');
         } catch (error) {
             if (error.code === 'auth/email-already-in-use') {
@@ -62,6 +61,10 @@ const Signup = () => {
                 handleSubmit={handleSubmit}
                 buttonText="Registrarse"
                 buttonIcon="user-plus"
+                showName={true}
+                showSurname={true}
+                showPhone={true}
+                showConfirmEmail={true}
             />
         </div>
     );

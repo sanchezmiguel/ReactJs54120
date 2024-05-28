@@ -1,4 +1,4 @@
-// src/components/CartModalContainer.jsx
+// CartModalContainer.jsx
 import CartModal from "../cartModal/CartModal.jsx";
 import PaymentModal from "../paymentModal/PaymentModal.jsx";
 import { useCart } from "../../hooks/useCart.js";
@@ -59,7 +59,7 @@ const CartModalContainer = ({ isOpen, onClose }) => {
         setPurchaseMessage(null);
         setErrorMessage(null);
 
-        runTransaction(db, (transaction) => {
+        runTransaction(db, async (transaction) => {
             const itemsToUpdate = [];
             const stockErrors = [];
 
@@ -79,30 +79,31 @@ const CartModalContainer = ({ isOpen, onClose }) => {
                 });
             });
 
-            return Promise.all(stockCheckPromises)
-                .then(() => {
-                    if (stockErrors.length > 0) {
-                        throw new Error(stockErrors.join("\n"));
-                    }
+            await Promise.all(stockCheckPromises);
 
-                    itemsToUpdate.forEach(({ ref, newStock }) => {
-                        transaction.update(ref, { stock: newStock });
-                    });
+            if (stockErrors.length > 0) {
+                throw new Error(stockErrors.join("\n"));
+            }
 
-                    return getClientIp().then((clientIp) => {
-                        return addDoc(collection(db, "purchaseHistory"), {
-                            cartItems,
-                            totalPrice: finalPrice,
-                            timestamp: new Date().toISOString(),
-                            clientIp,
-                            paymentMethod,
-                            userEmail: currentUser.email
-                        });
-                    });
-                });
+            itemsToUpdate.forEach(({ ref, newStock }) => {
+                transaction.update(ref, { stock: newStock });
+            });
+
+            const clientIp = await getClientIp();
+
+            const purchaseRef = await addDoc(collection(db, "purchaseHistory"), {
+                cartItems,
+                totalPrice: finalPrice,
+                timestamp: new Date().toISOString(),
+                clientIp,
+                paymentMethod,
+                userEmail: currentUser.email
+            });
+
+            return purchaseRef.id; // Return the ID of the purchase document
         })
-            .then(() => {
-                setPurchaseMessage("¡Gracias por tu compra! Tu compra se ha completado con éxito.");
+            .then((orderId) => {
+                setPurchaseMessage(`¡Gracias por tu compra! Tu compra se ha completado con éxito. Tu ID de orden es: ${orderId}`);
                 clearCart();
             })
             .catch((error) => {

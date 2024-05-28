@@ -18,43 +18,53 @@ const AuthForm = ({
                       setPhone,
                       handleSubmit,
                       buttonText,
-                      buttonIcon
+                      buttonIcon,
+                      showName,
+                      showSurname,
+                      showPhone,
+                      showConfirmEmail,
                   }) => {
     return (
         <form onSubmit={handleSubmit}>
-            <div>
-                <label>Nombre</label>
+            {showName && (
                 <div>
-                    <input
-                        type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        required
-                    />
+                    <label>Nombre</label>
+                    <div>
+                        <input
+                            type="text"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            required
+                        />
+                    </div>
                 </div>
-            </div>
-            <div>
-                <label>Apellido</label>
+            )}
+            {showSurname && (
                 <div>
-                    <input
-                        type="text"
-                        value={surname}
-                        onChange={(e) => setSurname(e.target.value)}
-                        required
-                    />
+                    <label>Apellido</label>
+                    <div>
+                        <input
+                            type="text"
+                            value={surname}
+                            onChange={(e) => setSurname(e.target.value)}
+                            required
+                        />
+                    </div>
                 </div>
-            </div>
-            <div>
-                <label>Teléfono</label>
+            )}
+            {showPhone && (
                 <div>
-                    <input
-                        type="tel"
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                        required
-                    />
+                    <label>Teléfono</label>
+                    <div>
+                        <input
+                            type="tel"
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
+                            required
+                        />
+                    </div>
                 </div>
-            </div>
+            )}
             <div>
                 <label>Email</label>
                 <div>
@@ -66,17 +76,19 @@ const AuthForm = ({
                     />
                 </div>
             </div>
-            <div>
-                <label>Confirmar Email</label>
+            {showConfirmEmail && (
                 <div>
-                    <input
-                        type="email"
-                        value={confirmEmail}
-                        onChange={(e) => setConfirmEmail(e.target.value)}
-                        required
-                    />
+                    <label>Confirmar Email</label>
+                    <div>
+                        <input
+                            type="email"
+                            value={confirmEmail}
+                            onChange={(e) => setConfirmEmail(e.target.value)}
+                            required
+                        />
+                    </div>
                 </div>
-            </div>
+            )}
             <div>
                 <label>Contraseña</label>
                 <div>
@@ -97,20 +109,39 @@ const AuthForm = ({
 
 AuthForm.propTypes = {
     email: PropTypes.string.isRequired,
-    confirmEmail: PropTypes.string.isRequired,
+    confirmEmail: PropTypes.string,
     password: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    surname: PropTypes.string.isRequired,
-    phone: PropTypes.string.isRequired,
+    name: PropTypes.string,
+    surname: PropTypes.string,
+    phone: PropTypes.string,
     setEmail: PropTypes.func.isRequired,
-    setConfirmEmail: PropTypes.func.isRequired,
+    setConfirmEmail: PropTypes.func,
     setPassword: PropTypes.func.isRequired,
-    setName: PropTypes.func.isRequired,
-    setSurname: PropTypes.func.isRequired,
-    setPhone: PropTypes.func.isRequired,
+    setName: PropTypes.func,
+    setSurname: PropTypes.func,
+    setPhone: PropTypes.func,
     handleSubmit: PropTypes.func.isRequired,
     buttonText: PropTypes.string.isRequired,
     buttonIcon: PropTypes.string.isRequired,
+    showName: PropTypes.bool,
+    showSurname: PropTypes.bool,
+    showPhone: PropTypes.bool,
+    showConfirmEmail: PropTypes.bool,
+};
+
+AuthForm.defaultProps = {
+    confirmEmail: '',
+    name: '',
+    surname: '',
+    phone: '',
+    setConfirmEmail: () => {},
+    setName: () => {},
+    setSurname: () => {},
+    setPhone: () => {},
+    showName: false,
+    showSurname: false,
+    showPhone: false,
+    showConfirmEmail: false,
 };
 
 export default AuthForm;

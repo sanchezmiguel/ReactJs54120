@@ -50,6 +50,7 @@ const PurchaseHistory = () => {
                                 <h5 className="card-title">Fecha: {new Date(purchase.timestamp).toLocaleString()}</h5>
                                 <h6 className="card-subtitle mb-2 text-muted">Total: ${purchase.totalPrice.toFixed(2)}</h6>
                                 <p className="card-text">Método de Pago: {purchase.paymentMethod}</p>
+                                <p className="card-text">ID de la Compra: {purchase.id}</p> {/* Mostrar ID de la compra */}
                                 <ul className="list-group list-group-flush">
                                     {purchase.cartItems.map(item => (
                                         <li key={item.id} className="list-group-item">

@@ -1,6 +1,7 @@
+// Login.jsx
 import { useState } from 'react';
-import { useAuth } from '../../contexts/authContext/AuthContext.jsx';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../contexts/authContext/AuthContext.jsx';
 import AuthForm from "../authForm/AuthForm.jsx";
 import './Login.css';
 
@@ -32,6 +33,10 @@ const Login = () => {
                 handleSubmit={handleSubmit}
                 buttonText="Iniciar Sesión"
                 buttonIcon="sign-in-alt"
+                showName={false}
+                showSurname={false}
+                showPhone={false}
+                showConfirmEmail={false}
             />
         </div>
     );
