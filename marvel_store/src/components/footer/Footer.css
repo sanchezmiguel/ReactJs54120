@@ -1,6 +1,6 @@
 /* Footer.css */
 .footer-container {
-    background-color: #f8f8f8;
+    background-color: #8b0000; /* Cambia el color de fondo del navbar al rojo característico de Marvel */
     padding: 20px;
     text-align: center;
 }
@@ -8,7 +8,7 @@
 .footer-links a, .footer-social a {
     display: inline-block;
     margin: 0 10px;
-    color: #333;
+    color: #fff;
     text-decoration: none;
 }
 
