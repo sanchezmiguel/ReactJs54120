@@ -50,7 +50,7 @@ const OrderSearch = () => {
                 <div className="order-details">
                     <h3>Detalles de la Orden</h3>
                     <p><strong>ID de la Orden:</strong> {orderId}</p>
-                    <p><strong>Total:</strong> {order.total}</p>
+                    <p><strong>Total:</strong> {order.totalPrice}</p>
                     {order.items && order.items.map(item => (
                         <ItemDetail key={item.id} item={item} />
                     ))}
